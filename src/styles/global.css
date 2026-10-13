@@ -1,0 +1,43 @@
+:root {
+  --primary-orange: #E85D04;
+  --primary-red: #D00000;
+  --primary-dark: #1B3A5C;
+  --white: #FFFFFF;
+  --blue-ocean: #0077B6;
+  --green-nature: #2B9348;
+  --yellow-warning: #FFBA08;
+  --light-gray: #F8F9FA;
+  --gray-medium: #6C757D;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+  background: var(--light-gray);
+}
+
+.btn-primary {
+  background: var(--primary-orange);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-primary:hover {
+  background: var(--primary-red);
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
