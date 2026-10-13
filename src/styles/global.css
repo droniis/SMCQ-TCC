@@ -128,11 +128,6 @@ body {
   background: white;
 }
 
-.campo-compacto {
-  padding: 6px;
-  margin: 0;
-}
-
 .linha-campos {
   display: flex;
   gap: 16px;
@@ -141,29 +136,6 @@ body {
 .opcao {
   display: block;
   margin: 8px 0;
-}
-
-/* Tabela de alertas */
-.tabela {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.tabela th,
-.tabela td {
-  padding: 10px;
-  text-align: left;
-  border-bottom: 1px solid #DEE2E6;
-}
-
-.tabela th {
-  color: var(--gray-medium);
-  font-size: 14px;
-}
-
-.tabela-detalhe {
-  color: var(--gray-medium);
-  font-size: 13px;
 }
 
 /* Mapa */

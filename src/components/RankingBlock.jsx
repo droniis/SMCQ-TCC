@@ -17,6 +17,17 @@ export default function RankingBlock({ titulo, periodo, dados, total, limite = 5
   const [visao, setVisao] = useState(visaoInicial);
   const itens = dados.slice(0, limite).map((item, i) => ({ ...item, fill: item.cor || CORES_GRAFICO[i % CORES_GRAFICO.length] }));
 
+  // Destaque de extremos na tabela: máximo em vermelho, mínimo em amarelo (zeros não contam; sem destaque se todos empatam)
+  const valores = itens.map(item => item.valor).filter(valor => valor > 0);
+  const maximo = Math.max(...valores);
+  const minimo = Math.min(...valores);
+  const classeExtremo = (valor) => {
+    if (maximo === minimo) return '';
+    if (valor === maximo) return 'bg-smcq-red text-white';
+    if (valor === minimo) return 'bg-smcq-yellow text-smcq-navy';
+    return '';
+  };
+
   const alternador = (
     <div className="flex shrink-0 gap-1" role="group" aria-label={`Visualização de ${titulo}`}>
       {VISOES.map(({ chave, rotulo, Icone }) => (
@@ -55,7 +66,9 @@ export default function RankingBlock({ titulo, periodo, dados, total, limite = 5
               <tr key={item.nome} className="border-b border-slate-100 text-slate-700 last:border-0 hover:bg-orange-50">
                 <td className="py-1.5 pr-2 text-slate-500 tabular-nums">{i + 1}</td>
                 <td className="py-1.5">{item.nome}</td>
-                <td className="py-1.5 text-right font-semibold tabular-nums">{formatarNumero(item.valor)}</td>
+                <td className="py-1.5 text-right font-semibold tabular-nums">
+                  <span className={`rounded px-1.5 py-0.5 ${classeExtremo(item.valor)}`}>{formatarNumero(item.valor)}</span>
+                </td>
                 <td className="py-1.5 pl-3 text-right tabular-nums">{formatarPercentual(item.valor, total)}</td>
               </tr>
             ))}

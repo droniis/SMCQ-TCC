@@ -1,8 +1,10 @@
 import { useNavigate } from 'react-router-dom';
-import { Flame, TriangleAlert, Siren, CircleCheck, Plus, List, Map as MapaIcone } from 'lucide-react';
+import toast from 'react-hot-toast';
+import { Flame, TriangleAlert, Siren, CircleCheck, Plus, List, Download, Map as MapaIcone } from 'lucide-react';
 import { useAlertas } from '../hooks/useAlertas';
 import { useFiltros, filtrarAlertas } from '../hooks/useFiltros';
-import { BIOMAS, BIOMA_POR_ESTADO } from '../services/constantes';
+import { BIOMAS, BIOMA_POR_ESTADO, RISCOS, STATUS } from '../services/constantes';
+import { exportarCSV } from '../services/exportacao';
 import { contarPor, serieDiaria, variacaoRecente, formatarNumero, formatarPercentual, formatarData } from '../services/estatisticas';
 import FilterBar from '../components/FilterBar';
 import MetricCard from '../components/MetricCard';
@@ -48,10 +50,43 @@ export default function Dashboard() {
     .map(({ nome, valor }) => ({ nome: BIOMAS[nome].rotulo, valor, cor: BIOMAS[nome].cor }));
   const serie = serieDiaria(visiveis, DIAS_EVOLUCAO);
 
+  // Relatório consolidado: os mesmos números da tela, em seções de "indicador; valor"
+  const exportarRelatorio = () => {
+    const secao = (titulo, itens) => [[], [titulo, 'Alertas'], ...itens.map(({ nome, valor }) => [nome, valor])];
+    exportarCSV('relatorio-painel', [
+      ['Relatório consolidado SMCQ'],
+      [periodo],
+      [],
+      ['Indicador', 'Valor'],
+      ['Total de Alertas', total],
+      ['Críticos', criticos],
+      ['Em Atendimento', emAtendimento],
+      ['Resolvidos', resolvidos],
+      ...secao('Nível de risco', Object.entries(RISCOS).map(([chave, { rotulo }]) => ({ nome: rotulo, valor: visiveis.filter(a => a.risco === chave).length }))),
+      ...secao('Status', Object.entries(STATUS).map(([chave, { rotulo }]) => ({ nome: rotulo, valor: visiveis.filter(a => a.status === chave).length }))),
+      ...secao('Estado', porEstado),
+      ...secao('Município', porMunicipio),
+      ...secao('Bioma (predominante do estado)', porBioma),
+      ...secao(`Dia (últimos ${DIAS_EVOLUCAO} dias)`, serie.map(({ data, valor }) => ({ nome: data, valor })))
+    ]);
+    toast.success('Relatório exportado em CSV');
+  };
+
   return (
     <div className="p-6">
       {erro && <p role="alert" className="mb-4 text-smcq-red">{erro}</p>}
       <FilterBar alertas={alertas} />
+
+      <div className="mb-4 flex justify-end">
+        <button
+          type="button"
+          onClick={exportarRelatorio}
+          className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-smcq-navy transition-colors duration-150 hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-smcq-orange focus-visible:outline-none"
+        >
+          <Download size={16} aria-hidden="true" />
+          Exportar CSV
+        </button>
+      </div>
 
       <div className="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <MetricCard titulo="Total de Alertas" valor={formatarNumero(total)} icone={Flame} cor="navy" detalhe={descreverVariacao(variacaoRecente(visiveis))} />
