@@ -1,0 +1,417 @@
+{
+  "urlPedida": "https://data.inpe.br/queimadas/estatisticas/?tipo=estados&item=sao_paulo",
+  "coletadoEm": "2026-10-13T21:41:34.949Z",
+  "rede": {
+    "total": 62,
+    "porTipo": {
+      "Document": 1,
+      "Stylesheet": 13,
+      "Script": 21,
+      "Image": 8,
+      "Font": 5,
+      "Fetch": 14
+    },
+    "porHost": {
+      "data.inpe.br": 46,
+      "code.jquery.com": 1,
+      "cdn.jsdelivr.net": 5,
+      "barra.brasil.gov.br": 2,
+      "www.googletagmanager.com": 2,
+      "stackpath.bootstrapcdn.com": 1,
+      "cdnjs.cloudflare.com": 2,
+      "fonts.cdnfonts.com": 1,
+      "www.google-analytics.com": 1,
+      "www.google.com": 1
+    },
+    "servidores": [
+      "nginx",
+      "cloudflare",
+      "Google Tag Manager",
+      "Golfe2"
+    ],
+    "dados": [
+      "GET 200 [Fetch/application/json] https://data.inpe.br/queimadas/estatisticas/media/estatistica/index.json",
+      "GET 200 [Fetch/text/html] https://data.inpe.br/queimadas/estatisticas/components-sa/header/header.fragment.html",
+      "GET 200 [Fetch/text/html] https://data.inpe.br/queimadas/estatisticas/components-sa/footer/footer.fragment.html",
+      "GET 200 [Fetch/application/json] https://data.inpe.br/queimadas/estatisticas/media/estatistica/index.json",
+      "GET 200 [Fetch/application/octet-stream] https://data.inpe.br/queimadas/estatisticas/config-sa/estatistica.yaml",
+      "GET 200 [Fetch/application/json] https://data.inpe.br/queimadas/estatisticas/media/estatistica/paises/brasil.json",
+      "GET 200 [Fetch/application/json] https://data.inpe.br/queimadas/estatisticas/media/estatistica/paises/brasil.json?_=1791927680075",
+      "GET 200 [Fetch/application/json] https://data.inpe.br/queimadas/estatisticas/media/estatistica/paises/brasil.json",
+      "GET 200 [Fetch/application/json] https://data.inpe.br/queimadas/estatisticas/media/estatistica/paises/brasil.json",
+      "GET 200 [Fetch/application/json] https://data.inpe.br/queimadas/estatisticas/media/estatistica/paises/brasil.json",
+      "GET 200 [Fetch/application/json] https://data.inpe.br/queimadas/estatisticas/media/estatistica/paises/brasil.json",
+      "GET 200 [Fetch/application/json] https://data.inpe.br/queimadas/estatisticas/media/estatistica/paises/brasil.json?_=1791927680223",
+      "POST ? [Fetch/?] https://www.google-analytics.com/g/collect?v=2&tid=G-9LPW5W4S90&gtm=45je6ac1v9122476522za20oxf1&_p=1791927679959&gcd=13l3l3l3l1l1&npa=0&dma=0&_eu=EAAIAAQ&cid=1454538155.1791927617&frm=0&ir=1&ngs=1&pscdl=noapi&rcb=9&sr=800x600&uaa=x86&uab=64&uafvl=Microsoft%252",
+      "POST 204 [Fetch/text/plain] https://www.google.com/g/collect?v=2&tid=G-9LPW5W4S90&gtm=45je6ac1v9122476522za20oxf1&_p=1791927679959&gcd=13l3l3l3l1l1&npa=0&dma=0&_eu=EAAIAAQ&cid=1454538155.1791927617&frm=0&ir=1&ngs=1&pscdl=noapi&rcb=9&sr=800x600&uaa=x86&uab=64&uafvl=Microsoft%2520Edge%3B15"
+    ],
+    "documentos": [
+      "200 https://data.inpe.br/queimadas/estatisticas/?tipo=estados&item=sao_paulo"
+    ]
+  },
+  "dom": {
+    "urlFinal": "https://data.inpe.br/queimadas/estatisticas/?tipo=estados&item=sao_paulo",
+    "titulo": "Monitoramento dos Focos Ativos por País - Programa Queimadas - INPE",
+    "gerador": null,
+    "bibliotecas": {
+      "jQuery": "3.4.1",
+      "jQuery UI": "1.12.1",
+      "Chart.js": "4.4.3"
+    },
+    "scripts": [
+      "https://www.googletagmanager.com/gtag/js?id=G-9LPW5W4S90&cx=c&gtm=4e6ac1",
+      "https://code.jquery.com/jquery-3.4.1.min.js",
+      "https://data.inpe.br/queimadas/estatisticas/assets-sa/jquery/jquery-ui.js",
+      "https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js",
+      "https://data.inpe.br/queimadas/estatisticas/assets-sa/js/estatistica/graficos/grafico_historico_faixa.js",
+      "https://data.inpe.br/queimadas/estatisticas/assets-sa/js/estatistica/graficos/historico_mensal_controller.js",
+      "https://data.inpe.br/queimadas/estatisticas/assets-sa/js/estatistica/interface/keyboard_nav.js",
+      "https://data.inpe.br/queimadas/estatisticas/assets-sa/js/estatistica/nucleo/configuracoes.js",
+      "https://data.inpe.br/queimadas/estatisticas/assets-sa/js/estatistica/graficos/graficos.js",
+      "https://data.inpe.br/queimadas/estatisticas/assets-sa/js/estatistica/dados/exportador_csv.js",
+      "https://data.inpe.br/queimadas/estatisticas/assets-sa/js/estatistica/dados/agregador_estatistica.js",
+      "https://data.inpe.br/queimadas/estatisticas/assets-sa/js/estatistica/interface/interface.js",
+      "https://data.inpe.br/queimadas/estatisticas/assets-sa/js/estatistica/app.js",
+      "https://data.inpe.br/queimadas/estatisticas/assets-sa/js/crosshair.js",
+      "https://barra.brasil.gov.br/barra_2.0.js",
+      "https://www.googletagmanager.com/gtag/js?id=UA-121460145-1",
+      "https://data.inpe.br/queimadas/estatisticas/components-sa/loader.js",
+      "https://vlibras.gov.br/app2/vlibras-plugin.js",
+      "https://data.inpe.br/queimadas/estatisticas/components-sa/header/assets/js/header.js",
+      "https://data.inpe.br/queimadas/estatisticas/components-sa/footer/assets/js/footer.js"
+    ],
+    "estilos": [
+      "https://data.inpe.br/queimadas/estatisticas/assets-sa/css/page.min.css",
+      "https://data.inpe.br/queimadas/estatisticas/assets-sa/css/base_plugin.css",
+      "https://data.inpe.br/queimadas/estatisticas/assets-sa/css/fontawesome.min.css",
+      "https://data.inpe.br/queimadas/estatisticas/assets-sa/css/solid.min.css",
+      "https://data.inpe.br/queimadas/estatisticas/assets-sa/jquery/jquery-ui.min.css",
+      "https://data.inpe.br/queimadas/estatisticas/assets-sa/css/estatisticas.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css",
+      "https://data.inpe.br/queimadas/estatisticas/components-sa/footer/assets/css/footer.css",
+      "https://data.inpe.br/queimadas/estatisticas/components-sa/header/assets/css/header_situacao_atual.css"
+    ],
+    "iframes": [
+      "https://data.inpe.br/queimadas/estatisticas/?tipo=estados&item=sao_paulo"
+    ],
+    "contagem": {
+      "elementos": 1020,
+      "select": 5,
+      "input": 0,
+      "button": 1,
+      "table": 2,
+      "canvas": 5,
+      "svg": 0,
+      "img": 4,
+      "leaflet": 0,
+      "leafletMarcadores": 0,
+      "leafletTiles": 0,
+      "openlayers": 0,
+      "cards": 0,
+      "modais": 0,
+      "dataTables": 0,
+      "paginacao": 0
+    },
+    "titulos": [
+      "H1: Queimadas",
+      "H1: Estatísticas dos Focos Ativos por Estados",
+      "H3: Filtro",
+      "H3: Filtro",
+      "H3: SISTEMAS",
+      "H3: DOWNLOADS",
+      "H3: RELATÓRIOS",
+      "H3: INFORMAÇÕES"
+    ],
+    "selects": [
+      {
+        "id": "select_country",
+        "rotulo": null,
+        "opcoes": 13,
+        "amostra": [
+          "Argentina",
+          "Bolivia",
+          "Brasil",
+          "Chile",
+          "Colombia",
+          "Ecuador",
+          "French Guiana",
+          "Guyana"
+        ]
+      },
+      {
+        "id": "select_estado",
+        "rotulo": null,
+        "opcoes": 27,
+        "amostra": [
+          "Acre",
+          "Alagoas",
+          "Amapá",
+          "Amazonas",
+          "Bahia",
+          "Ceará",
+          "Distrito Federal",
+          "Espírito Santo"
+        ]
+      },
+      {
+        "id": "select_regiao",
+        "rotulo": null,
+        "opcoes": 6,
+        "amostra": [
+          "---",
+          "Norte",
+          "Nordeste",
+          "Centro-oeste",
+          "Sul",
+          "Sudeste"
+        ]
+      },
+      {
+        "id": "select_bioma",
+        "rotulo": null,
+        "opcoes": 6,
+        "amostra": [
+          "Caatinga",
+          "Cerrado",
+          "Pantanal",
+          "Pampa",
+          "Amazônia",
+          "Mata Atlântica"
+        ]
+      },
+      {
+        "id": "select_regiao_especial",
+        "rotulo": null,
+        "opcoes": 5,
+        "amostra": [
+          "---",
+          "Matopiba",
+          "Map",
+          "Amazônia Legal",
+          "Vale do Paraíba"
+        ]
+      }
+    ],
+    "inputs": [],
+    "botoes": [
+      "Abrir/fechar menu"
+    ],
+    "tabelas": [
+      {
+        "id": null,
+        "classe": "dataframe crosshair",
+        "linhas": 33,
+        "cabecalho": [
+          "Ano",
+          "Janeiro",
+          "Fevereiro",
+          "Março",
+          "Abril",
+          "Maio",
+          "Junho",
+          "Julho",
+          "Agosto",
+          "Setembro",
+          "Outubro",
+          "Novembro",
+          "Dezembro",
+          "Total"
+        ]
+      },
+      {
+        "id": null,
+        "classe": "dataframe crosshair",
+        "linhas": 3,
+        "cabecalho": [
+          "Dia",
+          "01",
+          "02",
+          "03",
+          "04",
+          "05",
+          "06",
+          "07",
+          "08",
+          "09",
+          "10",
+          "11",
+          "12",
+          "13"
+        ]
+      }
+    ],
+    "links": [
+      {
+        "texto": "Ir para o conteúdo",
+        "href": "https://data.inpe.br/queimadas/estatisticas/components-sa/header/#conteudo"
+      },
+      {
+        "texto": "GovBR",
+        "href": "https://gov.br/"
+      },
+      {
+        "texto": "Comunica BR",
+        "href": "http://www.gov.br/secom/pt-br/acesso-a-informacao/comunicabr"
+      },
+      {
+        "texto": "Acesso à informação",
+        "href": "http://www.gov.br/acessoainformacao/"
+      },
+      {
+        "texto": "Participe",
+        "href": "https://www.gov.br/pt-br/participacao-social/"
+      },
+      {
+        "texto": "Legislação",
+        "href": "http://www4.planalto.gov.br/legislacao/"
+      },
+      {
+        "texto": "Órgãos do Governo",
+        "href": "http://www.gov.br/pt-br/orgaos-do-governo"
+      },
+      {
+        "texto": "Programa Queimadas Instituto Nacional de Pesquisas Espaciais",
+        "href": "https://data.inpe.br/queimadas/portal/"
+      },
+      {
+        "texto": "Portal",
+        "href": "https://data.inpe.br/queimadas/portal/"
+      },
+      {
+        "texto": "Situação Atual",
+        "href": "https://data.inpe.br/queimadas/situacao_atual/"
+      },
+      {
+        "texto": "Países",
+        "href": "https://data.inpe.br/queimadas/estatisticas/?tipo=paises&item=brasil"
+      },
+      {
+        "texto": "Estados",
+        "href": "https://data.inpe.br/queimadas/estatisticas/?tipo=estados&item=sao_paulo"
+      },
+      {
+        "texto": "Regiões",
+        "href": "https://data.inpe.br/queimadas/estatisticas/?tipo=regioes&item=sudeste"
+      },
+      {
+        "texto": "Biomas",
+        "href": "https://data.inpe.br/queimadas/estatisticas/?tipo=biomas&item=cerrado"
+      },
+      {
+        "texto": "Ir para o conteúdo",
+        "href": "https://data.inpe.br/queimadas/estatisticas/?tipo=estados&item=sao_paulo#conteudo"
+      },
+      {
+        "texto": "GovBR",
+        "href": "https://gov.br/"
+      },
+      {
+        "texto": "Comunica BR",
+        "href": "http://www.gov.br/secom/pt-br/acesso-a-informacao/comunicabr"
+      },
+      {
+        "texto": "Acesso à informação",
+        "href": "http://www.gov.br/acessoainformacao/"
+      },
+      {
+        "texto": "Participe",
+        "href": "https://www.gov.br/pt-br/participacao-social/"
+      },
+      {
+        "texto": "Legislação",
+        "href": "http://www4.planalto.gov.br/legislacao/"
+      },
+      {
+        "texto": "Órgãos do Governo",
+        "href": "http://www.gov.br/pt-br/orgaos-do-governo"
+      },
+      {
+        "texto": "Download dos dados em CSV",
+        "href": "https://data.inpe.br/queimadas/portal/csv/download/historico-mensal/estados/sao_paulo.csv"
+      },
+      {
+        "texto": "Download dos dados em CSV",
+        "href": "https://data.inpe.br/queimadas/portal/csv/download/historico-diario/estados/sao_paulo.csv"
+      },
+      {
+        "texto": "Ir para situação atual",
+        "href": "https://data.inpe.br/queimadas/situacao_atual/"
+      },
+      {
+        "texto": "BDQueimadas",
+        "href": "https://data.inpe.br/queimadas/bdqueimadas/"
+      },
+      {
+        "texto": "Situação Atual",
+        "href": "https://data.inpe.br/queimadas/situacao_atual/"
+      },
+      {
+        "texto": "Área Queimada",
+        "href": "https://data.inpe.br/queimadas/aq1km/"
+      },
+      {
+        "texto": "Estatísticas",
+        "href": "https://data.inpe.br/queimadas/estatisticas/?tipo=paises&item=brasil"
+      },
+      {
+        "texto": "Focos de Queimadas",
+        "href": "https://data.inpe.br/queimadas/portal/dados-abertos/#da-focos"
+      },
+      {
+        "texto": "Área Queimada • AQ1km",
+        "href": "https://data.inpe.br/queimadas/portal/dados-abertos/#da-area-qmd"
+      },
+      {
+        "texto": "Risco de Fogo e Meteorologia",
+        "href": "https://data.inpe.br/queimadas/portal/dados-abertos/#da-rf"
+      },
+      {
+        "texto": "Dados Legados de Informações Ambientais",
+        "href": "https://dataserver-coids.inpe.br/queimadas/queimadas/sisam/"
+      },
+      {
+        "texto": "Geoserviços OGC",
+        "href": "https://data.inpe.br/queimadas/geoserver/ows?SERVICE=WMS&VERSION=1.3.0&REQUEST=Getcapabilities"
+      },
+      {
+        "texto": "Painel do Fogo",
+        "href": "https://data.inpe.br/queimadas/portal/painel-do-fogo/"
+      },
+      {
+        "texto": "Boletim InfoQueima",
+        "href": "https://data.inpe.br/queimadas/portal/boletim-infoqueima/"
+      },
+      {
+        "texto": "Anuário Risco de Fogo",
+        "href": "https://data.inpe.br/queimadas/portal/anuario-risco-de-fogo/"
+      },
+      {
+        "texto": "Produções Técnicas e Cientificas",
+        "href": "https://dataserver-coids.inpe.br/queimadas/queimadas/Publicacoes-Impacto/"
+      },
+      {
+        "texto": "Perguntas Frequentes",
+        "href": "https://data.inpe.br/queimadas/portal/faq/"
+      },
+      {
+        "texto": "Equipe",
+        "href": "https://data.inpe.br/queimadas/portal/equipe/"
+      },
+      {
+        "texto": "Plano DIretor",
+        "href": "https://data.inpe.br/queimadas/portal/plano-diretor/"
+      },
+      {
+        "texto": "CIMAN",
+        "href": "https://data.inpe.br/queimadas/portal/ciman/"
+      },
+      {
+        "texto": "Histórico de Avisos",
+        "href": "https://data.inpe.br/queimadas/portal/avisos/"
+      }
+    ],
+    "classesDoBody": "",
+    "legenda": [],
+    "textoVisivel": "IR PARA O CONTEÚDO\nGOVBR\nCOMUNICA BR\nACESSO À INFORMAÇÃO\nPARTICIPE\nLEGISLAÇÃO\nÓRGÃOS DO GOVERNO\nPrograma\nQueimadas\nINSTITUTO NACIONAL DE PESQUISAS ESPACIAIS\nPortal\nSituação Atual\nPaíses\nEstados\nRegiões\nBiomas\nIR PARA O CONTEÚDO\nGOVBR\nCOMUNICA BR\nACESSO À INFORMAÇÃO\nPARTICIPE\nLEGISLAÇÃO\nÓRGÃOS DO GOVERNO\nEstatísticas dos Focos Ativos por Estados\n  Filtro\nSelecione o estado: \nSão Paulo\nComparação do total de focos ativos detectados pelo satélite de referência em cada mês, no período de 1998 até 12/Out.\nAno\tJaneiro\tFevereiro\tMarço\tAbril\tMaio\tJunho\tJulho\tAgosto\tSetembro\tOutubro\tNovembro\tDezembro\tTotal\n1998\t-\t-\t-\t-\t-\t451\t597\t580\t525\t433\t487\t121\t3.194\n1999\t7\t47\t78\t291\t500\t522\t683\t1.210\t910\t763\t400\t47\t5.458\n2000\t36\t25\t27\t102\t300\t605\t770\t915\t581\t647\t96\t23\t4.127\n2001\t26\t25\t35\t61\t211\t345\t539\t587\t423\t441\t168\t52\t2.913\n2002\t19\t19\t111\t178\t319\t562\t645\t909\t483\t699\t129\t77\t4.150\n2003\t67\t184\t96\t165\t385\t757\t885\t1.194\t1.104\t475\t207\t78\t5.597\n2004\t56\t91\t122\t112\t215\t448\t529\t1.012\t1.104\t248\t230\t166\t4.333\n2005\t24\t131\t130\t213\t401\t396\t525\t1.161\t291\t264\t206\t90\t3.832\n2006\t107\t91\t186\t285\t587\t667\t1.011\t1.096\t840\t233\t170\t94\t5.367\n2007\t43\t179\t267\t202\t392\t611\t423\t754\t779\t601\t130\t95\t4.476\n2008\t47\t34\t110\t132\t282\t178\t579\t489\t589\t120\t86\t150\t2.796\n2009\t33\t87\t106\t199\t219\t231\t159\t347\t148\t105\t81\t48\t1.763\n2010\t56\t183\t153\t148\t254\t635\t943\t2.444\t1.923\t327\t153\t72\t7.291\n2011\t75\t76\t46\t76\t217\t318\t581\t1.159\t1.211\t250\t110\t64\t4.183\n2012\t49\t107\t138\t121\t108\t63\t235\t521\t908\t259\t74\t79\t2.662\n2013\t51\t100\t60\t172\t170\t70\t243\t602\t590\t133\t105\t92\t2.388\n2014\t66\t94\t58\t93\t178\t312\t462\t1.440\t843\t850\t48\t40\t4.484\n2015\t82\t37\t45\t70\t63\t144\t139\t627\t344\t199\t18\t40\t1.808\n2016\t56\t107\t65\t293\t138\t196\t734\t840\t506\t172\t35\t44\t3.186\n2017\t21\t88\t76\t37\t45\t152\t616\t734\t1.930\t134\t35\t34\t3.902\n2018\t41\t26\t124\t85\t317\t292\t1.070\t350\t598\t27\t16\t73\t3.019\n2019\t90\t35\t85\t78\t81\t290\t393\t742\t872\t308\t60\t40\t3.074\n2020\t69\t103\t127\t252\t262\t262\t558\t1.111\t2.254\t995\t115\t15\t6.123\n2021\t29\t72\t98\t69\t140\t136\t808\t2.277\t1.663\t95\t41\t41\t5.469\n2022\t76\t120\t64\t47\t139\t90\t345\t315\t258\t62\t49\t34\t1.599\n2023\t62\t36\t109\t22\t145\t134\t253\t352\t375\t58\t54\t66\t1.666\n2024\t75\t93\t138\t63\t398\t532\t499\t3.612\t2.522\t714\t25\t41\t8.712\n2025\t66\t63\t34\t17\t60\t55\t245\t494\t1.011\t228\t59\t44\t2.376\n2026\t33\t29\t39\t54\t43\t58\t103\t171\t45\t12\t-\t-\t587\nMínimo*\t7\t19\t27\t17\t45\t55\t139\t315\t148\t27\t16\t15\t1.599\nMédia*\t53\t83\t100\t133\t242\t338\t552\t996\t914\t351\t121\t66\t3.927\nMáximo*\t107\t184\t267\t293\t587\t757\t1.070\t3.612\t2.522\t995\t487\t166\t8.712\nDownload dos dados em CSV \nObservações:\n- O cálculo de mínima, média e máxima não consideram os valores do an"
+  }
+}

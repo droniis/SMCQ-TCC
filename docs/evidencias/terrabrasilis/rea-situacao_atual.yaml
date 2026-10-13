@@ -1,0 +1,92 @@
+fontes_json:
+  paises: "media/situacao_atual/focos_pais.json"
+  paises_estendida: "media/situacao_atual/focos_paises_7anos_estendida.json"
+  estado: "media/situacao_atual/focos_estado.json"
+  estados_estendida: "media/situacao_atual/focos_estados_7anos_estendida.json"
+  municipio: "media/situacao_atual/focos_municipio.json"
+  bioma: "media/situacao_atual/focos_bioma.json"
+  biomas_estendida: "media/situacao_atual/focos_biomas_7anos_estendida.json"
+  regiao_estendida: "media/situacao_atual/focos_regioes_7anos_estendida.json"
+  regiao_especial_estendida: "media/situacao_atual/focos_regioes_especiais_7anos_estendida.json"
+
+mapeamento_unidades:
+  box-paises:
+    modoDeApresentacao: "box"
+    chaveUnidade: "paises"
+    periodo: "48h"
+    visual: "tabela"
+    seletorAreaMontagem: "#focos-paises"
+  box-estado:
+    modoDeApresentacao: "box"
+    chaveUnidade: "estado"
+    periodo: "48h"
+    visual: "tabela"
+    seletorAreaMontagem: "#focos-estado"
+  box-municipio:
+    modoDeApresentacao: "box"
+    chaveUnidade: "municipio"
+    periodo: "48h"
+    visual: "barra"
+    seletorAreaMontagem: "#focos-municipio"
+  box-bioma:
+    modoDeApresentacao: "box"
+    chaveUnidade: "bioma"
+    periodo: "48h"
+    visual: "pizza"
+    seletorAreaMontagem: "#focos-bioma"
+
+  paises_estendida:
+    modoDeApresentacao: "comparativo"
+    chaveUnidade: "paises_estendida"
+    visual: "7anos"
+    seletorAreaMontagem: "#comparativa-paises_estendida"
+  estados_estendida:
+    modoDeApresentacao: "comparativo"
+    chaveUnidade: "estados_estendida"
+    visual: "7anos"
+    seletorAreaMontagem: "#comparativa-estados_estendida"
+  regiao_estendida:
+    modoDeApresentacao: "comparativo"
+    chaveUnidade: "regiao_estendida"
+    visual: "7anos"
+    seletorAreaMontagem: "#comparativa-regiao_estendida"
+  regiao_especial_estendida:
+    modoDeApresentacao: "comparativo"
+    chaveUnidade: "regiao_especial_estendida"
+    visual: "7anos"
+    seletorAreaMontagem: "#comparativa-regiao_especial_estendida"
+  biomas_estendida:
+    modoDeApresentacao: "comparativo"
+    chaveUnidade: "biomas_estendida"
+    visual: "7anos"
+    seletorAreaMontagem: "#comparativa-biomas_estendida"
+
+preferencias_graficos:
+  paises:
+    padrao: { maxItens: 99, config: { sortBy: value, sortDir: desc } }
+    bar: { maxItens: 10, config: { bar: { indexAxis: y }, legend: { showPieLegend: false }, sortBy: value, sortDir: desc} }
+    pie: { maxItens: 5, config: { legend: { position: left, align: center, showPieLegend: true }, pie: { borderWidth: 1 } } }
+
+  estado:
+    padrao: { maxItens: 99 }
+    bar: { maxItens: 10, config: { bar: { indexAxis: y } } }
+    pie: { maxItens: 5, config: { legend: { position: left } } }
+
+  municipio:
+    padrao: { maxItens: 99 }
+    bar: { maxItens: 10, config: { bar: { indexAxis: y } } }
+    pie: { maxItens: 5, config: { legend: { position: left } } }
+
+  bioma:
+    padrao: { maxItens: 99 }
+    bar: { maxItens: 10, config: { bar: { indexAxis: y } } }
+    pie: { maxItens: 6, config: { legend: { position: left } } }
+
+opcoes_padrao:
+  maxItens: 10
+  fontScale: 0.9
+  config:
+    sortBy: value
+    sortDir: desc
+    legend: { showPieLegend: true, position: right, align: center }
+    bar: { indexAxis: y } 

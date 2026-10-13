@@ -1,22 +1,27 @@
 import { useNavigate } from 'react-router-dom';
 import { useAlertas } from '../hooks/useAlertas';
+import { useFiltros, filtrarAlertas } from '../hooks/useFiltros';
+import FilterBar from '../components/FilterBar';
 import MetricCard from '../components/MetricCard';
 import ActionCard from '../components/ActionCard';
 
 export default function Dashboard() {
   const { alertas, loading, erro } = useAlertas();
+  const { filtros } = useFiltros();
   const navigate = useNavigate();
 
-  const total = alertas.length;
-  const criticos = alertas.filter(a => a.risco === 'CRITICO').length;
-  const emAtendimento = alertas.filter(a => a.status === 'EM_ATENDIMENTO').length;
-  const resolvidos = alertas.filter(a => a.status === 'RESOLVIDO').length;
+  const visiveis = filtrarAlertas(alertas, filtros);
+  const total = visiveis.length;
+  const criticos = visiveis.filter(a => a.risco === 'CRITICO').length;
+  const emAtendimento = visiveis.filter(a => a.status === 'EM_ATENDIMENTO').length;
+  const resolvidos = visiveis.filter(a => a.status === 'RESOLVIDO').length;
 
   if (loading) return <p style={{ padding: '24px' }}>Carregando dados...</p>;
 
   return (
     <div style={{ padding: '24px' }}>
       {erro && <p className="mensagem-erro">{erro}</p>}
+      <FilterBar alertas={alertas} />
       <div className="grade-indicadores">
         <MetricCard titulo="Focos de Calor Ativos" valor={total} cor="var(--primary-dark)" />
         <MetricCard titulo="Críticos" valor={criticos} cor="var(--primary-red)" />

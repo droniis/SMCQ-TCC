@@ -26,10 +26,10 @@ export const ESTADOS = [
 ];
 
 export const FILTROS_VAZIOS = {
-  status: '',
-  risco: '',
+  dataInicio: '',
+  dataFim: '',
   estado: '',
   municipio: '',
-  dataInicio: '',
-  dataFim: ''
+  risco: '',
+  status: ''
 };

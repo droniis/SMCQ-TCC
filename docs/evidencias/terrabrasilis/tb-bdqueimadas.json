@@ -1,0 +1,504 @@
+{
+  "urlPedida": "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/",
+  "coletadoEm": "2026-10-13T21:40:36.719Z",
+  "rede": {
+    "total": 150,
+    "porTipo": {
+      "Document": 1,
+      "Stylesheet": 9,
+      "Image": 114,
+      "Script": 17,
+      "Font": 4,
+      "XHR": 2,
+      "Fetch": 2,
+      "Other": 1
+    },
+    "porHost": {
+      "terrabrasilis.dpi.inpe.br": 122,
+      "www.googletagmanager.com": 2,
+      "dev.virtualearth.net": 1,
+      "gibs.earthdata.nasa.gov": 23,
+      "www.google-analytics.com": 1,
+      "www.google.com": 1
+    },
+    "servidores": [
+      "nginx",
+      "Google Tag Manager",
+      "ServerTokens ProductOnly",
+      "Golfe2"
+    ],
+    "dados": [
+      "GET 200 [XHR/application/json] https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/continent?ids=8&key=Continent&filterForm=false",
+      "GET 200 [Image/image/png] https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/wmts.cgi?layer=GOES-East_ABI_GeoColor&tilematrixset=1km&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fpng&TileMatrix=3&TileCol=3&TileRow=2",
+      "GET 200 [Image/image/png] https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/wmts.cgi?layer=GOES-East_ABI_GeoColor&tilematrixset=1km&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fpng&TileMatrix=3&TileCol=3&TileRow=3",
+      "GET 200 [Image/image/png] https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/wmts.cgi?layer=GOES-East_ABI_GeoColor&tilematrixset=1km&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fpng&TileMatrix=3&TileCol=2&TileRow=2",
+      "GET 200 [Image/image/png] https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/wmts.cgi?layer=GOES-East_ABI_GeoColor&tilematrixset=1km&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fpng&TileMatrix=3&TileCol=4&TileRow=2",
+      "GET 200 [Image/image/png] https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/wmts.cgi?layer=GOES-East_ABI_GeoColor&tilematrixset=1km&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fpng&TileMatrix=3&TileCol=2&TileRow=3",
+      "GET 200 [Image/image/png] https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/wmts.cgi?layer=GOES-East_ABI_GeoColor&tilematrixset=1km&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fpng&TileMatrix=3&TileCol=4&TileRow=3",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&CQL_FILTER=data_hora_gmt%20between%202026-10-12T21%3A40%3A16.694Z%20and%202026-10-13T21%3A40%3A16.694Z%20AND%20satelite%20in%",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=bdqueimadas%3Apaises&TILED=true&WIDTH=256&HEIGHT=256&SRS=EPSG%3A4326&STYLES=&BBOX=-67.5%2C-22.5%2C-45%2C0",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=bdqueimadas%3Apaises&TILED=true&WIDTH=256&HEIGHT=256&SRS=EPSG%3A4326&STYLES=&BBOX=-67.5%2C-45%2C-45%2C-22.5",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&CQL_FILTER=data_hora_gmt%20between%202026-10-12T21%3A40%3A16.694Z%20and%202026-10-13T21%3A40%3A16.694Z%20AND%20satelite%20in%",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=bdqueimadas%3Apaises&TILED=true&WIDTH=256&HEIGHT=256&SRS=EPSG%3A4326&STYLES=&BBOX=-45%2C-22.5%2C-22.5%2C0",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&CQL_FILTER=data_hora_gmt%20between%202026-10-12T21%3A40%3A16.694Z%20and%202026-10-13T21%3A40%3A16.694Z%20AND%20satelite%20in%",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&CQL_FILTER=data_hora_gmt%20between%202026-10-12T21%3A40%3A16.694Z%20and%202026-10-13T21%3A40%3A16.694Z%20AND%20satelite%20in%",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=bdqueimadas%3Apaises&TILED=true&WIDTH=256&HEIGHT=256&SRS=EPSG%3A4326&STYLES=&BBOX=-90%2C-22.5%2C-67.5%2C0",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&CQL_FILTER=data_hora_gmt%20between%202026-10-12T21%3A40%3A16.694Z%20and%202026-10-13T21%3A40%3A16.694Z%20AND%20satelite%20in%",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=bdqueimadas%3Apaises&TILED=true&WIDTH=256&HEIGHT=256&SRS=EPSG%3A4326&STYLES=&BBOX=-67.5%2C0%2C-45%2C22.5",
+      "GET 200 [XHR/application/json] https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/countriesbycontinent?continent=8",
+      "GET 200 [Image/image/png] https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/wmts.cgi?layer=GOES-East_ABI_GeoColor&tilematrixset=1km&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fpng&TileMatrix=3&TileCol=3&TileRow=4",
+      "GET 200 [Image/image/png] https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/wmts.cgi?layer=GOES-East_ABI_GeoColor&tilematrixset=1km&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fpng&TileMatrix=3&TileCol=2&TileRow=4",
+      "GET 200 [Image/image/png] https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/wmts.cgi?layer=GOES-East_ABI_GeoColor&tilematrixset=1km&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fpng&TileMatrix=3&TileCol=1&TileRow=3",
+      "POST ? [Fetch/?] https://www.google-analytics.com/g/collect?v=2&tid=G-9LPW5W4S90&gtm=45je6ac1v9122476522za20oxf1&_p=1791927616643&gcd=13l3l3l3l1l1&npa=0&dma=0&_eu=EAAI&cid=1454538155.1791927617&frm=0&ir=1&ngs=1&pscdl=noapi&rcb=2&sr=800x600&uaa=x86&uab=64&uafvl=Microsoft%2520Ed",
+      "POST 204 [Fetch/text/plain] https://www.google.com/g/collect?v=2&tid=G-9LPW5W4S90&gtm=45je6ac1v9122476522za20oxf1&_p=1791927616643&gcd=13l3l3l3l1l1&npa=0&dma=0&_eu=EAAI&cid=1454538155.1791927617&frm=0&ir=1&ngs=1&pscdl=noapi&rcb=2&sr=800x600&uaa=x86&uab=64&uafvl=Microsoft%2520Edge%3B155.0",
+      "GET 200 [Image/image/png] https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/wmts.cgi?layer=GOES-East_ABI_GeoColor&tilematrixset=1km&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fpng&TileMatrix=3&TileCol=1&TileRow=2",
+      "GET 200 [Image/image/png] https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/wmts.cgi?layer=GOES-East_ABI_GeoColor&tilematrixset=1km&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fpng&TileMatrix=3&TileCol=4&TileRow=4",
+      "GET 200 [Image/image/png] https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/wmts.cgi?layer=GOES-East_ABI_GeoColor&tilematrixset=1km&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fpng&TileMatrix=3&TileCol=1&TileRow=4",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&CQL_FILTER=data_hora_gmt%20between%202026-10-12T00%3A00%3A00%20and%202026-10-13T23%3A59%3A59%20AND%20satelite%20in%20(%27NOAA",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=bdqueimadas%3Apaises&TILED=true&CQL_FILTER=continente_id%3D8&WIDTH=256&HEIGHT=256&SRS=EPSG%3A4326&STYLES=&BBOX=-67.5%2",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=bdqueimadas%3Apaises&TILED=true&CQL_FILTER=continente_id%3D8&WIDTH=256&HEIGHT=256&SRS=EPSG%3A4326&STYLES=&BBOX=-67.5%2",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&CQL_FILTER=data_hora_gmt%20between%202026-10-12T00%3A00%3A00%20and%202026-10-13T23%3A59%3A59%20AND%20satelite%20in%20(%27NOAA",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&CQL_FILTER=data_hora_gmt%20between%202026-10-12T00%3A00%3A00%20and%202026-10-13T23%3A59%3A59%20AND%20satelite%20in%20(%27NOAA",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=bdqueimadas%3Apaises&TILED=true&CQL_FILTER=continente_id%3D8&WIDTH=256&HEIGHT=256&SRS=EPSG%3A4326&STYLES=&BBOX=-90%2C-",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=bdqueimadas%3Apaises&TILED=true&CQL_FILTER=continente_id%3D8&WIDTH=256&HEIGHT=256&SRS=EPSG%3A4326&STYLES=&BBOX=-90%2C-",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&CQL_FILTER=data_hora_gmt%20between%202026-10-12T00%3A00%3A00%20and%202026-10-13T23%3A59%3A59%20AND%20satelite%20in%20(%27NOAA",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=bdqueimadas%3Apaises&TILED=true&CQL_FILTER=continente_id%3D8&WIDTH=256&HEIGHT=256&SRS=EPSG%3A4326&STYLES=&BBOX=-45%2C-",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&CQL_FILTER=data_hora_gmt%20between%202026-10-12T00%3A00%3A00%20and%202026-10-13T23%3A59%3A59%20AND%20satelite%20in%20(%27NOAA",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=bdqueimadas%3Apaises&TILED=true&CQL_FILTER=continente_id%3D8&WIDTH=256&HEIGHT=256&SRS=EPSG%3A4326&STYLES=&BBOX=-45%2C-",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&CQL_FILTER=data_hora_gmt%20between%202026-10-12T00%3A00%3A00%20and%202026-10-13T23%3A59%3A59%20AND%20satelite%20in%20(%27NOAA",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=bdqueimadas%3Apaises&TILED=true&CQL_FILTER=continente_id%3D8&WIDTH=256&HEIGHT=256&SRS=EPSG%3A4326&STYLES=&BBOX=-67.5%2",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&CQL_FILTER=data_hora_gmt%20between%202026-10-12T00%3A00%3A00%20and%202026-10-13T23%3A59%3A59%20AND%20satelite%20in%20(%27NOAA",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&CQL_FILTER=data_hora_gmt%20between%202026-10-12T00%3A00%3A00%20and%202026-10-13T23%3A59%3A59%20AND%20satelite%20in%20(%27NOAA",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=bdqueimadas%3Apaises&TILED=true&CQL_FILTER=continente_id%3D8&WIDTH=256&HEIGHT=256&SRS=EPSG%3A4326&STYLES=&BBOX=-67.5%2",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&CQL_FILTER=data_hora_gmt%20between%202026-10-12T00%3A00%3A00%20and%202026-10-13T23%3A59%3A59%20AND%20satelite%20in%20(%27NOAA",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=bdqueimadas%3Apaises&TILED=true&CQL_FILTER=continente_id%3D8&WIDTH=256&HEIGHT=256&SRS=EPSG%3A4326&STYLES=&BBOX=-90%2C0",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=bdqueimadas%3Apaises&TILED=true&CQL_FILTER=continente_id%3D8&WIDTH=256&HEIGHT=256&SRS=EPSG%3A4326&STYLES=&BBOX=-90%2C-",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&CQL_FILTER=data_hora_gmt%20between%202026-10-12T00%3A00%3A00%20and%202026-10-13T23%3A59%3A59%20AND%20satelite%20in%20(%27NOAA",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=bdqueimadas%3Apaises&TILED=true&CQL_FILTER=continente_id%3D8&WIDTH=256&HEIGHT=256&SRS=EPSG%3A4326&STYLES=&BBOX=-112.5%",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&CQL_FILTER=data_hora_gmt%20between%202026-10-12T00%3A00%3A00%20and%202026-10-13T23%3A59%3A59%20AND%20satelite%20in%20(%27NOAA",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&CQL_FILTER=data_hora_gmt%20between%202026-10-12T00%3A00%3A00%20and%202026-10-13T23%3A59%3A59%20AND%20satelite%20in%20(%27NOAA",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=bdqueimadas%3Apaises&TILED=true&CQL_FILTER=continente_id%3D8&WIDTH=256&HEIGHT=256&SRS=EPSG%3A4326&STYLES=&BBOX=-112.5%",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=bdqueimadas%3Apaises&TILED=true&CQL_FILTER=continente_id%3D8&WIDTH=256&HEIGHT=256&SRS=EPSG%3A4326&STYLES=&BBOX=-45%2C0",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&CQL_FILTER=data_hora_gmt%20between%202026-10-12T00%3A00%3A00%20and%202026-10-13T23%3A59%3A59%20AND%20satelite%20in%20(%27NOAA",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=bdqueimadas%3Apaises&TILED=true&CQL_FILTER=continente_id%3D8&WIDTH=256&HEIGHT=256&SRS=EPSG%3A4326&STYLES=&BBOX=-45%2C-",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&CQL_FILTER=data_hora_gmt%20between%202026-10-12T00%3A00%3A00%20and%202026-10-13T23%3A59%3A59%20AND%20satelite%20in%20(%27NOAA",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&CQL_FILTER=data_hora_gmt%20between%202026-10-12T00%3A00%3A00%20and%202026-10-13T23%3A59%3A59%20AND%20satelite%20in%20(%27NOAA",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=bdqueimadas%3Apaises&TILED=true&CQL_FILTER=continente_id%3D8&WIDTH=256&HEIGHT=256&SRS=EPSG%3A4326&STYLES=&BBOX=-112.5%",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=bdqueimadas%3Apaises&TILED=true&CQL_FILTER=continente_id%3D8&WIDTH=256&HEIGHT=256&SRS=EPSG%3A4326&STYLES=&BBOX=-112.5%",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&CQL_FILTER=data_hora_gmt%20between%202026-10-12T00%3A00%3A00%20and%202026-10-13T23%3A59%3A59%20AND%20satelite%20in%20(%27NOAA",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&CQL_FILTER=data_hora_gmt%20between%202026-10-12T00%3A00%3A00%20and%202026-10-13T23%3A59%3A59%20AND%20satelite%20in%20(%27NOAA",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=bdqueimadas%3Apaises&TILED=true&CQL_FILTER=continente_id%3D8&WIDTH=256&HEIGHT=256&SRS=EPSG%3A4326&STYLES=&BBOX=-22.5%2",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=bdqueimadas%3Apaises&TILED=true&CQL_FILTER=continente_id%3D8&WIDTH=256&HEIGHT=256&SRS=EPSG%3A4326&STYLES=&BBOX=-22.5%2",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&CQL_FILTER=data_hora_gmt%20between%202026-10-12T00%3A00%3A00%20and%202026-10-13T23%3A59%3A59%20AND%20satelite%20in%20(%27NOAA",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=bdqueimadas%3Apaises&TILED=true&CQL_FILTER=continente_id%3D8&WIDTH=256&HEIGHT=256&SRS=EPSG%3A4326&STYLES=&BBOX=-135%2C",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&CQL_FILTER=data_hora_gmt%20between%202026-10-12T00%3A00%3A00%20and%202026-10-13T23%3A59%3A59%20AND%20satelite%20in%20(%27NOAA",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=bdqueimadas%3Apaises&TILED=true&CQL_FILTER=continente_id%3D8&WIDTH=256&HEIGHT=256&SRS=EPSG%3A4326&STYLES=&BBOX=-22.5%2",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&CQL_FILTER=data_hora_gmt%20between%202026-10-12T00%3A00%3A00%20and%202026-10-13T23%3A59%3A59%20AND%20satelite%20in%20(%27NOAA",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=bdqueimadas%3Apaises&TILED=true&CQL_FILTER=continente_id%3D8&WIDTH=256&HEIGHT=256&SRS=EPSG%3A4326&STYLES=&BBOX=-135%2C",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&CQL_FILTER=data_hora_gmt%20between%202026-10-12T00%3A00%3A00%20and%202026-10-13T23%3A59%3A59%20AND%20satelite%20in%20(%27NOAA",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&CQL_FILTER=data_hora_gmt%20between%202026-10-12T00%3A00%3A00%20and%202026-10-13T23%3A59%3A59%20AND%20satelite%20in%20(%27NOAA",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=bdqueimadas%3Apaises&TILED=true&CQL_FILTER=continente_id%3D8&WIDTH=256&HEIGHT=256&SRS=EPSG%3A4326&STYLES=&BBOX=-22.5%2",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=bdqueimadas%3Apaises&TILED=true&CQL_FILTER=continente_id%3D8&WIDTH=256&HEIGHT=256&SRS=EPSG%3A4326&STYLES=&BBOX=-135%2C",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&CQL_FILTER=data_hora_gmt%20between%202026-10-12T00%3A00%3A00%20and%202026-10-13T23%3A59%3A59%20AND%20satelite%20in%20(%27NOAA",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&CQL_FILTER=data_hora_gmt%20between%202026-10-12T00%3A00%3A00%20and%202026-10-13T23%3A59%3A59%20AND%20satelite%20in%20(%27NOAA",
+      "GET 200 [Image/image/png] https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/wms?SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=bdqueimadas%3Apaises&TILED=true&CQL_FILTER=continente_id%3D8&WIDTH=256&HEIGHT=256&SRS=EPSG%3A4326&STYLES=&BBOX=-135%2C",
+      "GET 200 [Image/image/png] https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/wmts.cgi?layer=GOES-East_ABI_GeoColor&tilematrixset=1km&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fpng&TileMatrix=2&TileCol=1&TileRow=1",
+      "GET 200 [Image/image/png] https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/wmts.cgi?layer=GOES-East_ABI_GeoColor&tilematrixset=1km&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fpng&TileMatrix=2&TileCol=2&TileRow=1",
+      "GET 200 [Image/image/png] https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/wmts.cgi?layer=GOES-East_ABI_GeoColor&tilematrixset=1km&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fpng&TileMatrix=2&TileCol=1&TileRow=2",
+      "GET 200 [Image/image/png] https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/wmts.cgi?layer=GOES-East_ABI_GeoColor&tilematrixset=1km&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fpng&TileMatrix=2&TileCol=0&TileRow=1",
+      "GET 200 [Image/image/png] https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/wmts.cgi?layer=GOES-East_ABI_GeoColor&tilematrixset=1km&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fpng&TileMatrix=2&TileCol=2&TileRow=2",
+      "GET 200 [Image/image/png] https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/wmts.cgi?layer=GOES-East_ABI_GeoColor&tilematrixset=1km&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fpng&TileMatrix=2&TileCol=0&TileRow=2"
+    ],
+    "documentos": [
+      "200 https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/"
+    ]
+  },
+  "dom": {
+    "urlFinal": "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/",
+    "titulo": "BDQueimadas - Programa Queimadas - INPE",
+    "gerador": null,
+    "bibliotecas": {
+      "OpenLayers": "6.5.0",
+      "jQuery": "3.5.1",
+      "jQuery UI": "1.12.1",
+      "Bootstrap (JS)": "5.0.0-beta2",
+      "DataTables": "1.10.23",
+      "Chart.js": true,
+      "Moment.js": "2.29.1"
+    },
+    "scripts": [
+      "https://www.googletagmanager.com/gtag/js?id=G-9LPW5W4S90&cx=c&gtm=4e6ac1",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/externals/jQuery/jQuery-3.5.1.min.js",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/externals/chartjs/Chart.min.js",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/externals/openlayers/ol.js",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/externals/moment/moment-with-locales.js",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/externals/moment/moment-timezone-with-data.js",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/externals/bootstrap/js/popper.min.js",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/externals/bootstrap/js/bootstrap.min.js",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/externals/bootstrap-slider/bootstrap-slider.js",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/externals/datatables/js/jquery.dataTables.min.js",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/externals/datatables/js/dataTables.bootstrap4.min.js",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/externals/vex/vex.combined.min.js",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/externals/jQueryUI/jquery-ui.min.js",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/externals/wtss.js/wtss.js",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/dist/BDQueimadas.min.js",
+      "https://www.googletagmanager.com/gtag/js?id=UA-121460145-1"
+    ],
+    "estilos": [
+      "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/externals/openlayers/ol.css",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/externals/jQueryUI/jquery-ui.min.css",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/externals/font-awesome/css/all.min.css",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/externals/TerraMA2WebComponents/TerraMA2WebComponents.min.css",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/externals/bootstrap/css/bootstrap.min.css",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/externals/datatables/css/dataTables.bootstrap4.min.css",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/externals/vex/vex.css",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/externals/vex/vex-theme-default.css",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/stylesheets/BDQueimadas.css"
+    ],
+    "iframes": [
+      "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/",
+      ""
+    ],
+    "contagem": {
+      "elementos": 1397,
+      "select": 6,
+      "input": 100,
+      "button": 16,
+      "table": 1,
+      "canvas": 2,
+      "svg": 0,
+      "img": 2,
+      "leaflet": 0,
+      "leafletMarcadores": 0,
+      "leafletTiles": 0,
+      "openlayers": 1,
+      "cards": 0,
+      "modais": 0,
+      "dataTables": 0,
+      "paginacao": 0
+    },
+    "titulos": [
+      "H1: BDQueimadas",
+      "H2: Filtros",
+      "H2: CAMADAS",
+      "H2: Tabela de atributos",
+      "H2: Sobre o BDQueimadas",
+      "H3: Projeto Platform of Monitoring and Warning of Forest Fires in the Cerrado (ProCe",
+      "H3: PROJETO INPE",
+      "H3: REALIZAÇÃO",
+      "H2: Apresentação",
+      "H2: Exportar Dados"
+    ],
+    "selects": [
+      {
+        "id": "continents",
+        "rotulo": "Continentes",
+        "opcoes": 6,
+        "amostra": [
+          "Selecione o continente",
+          "Todos os Continentes",
+          "Américas",
+          "Europa",
+          "África",
+          "América do Sul"
+        ]
+      },
+      {
+        "id": "countries",
+        "rotulo": "Países",
+        "opcoes": 14,
+        "amostra": [
+          "Todos os países",
+          "Argentina",
+          "Bolivia",
+          "Brasil",
+          "Chile",
+          "Colombia",
+          "Ecuador",
+          "French Guiana"
+        ]
+      },
+      {
+        "id": "states",
+        "rotulo": "Estados",
+        "opcoes": 0,
+        "amostra": []
+      },
+      {
+        "id": "filter-satellite",
+        "rotulo": "Satélites",
+        "opcoes": 13,
+        "amostra": [
+          "TODOS",
+          "Satélite de referência (Aqua Tarde)",
+          "Terra Manhã",
+          "Terra Tarde",
+          "Aqua Manhã",
+          "GOES-19",
+          "MSG-03",
+          "METOP-B"
+        ]
+      },
+      {
+        "id": "filter-biome",
+        "rotulo": "Biomas (Brasil)",
+        "opcoes": 7,
+        "amostra": [
+          "TODOS",
+          "Amazônia",
+          "Caatinga",
+          "Cerrado",
+          "Mata Atlântica",
+          "Pampa",
+          "Pantanal"
+        ]
+      },
+      {
+        "id": "exportation-type",
+        "rotulo": "Formato da exportação",
+        "opcoes": 4,
+        "amostra": [
+          "CSV",
+          "GeoJSON",
+          "KML",
+          "Shapefile"
+        ]
+      }
+    ],
+    "inputs": [
+      {
+        "tipo": "hidden",
+        "id": "_csrf",
+        "placeholder": null
+      },
+      {
+        "tipo": "text",
+        "id": "city",
+        "placeholder": "Municípios Brasileiros"
+      },
+      {
+        "tipo": "text",
+        "id": "pas",
+        "placeholder": "UCs / TIs Brasileiras"
+      },
+      {
+        "tipo": "checkbox",
+        "id": "buffer-internal",
+        "placeholder": null
+      },
+      {
+        "tipo": "checkbox",
+        "id": "buffer-five",
+        "placeholder": null
+      },
+      {
+        "tipo": "checkbox",
+        "id": "buffer-ten",
+        "placeholder": null
+      },
+      {
+        "tipo": "hidden",
+        "id": "risk",
+        "placeholder": null
+      },
+      {
+        "tipo": "text",
+        "id": "filter-date-from",
+        "placeholder": "Data Início"
+      },
+      {
+        "tipo": "text",
+        "id": "filter-date-to",
+        "placeholder": "Data Fim"
+      },
+      {
+        "tipo": "checkbox",
+        "id": null,
+        "placeholder": null
+      },
+      {
+        "tipo": "checkbox",
+        "id": null,
+        "placeholder": null
+      },
+      {
+        "tipo": "checkbox",
+        "id": null,
+        "placeholder": null
+      },
+      {
+        "tipo": "checkbox",
+        "id": null,
+        "placeholder": null
+      },
+      {
+        "tipo": "checkbox",
+        "id": null,
+        "placeholder": null
+      },
+      {
+        "tipo": "checkbox",
+        "id": null,
+        "placeholder": null
+      },
+      {
+        "tipo": "checkbox",
+        "id": null,
+        "placeholder": null
+      },
+      {
+        "tipo": "checkbox",
+        "id": null,
+        "placeholder": null
+      },
+      {
+        "tipo": "checkbox",
+        "id": null,
+        "placeholder": null
+      },
+      {
+        "tipo": "checkbox",
+        "id": null,
+        "placeholder": null
+      },
+      {
+        "tipo": "checkbox",
+        "id": null,
+        "placeholder": null
+      },
+      {
+        "tipo": "checkbox",
+        "id": null,
+        "placeholder": null
+      },
+      {
+        "tipo": "checkbox",
+        "id": null,
+        "placeholder": null
+      },
+      {
+        "tipo": "checkbox",
+        "id": null,
+        "placeholder": null
+      },
+      {
+        "tipo": "checkbox",
+        "id": null,
+        "placeholder": null
+      },
+      {
+        "tipo": "checkbox",
+        "id": null,
+        "placeholder": null
+      },
+      {
+        "tipo": "checkbox",
+        "id": null,
+        "placeholder": null
+      },
+      {
+        "tipo": "checkbox",
+        "id": null,
+        "placeholder": null
+      },
+      {
+        "tipo": "checkbox",
+        "id": null,
+        "placeholder": null
+      },
+      {
+        "tipo": "checkbox",
+        "id": null,
+        "placeholder": null
+      },
+      {
+        "tipo": "checkbox",
+        "id": null,
+        "placeholder": null
+      }
+    ],
+    "botoes": [
+      "Municípios Brasileiros",
+      "UCs / TIs Brasileiras",
+      "Mapa Inicial",
+      "Aplicar",
+      "Exportar",
+      "Arrastar Tela",
+      "Selecionar Retângulo",
+      "Extensão Inicial",
+      "Obter Atributos dos Focos",
+      "Fogograma",
+      "Informações da Tela",
+      "Pesquisar por Latitude/Longitude",
+      "+",
+      "−",
+      "⇧",
+      "©"
+    ],
+    "tabelas": [
+      {
+        "id": "attributes-table",
+        "classe": "table table-bordered table-hover",
+        "linhas": 0,
+        "cabecalho": []
+      }
+    ],
+    "links": [
+      {
+        "texto": "2026/10/12",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/#"
+      },
+      {
+        "texto": "2026/10/12",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/#"
+      },
+      {
+        "texto": "2026/10/12",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/#"
+      },
+      {
+        "texto": "2026/10/12",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/#"
+      },
+      {
+        "texto": "2026/10/13",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/#"
+      },
+      {
+        "texto": "2026/10/13",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/#"
+      },
+      {
+        "texto": "2026/10/13",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/#"
+      },
+      {
+        "texto": "2026/10/13",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/#"
+      },
+      {
+        "texto": "2026/10/12",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/#"
+      },
+      {
+        "texto": "2026/10/12",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/#"
+      },
+      {
+        "texto": "2026/10/12",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/#"
+      },
+      {
+        "texto": "2026/10/12",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/#"
+      },
+      {
+        "texto": "2026/10/12",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/#"
+      }
+    ],
+    "classesDoBody": "wysihtml5-supported",
+    "legenda": [],
+    "textoVisivel": "BDQUEIMADAS\nFILTROS\nCONTINENTES\nSelecione o continente\nTodos os Continentes\nAméricas\nEuropa\nÁfrica\nAmérica do Sul\nPAÍSES\nTodos os países\nArgentina\nBolivia\nBrasil\nChile\nColombia\nEcuador\nFrench Guiana\nGuyana\nParaguay\nPeru\nSuriname\nUruguay\nVenezuela\nESTADOS\nMUNICÍPIOS BRASILEIROS\nUCS / TIS BRASILEIRAS\n INTERNO\n APENAS BUFFER 5KM\n APENAS BUFFER 10KM\n DATA INÍCIO (UTC)\n DATA FIM (UTC)\nSATÉLITES\nTODOS\nSatélite de referência (Aqua Tarde)\nTerra Manhã\nTerra Tarde\nAqua Manhã\nGOES-19\nMSG-03\nMETOP-B\nMETOP-C\nNOAA-20\nNOAA-21\nNPP-375 Manhã\nNPP-375 Tarde\nBIOMAS (BRASIL)\nTODOS\nAmazônia\nCaatinga\nCerrado\nMata Atlântica\nPampa\nPantanal\nMapa Inicial\nAplicar\n+\n−\n1000 km"
+  }
+}

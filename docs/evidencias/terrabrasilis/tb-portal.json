@@ -1,0 +1,354 @@
+{
+  "urlPedida": "https://terrabrasilis.dpi.inpe.br/queimadas/",
+  "coletadoEm": "2026-10-13T21:40:16.003Z",
+  "rede": {
+    "total": 52,
+    "porTipo": {
+      "Document": 1,
+      "Stylesheet": 12,
+      "Script": 9,
+      "Image": 17,
+      "Font": 8,
+      "Fetch": 4,
+      "Other": 1
+    },
+    "porHost": {
+      "terrabrasilis.dpi.inpe.br": 32,
+      "use.fontawesome.com": 3,
+      "cdn.jsdelivr.net": 8,
+      "cdnjs.cloudflare.com": 3,
+      "fonts.cdnfonts.com": 4,
+      "barra.brasil.gov.br": 2
+    },
+    "servidores": [
+      "nginx",
+      "cloudflare"
+    ],
+    "dados": [
+      "GET 200 [Fetch/application/octet-stream] https://terrabrasilis.dpi.inpe.br/queimadas/portal/config/portal.yaml",
+      "GET 200 [Fetch/application/octet-stream] https://terrabrasilis.dpi.inpe.br/queimadas/portal/boot.yaml",
+      "GET 200 [Fetch/text/html] https://terrabrasilis.dpi.inpe.br/queimadas/portal/components/header/header.fragment.html",
+      "GET 200 [Fetch/text/html] https://terrabrasilis.dpi.inpe.br/queimadas/portal/components/footer/footer.fragment.html"
+    ],
+    "documentos": [
+      "200 https://terrabrasilis.dpi.inpe.br/queimadas/portal/"
+    ]
+  },
+  "dom": {
+    "urlFinal": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
+    "titulo": "Programa Queimadas • INPE",
+    "gerador": null,
+    "bibliotecas": {},
+    "scripts": [
+      "https://terrabrasilis.dpi.inpe.br/queimadas/portal/components/loader.js",
+      "https://vlibras.gov.br/app/vlibras-plugin.js",
+      "https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/portal/assets/js/portal-yaml.js",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/portal/assets/js/boot_components.js",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/portal/components/footer/assets/js/footer.js",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/portal/components/header/assets/js/header.js",
+      "https://barra.brasil.gov.br/barra_2.0.js",
+      "https://vlibras.gov.br/app2/vlibras-plugin.js"
+    ],
+    "estilos": [
+      "https://use.fontawesome.com/releases/v6.4.2/css/all.css",
+      "https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/portal/assets/css/main.css",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/portal/assets/css/main-banners.css",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/portal/assets/css/box-buttons.css",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/portal/assets/css/area-avisos.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/portal/components/footer/assets/css/footer.css",
+      "https://terrabrasilis.dpi.inpe.br/queimadas/portal/components/header/assets/css/header_portal.css"
+    ],
+    "iframes": [],
+    "contagem": {
+      "elementos": 379,
+      "select": 0,
+      "input": 0,
+      "button": 1,
+      "table": 0,
+      "canvas": 0,
+      "svg": 0,
+      "img": 14,
+      "leaflet": 0,
+      "leafletMarcadores": 0,
+      "leafletTiles": 0,
+      "openlayers": 0,
+      "cards": 32,
+      "modais": 0,
+      "dataTables": 0,
+      "paginacao": 0
+    },
+    "titulos": [
+      "H1: Queimadas",
+      "H1: Portal do Programa Queimadas do Inpe",
+      "H1: Sistemas",
+      "H1: Dados para download",
+      "H1: Relatórios",
+      "H1: Informações do Programa",
+      "H2: Perguntas Frequentes • FAQ",
+      "H2: Equipe Queimadas",
+      "H2: Histórico de Avisos",
+      "H2: Acompanhamento do Plano Diretor",
+      "H2: Acompanhamento de Projetos",
+      "H2: CIMAN",
+      "H2: Guia de Estilo",
+      "H3: SISTEMAS",
+      "H3: DOWNLOADS",
+      "H3: RELATÓRIOS",
+      "H3: INFORMAÇÕES"
+    ],
+    "selects": [],
+    "inputs": [],
+    "botoes": [
+      "Abrir/fechar menu"
+    ],
+    "tabelas": [],
+    "links": [
+      {
+        "texto": "Ir para o conteúdo",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/#conteudo"
+      },
+      {
+        "texto": "GovBR",
+        "href": "https://gov.br/"
+      },
+      {
+        "texto": "Comunica BR",
+        "href": "http://www.gov.br/secom/pt-br/acesso-a-informacao/comunicabr"
+      },
+      {
+        "texto": "Acesso à informação",
+        "href": "http://www.gov.br/acessoainformacao/"
+      },
+      {
+        "texto": "Participe",
+        "href": "https://www.gov.br/pt-br/participacao-social/"
+      },
+      {
+        "texto": "Legislação",
+        "href": "http://www4.planalto.gov.br/legislacao/"
+      },
+      {
+        "texto": "Órgãos do Governo",
+        "href": "http://www.gov.br/pt-br/orgaos-do-governo"
+      },
+      {
+        "texto": "Programa Queimadas Instituto Nacional de Pesquisas Espaciais",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/"
+      },
+      {
+        "texto": "Portal",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/"
+      },
+      {
+        "texto": "BDQueimadas",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/"
+      },
+      {
+        "texto": "Situação Atual",
+        "href": "https://data.inpe.br/queimadas/situacao_atual/"
+      },
+      {
+        "texto": "Área Queimada",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/aq1km/"
+      },
+      {
+        "texto": "Estatísticas Países",
+        "href": "https://data.inpe.br/queimadas/estatisticas/?tipo=paises&item=brasil"
+      },
+      {
+        "texto": "Estatísticas Estados",
+        "href": "https://data.inpe.br/queimadas/estatisticas/?tipo=estados&item=sao_paulo"
+      },
+      {
+        "texto": "Estatísticas Regiões",
+        "href": "https://data.inpe.br/queimadas/estatisticas/?tipo=regioes&item=sudeste"
+      },
+      {
+        "texto": "Estatísticas Biomas",
+        "href": "https://data.inpe.br/queimadas/estatisticas/?tipo=biomas&item=cerrado"
+      },
+      {
+        "texto": "Eventos de Fogo",
+        "href": "https://data.inpe.br/queimadas/portal/evento-fogo/"
+      },
+      {
+        "texto": "SISAM",
+        "href": "https://data.inpe.br/queimadas/sisam"
+      },
+      {
+        "texto": "Focos de Queimadas",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_downloads/dados-abertos/#da-focos"
+      },
+      {
+        "texto": "Área Queimada • AQ1km",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_downloads/dados-abertos/#da-area-qmd"
+      },
+      {
+        "texto": "Risco de Fogo e Meteorologia",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_downloads/dados-abertos/#da-rf"
+      },
+      {
+        "texto": "Eventos de Fogo",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_downloads/dados-abertos/#eventos-fogo"
+      },
+      {
+        "texto": "Dados Legados de Informações Ambientais",
+        "href": "https://dataserver-coids.inpe.br/queimadas/queimadas/sisam/"
+      },
+      {
+        "texto": "Geoserviços OGC",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/ows?SERVICE=WMS&VERSION=1.3.0&REQUEST=Getcapabilities"
+      },
+      {
+        "texto": "Painel do Fogo",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_relatorio/painel-do-fogo/"
+      },
+      {
+        "texto": "Boletim InfoQueima",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_relatorio/boletim-infoqueima/"
+      },
+      {
+        "texto": "Anuário Risco de Fogo",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_relatorio/anuario-risco-de-fogo/"
+      },
+      {
+        "texto": "Produções Técnicas e Cientificas",
+        "href": "https://dataserver-coids.inpe.br/queimadas/queimadas/Publicacoes-Impacto/"
+      },
+      {
+        "texto": "Perguntas Frequentes",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_informacoes/faq/"
+      },
+      {
+        "texto": "Equipe",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_informacoes/equipe/"
+      },
+      {
+        "texto": "Histórico de Avisos",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_informacoes/avisos/"
+      },
+      {
+        "texto": "Plano Diretor",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_informacoes/plano-diretor/"
+      },
+      {
+        "texto": "Acompanhamento de Projetos",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_informacoes/projetos/ted-985852-2025/"
+      },
+      {
+        "texto": "CIMAN",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_informacoes/ciman/"
+      },
+      {
+        "texto": "Guia de Estilo",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/extras/design-system/"
+      },
+      {
+        "texto": "BDQueimadasAcesso ao acervo de focos de fogo de todos os satélites recebidos pel",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/"
+      },
+      {
+        "texto": "Situação AtualInformações sobre a situação atual de queimadas, apresentada por m",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/situacao-atual/situacao_atual/"
+      },
+      {
+        "texto": "Área Queimada AQ1kmDelimita a extensão da área atingida pelo fogo na vegetação.",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/aq1km/"
+      },
+      {
+        "texto": "Estatísticas: Países, Estados, Regiões e BiomasHistórico do total de focos ativo",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/situacao-atual/estatisticas/estatisticas_paises/"
+      },
+      {
+        "texto": "Eventos de FogoPágina de visualização da integração espaço-temporal de focos de ",
+        "href": "https://data.inpe.br/queimadas/evento-fogo/"
+      },
+      {
+        "texto": "SISAMSistema de Informações Ambientais Integrado à Saúde.",
+        "href": "https://data.inpe.br/queimadas/sisam"
+      },
+      {
+        "texto": "Focos de QueimadasInformações sobre focos de queimadas em vários intervalos, des",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_downloads/dados-abertos/#da-focos"
+      },
+      {
+        "texto": "Área Queimada AQ1kmOs arquivos de área queimada incluem a localização, a data e ",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_downloads/dados-abertos/#da-area-qmd"
+      },
+      {
+        "texto": "Risco de Fogo e MeteorologiaDownload de arquivos de Risco de Fogo e Meteorologia",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_downloads/dados-abertos/#da-rf"
+      },
+      {
+        "texto": "Eventos de FogoIntegração espaço-temporal de focos de fogo em eventos ativos e s",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/dados-abertos/#eventos-fogo"
+      },
+      {
+        "texto": "Dados Legados de Informações AmbientaisDados descontinuados de 2000 até 2019 do ",
+        "href": "https://dataserver-coids.inpe.br/queimadas/queimadas/sisam/"
+      },
+      {
+        "texto": "Geoserviços OGCDados fornecidos pelo GeoServer em protocolos padrão OGC, como We",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/geoserver/ows?SERVICE=WMS&VERSION=1.3.0&REQUEST=Getcapabilities"
+      },
+      {
+        "texto": "Painel do FogoPainéis com gráficos e mapas da distribuição espacial dos focos de",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_relatorio/painel-do-fogo/index.html"
+      },
+      {
+        "texto": "Boletim InfoqueimaDownload de boletim mensal de Monitoramento e Risco de Queimad",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_relatorio/boletim-infoqueima/index.html"
+      },
+      {
+        "texto": "Anuário Risco de FogoRegistro histórico de todos os mapas de Risco de Fogo deste",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_relatorio/anuario-risco-de-fogo/index.html"
+      },
+      {
+        "texto": "Produções Técnicas e CientificasPublicações referenciadas do Programa Queimadas ",
+        "href": "https://dataserver-coids.inpe.br/queimadas/queimadas/Publicacoes-Impacto/"
+      },
+      {
+        "texto": "Perguntas Frequentes • FAQ",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_informacoes/faq/index.html"
+      },
+      {
+        "texto": "Equipe Queimadas",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_informacoes/equipe/index.html"
+      },
+      {
+        "texto": "Histórico de Avisos",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_informacoes/avisos/index.html"
+      },
+      {
+        "texto": "Acompanhamento do Plano Diretor",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_informacoes/plano-diretor/index.html"
+      },
+      {
+        "texto": "Acompanhamento de Projetos",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_informacoes/projetos/ted-985852-2025/index.html"
+      },
+      {
+        "texto": "CIMAN",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/secao_informacoes/ciman/index.html"
+      },
+      {
+        "texto": "Guia de Estilo",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/pages/extras/design-system/index.html"
+      },
+      {
+        "texto": "BDQueimadas",
+        "href": "https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/"
+      },
+      {
+        "texto": "Situação Atual",
+        "href": "https://data.inpe.br/queimadas/situacao-atual/situacao_atual/"
+      }
+    ],
+    "classesDoBody": "",
+    "legenda": [],
+    "textoVisivel": "IR PARA O CONTEÚDO\nGOVBR\nCOMUNICA BR\nACESSO À INFORMAÇÃO\nPARTICIPE\nLEGISLAÇÃO\nÓRGÃOS DO GOVERNO\nPrograma\nQueimadas\nINSTITUTO NACIONAL DE PESQUISAS ESPACIAIS\nPortal\nSistemas\nDownload\nRelatórios\nInformações\nSISTEMAS\nBDQueimadas\nAcesso ao acervo de focos de fogo de todos os satélites recebidos pelo INPE desde 1998 com imagens, dados meteorológicos e limites políticos oficiais.\nSituação Atual\nInformações sobre a situação atual de queimadas, apresentada por meio de estatísticas, gráficos e mapas.\nÁrea Queimada AQ1km\nDelimita a extensão da área atingida pelo fogo na vegetação.\nEstatísticas: Países, Estados, Regiões e Biomas\nHistórico do total de focos ativos detectados pelo satélite de referência em cada mês desde 1998.\nEventos de Fogo\nPágina de visualização da integração espaço-temporal de focos de fogo em eventos ativos e sobre observação no Brasil.\nSISAM\nSistema de Informações Ambientais Integrado à Saúde.\nDADOS PARA DOWNLOAD\nFocos de Queimadas\nInformações sobre focos de queimadas em vários intervalos, desde anuais até em tempo quase real (a cada 10 minutos).\nÁrea Queimada AQ1km\nOs arquivos de área queimada incluem a localização, a data e a hora de cada área queimada detectada pelo programa.\nRisco de Fogo e Meteorologia\nDownload de arquivos de Risco de Fogo e Meteorologia.\nEventos de Fogo\nIntegração espaço-temporal de focos de fogo em eventos ativos e sobre obsevação do Brasil no formato KML.\nDados Legados de Informações Ambientais\nDados descontinuados de 2000 até 2019 do Sistema de Informações Ambientais Integrado à Saúde(SISAM).\nGeoserviços OGC\nDados fornecidos pelo GeoServer em protocolos padrão OGC, como Web Feature Service (WFS) e Web Map Service (WMS)\nRELATÓRIOS\nPainel do Fogo\nPainéis com gráficos e mapas da distribuição espacial dos focos de fogo acumulados para o Brasil.\nBoletim Infoqueima\nDownload de boletim mensal de Monitoramento e Risco de Queimadas e Incêndios Florestais.\nAnuário Risco de Fogo\nRegistro histórico de todos os mapas de Risco de Fogo deste 2017 e sua metodologia.\nProduções Técnicas e Cientificas\nPublicações referenciadas do Programa Queimadas e de terceiros que usam nossos dados e divulgações na mídia em geral.\nINFORMAÇÕES DO PROGRAMA\nPerguntas Frequentes • FAQ\nEquipe Queimadas\nHistórico de Avisos\nAcompanhamento do Plano Diretor\nAcompanhamento de Projetos\nCIMAN\nGuia de Estilo\n2025 • Dados Abertos para Uso Público • Programa Queimadas do INPE • Av. dos Astronautas, 1.758 • São José dos Campos • SP"
+  }
+}

@@ -3,6 +3,7 @@ import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import Sidebar from './Sidebar';
 import Header from './Header';
+import FiltrosProvider from './FiltrosProvider';
 
 const TITULOS = {
   '/dashboard': 'Painel de Controle Operacional',
@@ -60,7 +61,10 @@ export default function Layout() {
       <div className="flex min-w-0 flex-1 flex-col">
         <Header titulo={TITULOS[pathname] || 'SMCQ'} usuario={user} onAbrirMenu={() => setMenuAberto(true)} />
         <main className="flex-1">
-          <Outlet />
+          {/* Os filtros são compartilhados entre as telas e zeram ao sair da área autenticada */}
+          <FiltrosProvider>
+            <Outlet />
+          </FiltrosProvider>
         </main>
       </div>
     </div>

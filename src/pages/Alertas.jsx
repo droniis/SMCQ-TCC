@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAlertas } from '../hooks/useAlertas';
+import { useFiltros, filtrarAlertas } from '../hooks/useFiltros';
+import FilterBar from '../components/FilterBar';
 import { mensagemDeErro } from '../services/api';
 import AlertTable from '../components/AlertTable';
 
 export default function Alertas() {
   const { alertas, loading, erro, alterarStatus } = useAlertas();
+  const { filtros } = useFiltros();
   const [erroAcao, setErroAcao] = useState('');
   const navigate = useNavigate();
 
@@ -26,8 +29,9 @@ export default function Alertas() {
         <button className="btn-primary" onClick={() => navigate('/novo-alerta')}>Registrar Ocorrência</button>
       </div>
       {(erro || erroAcao) && <p className="mensagem-erro">{erro || erroAcao}</p>}
+      <FilterBar alertas={alertas} />
       <div className="card">
-        <AlertTable alertas={alertas} onAlterarStatus={handleAlterarStatus} />
+        <AlertTable alertas={filtrarAlertas(alertas, filtros)} onAlterarStatus={handleAlterarStatus} />
       </div>
     </div>
   );

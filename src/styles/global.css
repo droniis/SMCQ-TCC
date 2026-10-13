@@ -64,16 +64,6 @@ body {
   cursor: default;
 }
 
-.btn-secundario {
-  background: white;
-  color: var(--primary-dark);
-  border: 1px solid var(--border-gray);
-  padding: 10px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
 .mensagem-erro {
   color: var(--primary-red);
   margin: 10px 0;
@@ -188,28 +178,6 @@ body {
 .opcao {
   display: block;
   margin: 8px 0;
-}
-
-.filtros {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.filtros .rotulo {
-  min-width: 140px;
-  margin-top: 0;
-}
-
-.filtros .campo {
-  margin-bottom: 0;
-}
-
-.filtros-acoes {
-  display: flex;
-  gap: 8px;
 }
 
 /* Tabela de alertas */

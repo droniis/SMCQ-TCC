@@ -1,0 +1,478 @@
+{
+  "urlPedida": "https://terrabrasilis.dpi.inpe.br/queimadas/situacao-atual/situacao_atual/",
+  "coletadoEm": "2026-10-13T21:40:52.000Z",
+  "rede": {
+    "total": 73,
+    "porTipo": {
+      "Document": 1,
+      "Stylesheet": 15,
+      "Script": 23,
+      "Image": 9,
+      "Font": 9,
+      "Fetch": 15,
+      "Other": 1
+    },
+    "porHost": {
+      "data.inpe.br": 47,
+      "code.jquery.com": 1,
+      "barra.brasil.gov.br": 3,
+      "cdn.jsdelivr.net": 9,
+      "www.googletagmanager.com": 2,
+      "stackpath.bootstrapcdn.com": 1,
+      "fonts.googleapis.com": 2,
+      "cdnjs.cloudflare.com": 2,
+      "fonts.cdnfonts.com": 4,
+      "www.google-analytics.com": 1,
+      "www.google.com": 1
+    },
+    "servidores": [
+      "nginx",
+      "Google Tag Manager",
+      "cloudflare",
+      "ESF",
+      "Golfe2"
+    ],
+    "dados": [
+      "GET 200 [Fetch/text/css] https://data.inpe.br/queimadas/situacao_atual/assets-sa/css/situacao-atual.css",
+      "GET 200 [Fetch/text/html] https://data.inpe.br/queimadas/situacao_atual/components-sa/header/header.fragment.html",
+      "GET 200 [Fetch/text/html] https://data.inpe.br/queimadas/situacao_atual/components-sa/footer/footer.fragment.html",
+      "GET 200 [Fetch/application/octet-stream] https://data.inpe.br/queimadas/situacao_atual/config-sa/situacao_atual.yaml",
+      "GET 200 [Fetch/application/json] https://data.inpe.br/queimadas/situacao_atual/media/situacao_atual/focos_pais.json",
+      "GET 200 [Fetch/application/json] https://data.inpe.br/queimadas/situacao_atual/media/situacao_atual/focos_estado.json",
+      "GET 200 [Fetch/application/json] https://data.inpe.br/queimadas/situacao_atual/media/situacao_atual/focos_municipio.json",
+      "GET 200 [Fetch/application/json] https://data.inpe.br/queimadas/situacao_atual/media/situacao_atual/focos_bioma.json",
+      "GET 200 [Fetch/application/json] https://data.inpe.br/queimadas/situacao_atual/media/situacao_atual/focos_paises_7anos_estendida.json",
+      "GET 200 [Fetch/application/json] https://data.inpe.br/queimadas/situacao_atual/media/situacao_atual/focos_estados_7anos_estendida.json",
+      "GET 200 [Fetch/application/json] https://data.inpe.br/queimadas/situacao_atual/media/situacao_atual/focos_regioes_7anos_estendida.json",
+      "GET 200 [Fetch/application/json] https://data.inpe.br/queimadas/situacao_atual/media/situacao_atual/focos_regioes_especiais_7anos_estendida.json",
+      "GET 200 [Fetch/application/json] https://data.inpe.br/queimadas/situacao_atual/media/situacao_atual/focos_biomas_7anos_estendida.json",
+      "POST ? [Fetch/?] https://www.google-analytics.com/g/collect?v=2&tid=G-9LPW5W4S90&gtm=45je6ac1v9122476522za20oxf1&_p=1791927637269&gcd=13l3l3l3l1l1&npa=0&dma=0&_eu=EAAIAAQ&cid=1454538155.1791927617&frm=0&ir=1&ngs=1&pscdl=noapi&rcb=2&sr=800x600&uaa=x86&uab=64&uafvl=Microsoft%252",
+      "POST 204 [Fetch/text/plain] https://www.google.com/g/collect?v=2&tid=G-9LPW5W4S90&gtm=45je6ac1v9122476522za20oxf1&_p=1791927637269&gcd=13l3l3l3l1l1&npa=0&dma=0&_eu=EAAIAAQ&cid=1454538155.1791927617&frm=0&ir=1&ngs=1&pscdl=noapi&rcb=2&sr=800x600&uaa=x86&uab=64&uafvl=Microsoft%2520Edge%3B15"
+    ],
+    "documentos": [
+      "200 https://data.inpe.br/queimadas/situacao_atual/"
+    ]
+  },
+  "dom": {
+    "urlFinal": "https://data.inpe.br/queimadas/situacao_atual/",
+    "titulo": "Situação atual - Programa Queimadas - INPE",
+    "gerador": null,
+    "bibliotecas": {
+      "jQuery": "3.4.1",
+      "jQuery UI": "1.12.1"
+    },
+    "scripts": [
+      "https://www.googletagmanager.com/gtag/js?id=G-9LPW5W4S90&cx=c&gtm=4e6ac1",
+      "https://code.jquery.com/jquery-3.4.1.min.js",
+      "https://data.inpe.br/queimadas/situacao_atual/assets-sa/jquery/jquery-ui.js",
+      "https://data.inpe.br/queimadas/situacao_atual/assets-sa/js/situacao_atual/boot.js",
+      "https://vlibras.gov.br/app/vlibras-plugin.js",
+      "https://data.inpe.br/queimadas/situacao_atual/assets-sa/js/bootstrap.js",
+      "https://data.inpe.br/queimadas/situacao_atual/assets-sa/js/crosshair.js",
+      "https://data.inpe.br/queimadas/situacao_atual/assets-sa/js/situacao_atual/exportador_csv_situacao_atual.js",
+      "https://www.googletagmanager.com/gtag/js?id=UA-121460145-1",
+      "https://data.inpe.br/queimadas/situacao_atual/components-sa/loader.js",
+      "https://data.inpe.br/queimadas/situacao_atual/components-sa/footer/assets/js/footer.js",
+      "https://data.inpe.br/queimadas/situacao_atual/components-sa/header/assets/js/header.js",
+      "https://barra.brasil.gov.br/barra_2.0.js",
+      "https://vlibras.gov.br/app2/vlibras-plugin.js"
+    ],
+    "estilos": [
+      "https://data.inpe.br/queimadas/situacao_atual/assets-sa/css/page.min.css",
+      "https://data.inpe.br/queimadas/situacao_atual/assets-sa/css/base_plugin.css?_=10132618",
+      "https://data.inpe.br/queimadas/situacao_atual/assets-sa/css/all.min.css",
+      "https://data.inpe.br/queimadas/situacao_atual/assets-sa/jquery/jquery-ui.min.css",
+      "https://data.inpe.br/queimadas/situacao_atual/assets-sa/css/situacao-atual.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css",
+      "https://data.inpe.br/queimadas/situacao_atual/components-sa/footer/assets/css/footer.css",
+      "https://data.inpe.br/queimadas/situacao_atual/components-sa/header/assets/css/header_situacao_atual.css"
+    ],
+    "iframes": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "contagem": {
+      "elementos": 1307,
+      "select": 0,
+      "input": 0,
+      "button": 1,
+      "table": 7,
+      "canvas": 2,
+      "svg": 0,
+      "img": 3,
+      "leaflet": 0,
+      "leafletMarcadores": 0,
+      "leafletTiles": 0,
+      "openlayers": 0,
+      "cards": 0,
+      "modais": 0,
+      "dataTables": 0,
+      "paginacao": 0
+    },
+    "titulos": [
+      "H1: Situação Atual",
+      "H2: Tabela anual comparativa de países - últimos anos no intervalo de 01/Jan até 12/",
+      "H2: Tabela anual comparativa de estados do Brasil - últimos anos no intervalo de 01/",
+      "H2: Tabela anual comparativa de regiões do Brasil - últimos anos no intervalo de 01/",
+      "H2: Tabela anual comparativa de regiões especiais do Brasil - últimos anos no interv",
+      "H2: Tabela anual comparativa de biomas – últimos anos no intervalo de 01/Jan até 12/",
+      "H1: Queimadas",
+      "H3: SISTEMAS",
+      "H3: DOWNLOADS",
+      "H3: RELATÓRIOS",
+      "H3: INFORMAÇÕES"
+    ],
+    "selects": [],
+    "inputs": [],
+    "botoes": [
+      "Abrir/fechar menu"
+    ],
+    "tabelas": [
+      {
+        "id": null,
+        "classe": "dataframe tabela-estatistica",
+        "linhas": 9,
+        "cabecalho": [
+          "Brasil",
+          "Peru",
+          "Bolivia",
+          "Guyana",
+          "Venezuela",
+          "Colombia",
+          "Suriname",
+          "Argentina",
+          "Paraguay"
+        ]
+      },
+      {
+        "id": null,
+        "classe": "dataframe tabela-estatistica",
+        "linhas": 27,
+        "cabecalho": [
+          "Pará",
+          "Amazonas",
+          "Acre",
+          "Mato grosso",
+          "Roraima",
+          "Tocantins",
+          "Amapá",
+          "Goiás",
+          "Ceará",
+          "Rondônia",
+          "Rio grande do norte",
+          "Pernambuco",
+          "Bahia",
+          "Mato grosso do sul"
+        ]
+      },
+      {
+        "id": null,
+        "classe": "dataframe crosshair",
+        "linhas": 15,
+        "cabecalho": [
+          "",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025",
+          "Dif. A.",
+          "2026",
+          "Dif. M.",
+          "Média",
+          "Argentina",
+          "Bolivia",
+          "Brasil"
+        ]
+      },
+      {
+        "id": null,
+        "classe": "dataframe crosshair",
+        "linhas": 29,
+        "cabecalho": [
+          "",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025",
+          "Dif. A.",
+          "2026",
+          "Dif. M.",
+          "Média",
+          "Acre",
+          "Alagoas",
+          "Amapá"
+        ]
+      },
+      {
+        "id": null,
+        "classe": "dataframe crosshair",
+        "linhas": 7,
+        "cabecalho": [
+          "",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025",
+          "Dif. A.",
+          "2026",
+          "Dif. M.",
+          "Média",
+          "Centro-oeste",
+          "Nordeste",
+          "Norte"
+        ]
+      },
+      {
+        "id": null,
+        "classe": "dataframe crosshair",
+        "linhas": 6,
+        "cabecalho": [
+          "",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025",
+          "Dif. A.",
+          "2026",
+          "Dif. M.",
+          "Média",
+          "Amazônia legal",
+          "Map",
+          "Matopiba"
+        ]
+      },
+      {
+        "id": null,
+        "classe": "dataframe crosshair",
+        "linhas": 8,
+        "cabecalho": [
+          "",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025",
+          "Dif. A.",
+          "2026",
+          "Dif. M.",
+          "Média",
+          "Amazônia",
+          "Caatinga",
+          "Cerrado"
+        ]
+      }
+    ],
+    "links": [
+      {
+        "texto": "Ir para o conteúdo",
+        "href": "https://data.inpe.br/queimadas/situacao_atual/#conteudo"
+      },
+      {
+        "texto": "GovBR",
+        "href": "https://gov.br/"
+      },
+      {
+        "texto": "Comunica BR",
+        "href": "http://www.gov.br/secom/pt-br/acesso-a-informacao/comunicabr"
+      },
+      {
+        "texto": "Acesso à informação",
+        "href": "http://www.gov.br/acessoainformacao/"
+      },
+      {
+        "texto": "Participe",
+        "href": "https://www.gov.br/pt-br/participacao-social/"
+      },
+      {
+        "texto": "Legislação",
+        "href": "http://www4.planalto.gov.br/legislacao/"
+      },
+      {
+        "texto": "Órgãos do Governo",
+        "href": "http://www.gov.br/pt-br/orgaos-do-governo"
+      },
+      {
+        "texto": "Download dos dados em CSV",
+        "href": "https://data.inpe.br/queimadas/portal/csv/download/situacao-atual/paises/7anos.csv"
+      },
+      {
+        "texto": "Ir para estatísticas dos países",
+        "href": "https://data.inpe.br/queimadas/estatisticas/?tipo=paises&item=brasil"
+      },
+      {
+        "texto": "Download dos dados em CSV",
+        "href": "https://data.inpe.br/queimadas/portal/csv/download/situacao-atual/estados/7anos.csv"
+      },
+      {
+        "texto": "Ir para estatísticas dos estados",
+        "href": "https://data.inpe.br/queimadas/estatisticas/?tipo=estados&item=sao_paulo"
+      },
+      {
+        "texto": "Download dos dados em CSV",
+        "href": "https://data.inpe.br/queimadas/portal/csv/download/situacao-atual/regioes/7anos.csv"
+      },
+      {
+        "texto": "Ir para estatísticas das regiões",
+        "href": "https://data.inpe.br/queimadas/estatisticas/?tipo=regioes&item=sudeste"
+      },
+      {
+        "texto": "Download dos dados em CSV",
+        "href": "https://data.inpe.br/queimadas/portal/csv/download/situacao-atual/regioes_especiais/7anos.csv"
+      },
+      {
+        "texto": "Ir para estatísticas das regiões especiais",
+        "href": "https://data.inpe.br/queimadas/estatisticas/?tipo=regioes&item=amazonia_legal"
+      },
+      {
+        "texto": "Download dos dados em CSV",
+        "href": "https://data.inpe.br/queimadas/portal/csv/download/situacao-atual/biomas/7anos.csv"
+      },
+      {
+        "texto": "Ir para estatísticas dos biomas",
+        "href": "https://data.inpe.br/queimadas/estatisticas/?tipo=biomas&item=cerrado"
+      },
+      {
+        "texto": "Ir para o conteúdo",
+        "href": "https://data.inpe.br/queimadas/situacao_atual/components-sa/header/#conteudo"
+      },
+      {
+        "texto": "GovBR",
+        "href": "https://gov.br/"
+      },
+      {
+        "texto": "Comunica BR",
+        "href": "http://www.gov.br/secom/pt-br/acesso-a-informacao/comunicabr"
+      },
+      {
+        "texto": "Acesso à informação",
+        "href": "http://www.gov.br/acessoainformacao/"
+      },
+      {
+        "texto": "Participe",
+        "href": "https://www.gov.br/pt-br/participacao-social/"
+      },
+      {
+        "texto": "Legislação",
+        "href": "http://www4.planalto.gov.br/legislacao/"
+      },
+      {
+        "texto": "Órgãos do Governo",
+        "href": "http://www.gov.br/pt-br/orgaos-do-governo"
+      },
+      {
+        "texto": "Programa Queimadas Instituto Nacional de Pesquisas Espaciais",
+        "href": "https://data.inpe.br/queimadas/portal/"
+      },
+      {
+        "texto": "Portal",
+        "href": "https://data.inpe.br/queimadas/portal/"
+      },
+      {
+        "texto": "Situação Atual",
+        "href": "https://data.inpe.br/queimadas/situacao_atual/"
+      },
+      {
+        "texto": "Países",
+        "href": "https://data.inpe.br/queimadas/estatisticas/?tipo=paises&item=brasil"
+      },
+      {
+        "texto": "Estados",
+        "href": "https://data.inpe.br/queimadas/estatisticas/?tipo=estados&item=sao_paulo"
+      },
+      {
+        "texto": "Regiões",
+        "href": "https://data.inpe.br/queimadas/estatisticas/?tipo=regioes&item=sudeste"
+      },
+      {
+        "texto": "Biomas",
+        "href": "https://data.inpe.br/queimadas/estatisticas/?tipo=biomas&item=cerrado"
+      },
+      {
+        "texto": "BDQueimadas",
+        "href": "https://data.inpe.br/queimadas/bdqueimadas/"
+      },
+      {
+        "texto": "Situação Atual",
+        "href": "https://data.inpe.br/queimadas/situacao_atual/"
+      },
+      {
+        "texto": "Área Queimada",
+        "href": "https://data.inpe.br/queimadas/aq1km/"
+      },
+      {
+        "texto": "Estatísticas",
+        "href": "https://data.inpe.br/queimadas/estatisticas/?tipo=paises&item=brasil"
+      },
+      {
+        "texto": "Focos de Queimadas",
+        "href": "https://data.inpe.br/queimadas/portal/dados-abertos/#da-focos"
+      },
+      {
+        "texto": "Área Queimada • AQ1km",
+        "href": "https://data.inpe.br/queimadas/portal/dados-abertos/#da-area-qmd"
+      },
+      {
+        "texto": "Risco de Fogo e Meteorologia",
+        "href": "https://data.inpe.br/queimadas/portal/dados-abertos/#da-rf"
+      },
+      {
+        "texto": "Dados Legados de Informações Ambientais",
+        "href": "https://dataserver-coids.inpe.br/queimadas/queimadas/sisam/"
+      },
+      {
+        "texto": "Geoserviços OGC",
+        "href": "https://data.inpe.br/queimadas/geoserver/ows?SERVICE=WMS&VERSION=1.3.0&REQUEST=Getcapabilities"
+      },
+      {
+        "texto": "Painel do Fogo",
+        "href": "https://data.inpe.br/queimadas/portal/painel-do-fogo/"
+      },
+      {
+        "texto": "Boletim InfoQueima",
+        "href": "https://data.inpe.br/queimadas/portal/boletim-infoqueima/"
+      },
+      {
+        "texto": "Anuário Risco de Fogo",
+        "href": "https://data.inpe.br/queimadas/portal/anuario-risco-de-fogo/"
+      },
+      {
+        "texto": "Produções Técnicas e Cientificas",
+        "href": "https://dataserver-coids.inpe.br/queimadas/queimadas/Publicacoes-Impacto/"
+      },
+      {
+        "texto": "Perguntas Frequentes",
+        "href": "https://data.inpe.br/queimadas/portal/faq/"
+      },
+      {
+        "texto": "Equipe",
+        "href": "https://data.inpe.br/queimadas/portal/equipe/"
+      },
+      {
+        "texto": "Plano DIretor",
+        "href": "https://data.inpe.br/queimadas/portal/plano-diretor/"
+      },
+      {
+        "texto": "CIMAN",
+        "href": "https://data.inpe.br/queimadas/portal/ciman/"
+      },
+      {
+        "texto": "Histórico de Avisos",
+        "href": "https://data.inpe.br/queimadas/portal/avisos/"
+      }
+    ],
+    "classesDoBody": "",
+    "legenda": [],
+    "textoVisivel": "IR PARA O CONTEÚDO\nGOVBR\nCOMUNICA BR\nACESSO À INFORMAÇÃO\nPARTICIPE\nLEGISLAÇÃO\nÓRGÃOS DO GOVERNO\nSituação Atual O sistema de Situação Atual apresenta o número de focos detetados pelo satélite de referência no período de 01/01/2026 até 12/10/2026.\nFocos por país\nPeríodo de Referência 48 Horas: De 11/10/2026 a 12/10/2026\nBrasil\t1.551\nPeru\t85\nBolivia\t59\nGuyana\t47\nVenezuela\t32\nColombia\t19\nSuriname\t10\nArgentina\t3\nParaguay\t1\nFocos por estado\nPeríodo de Referência 48 Horas: De 11/10/2026 a 12/10/2026\nPará\t1.064\nAmazonas\t232\nAcre\t98\nMato grosso\t59\nRoraima\t33\nTocantins\t16\nAmapá\t12\nGoiás\t8\nCeará\t7\nRondônia\t6\nRio grande do norte\t5\nPernambuco\t4\nBahia\t2\nMato grosso do sul\t2\nPiauí\t2\nMinas gerais\t1\nAlagoas\t0\nDistrito federal\t0\nEspírito santo\t0\nMaranhão\t0\nParaíba\t0\nParaná\t0\nRio de janeiro\t0\nRio grande do sul\t0\nSanta catarina\t0\nSão paulo\t0\nSergipe\t0\nFocos por município\nPeríodo de Referência 48 Horas: De 11/10/2026 a 12/10/2026\nFocos por bioma\nPeríodo de Referência 48 Horas: De 11/10/2026 a 12/10/2026\nTabela anual comparativa de países - últimos anos no intervalo de 01/Jan até 12/Out\nNúmero de focos detectados pelo satélite de referência entre 01/01 a 12/10 de cada ano.\nÚltimos 7 anos\nTodos os anos\n\t2020\t2021\t2022\t2023\t2024\t2025\tDif. A.\t2026\tDif. M.\tMédia\nArgentina\t67.610\t27.433\t36.712\t22.801\t29.083\t27.238\t-48%\t14.263\t-59%\t35.146\nBolivia\t29.551\t28.082\t31.250\t24.019\t85.275\t15.332\t-25%\t11.482\t-68%\t35.585\nBrasil\t186.630\t155.152\t161.698\t127.081\t225.649\t87.865\t-6%\t82.999\t-47%\t157.346\nChile\t3.048\t2.754\t2.345\t5.769\t2.495\t3.106\t-3%\t3.000\t-8%\t3.253\nColombia\t20.315\t11.458\t14.988\t12.650\t15.121\t11.083\t9%\t12.028\t-16%\t14.269\nEcuador\t731\t521\t819\t664\t1.447\t609\t-5%\t577\t-28%\t798\nFrench guiana\t70\t45\t82\t228\t139\t123\t20%\t147\t29%\t114\nGuyana\t1.066\t431\t392\t1.464\t2.619\t721\t30%\t940\t-16%\t1.116\nParaguay\t33.224\t21.488\t13.749\t14.575\t20.756\t9.663\t-16%\t8.152\t-57%\t18.909\nPeru\t14.562\t9.751\t12.430\t11.282\t14.487\t5.614\t-1%\t5.558\t-51%\t11.354\nSuriname\t255\t84\t116\t510\t810\t118\t158%\t304\t-4%\t316\nUruguay\t1.019\t381\t530\t429\t236\t656\t-44%\t370\t-32%\t542\nVenezuela\t34.975\t13.857\t17.669\t23.129\t39.532\t21.123\t10%\t23.206\t-7%\t25.048\nTotal\t393.056\t271.437\t292.780\t244.601\t437.649\t183.251\t-11%\t163.026\t-46%\t303.796\nDownload dos dados em CSV\nIr para estatísticas dos países\nObservações:\n- O ano atual é parcial e não é usado em Média, pois ainda está em andamento.\n- Dif. A. é a diferença percentual entre o ano anterior e o ano corrente. Já a coluna Dif. M. é a diferença percentual entre o ano corrente e a Média dos anos anterior.\nTabela an"
+  }
+}
