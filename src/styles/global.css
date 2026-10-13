@@ -10,6 +10,14 @@
   --color-smcq-blue: #0077B6;
   --color-smcq-green: #2B9348;
   --color-smcq-yellow: #FFBA08;
+
+  /* Entrada suave de um elemento (ex.: cartão do login): classe animate-fade-in */
+  --animate-fade-in: fade-in 0.4s ease-out both;
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 }
 
 /* Compatibilidade com as telas ainda não migradas para Tailwind: o reset do Tailwind
@@ -39,31 +47,12 @@ body {
   background: var(--light-gray);
 }
 
-.btn-primary {
-  background: var(--primary-orange);
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.btn-primary:hover {
-  background: var(--primary-red);
-}
-
 .card {
   background: white;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
-.btn-primary:disabled {
-  background: var(--gray-medium);
-  cursor: default;
-}
-
 .mensagem-erro {
   color: var(--primary-red);
   margin: 10px 0;
