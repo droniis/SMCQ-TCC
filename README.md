@@ -59,6 +59,7 @@ Criados pelo backend de protótipo:
 | --- | --- | --- |
 | Administrador | `admin@smcq.com` | `admin123` |
 | Operador | `operador@smcq.com` | `operador123` |
+| Gestor | `gestor@smcq.com` | `gestor123` |
 
 ## Scripts
 
@@ -116,8 +117,15 @@ Endereço base: `http://localhost:3000/api`. Com exceção do login, todas as ro
 | `GET` | `/alertas` | Lista os alertas |
 | `POST` | `/alertas` | Cria um alerta |
 | `PATCH` | `/alertas/:id/status` | Altera o status de um alerta |
+| `POST` | `/alertas/:id/observacoes` | Adiciona uma observação |
+| `DELETE` | `/alertas/:id` | Exclui o alerta (somente Administrador) |
+| `POST` | `/alertas/:id/solicitacoes-exclusao` | Solicita a exclusão, com `motivo` (Operador e Gestor) |
+| `GET` | `/solicitacoes-exclusao` | Lista as solicitações (todas para o Administrador; as próprias para os demais) |
+| `PATCH` | `/alertas/:id/solicitacoes-exclusao/:sid` | Aprova ou rejeita uma solicitação (somente Administrador) |
 
-Erros são devolvidos como `{ erro: "mensagem" }`.
+A exclusão é lógica: o alerta é marcado como excluído e some das listagens, mas continua guardado para auditoria.
+
+Erros são devolvidos como `{ erro: "mensagem" }`. O código 401 indica sessão inválida ou expirada; 403 indica falta de permissão.
 
 ### Classificação de risco
 
