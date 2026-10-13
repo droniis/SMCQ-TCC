@@ -1,3 +1,26 @@
+@import "tailwindcss";
+
+/* Tema do Tailwind: paleta SMCQ (ex.: bg-smcq-orange, text-smcq-navy) e fonte Inter */
+@theme {
+  --font-sans: "Inter Variable", "Segoe UI", system-ui, sans-serif;
+  --color-smcq-orange: #E85D04;
+  --color-smcq-orange-dark: #C24D03;
+  --color-smcq-red: #D00000;
+  --color-smcq-navy: #1B3A5C;
+  --color-smcq-blue: #0077B6;
+  --color-smcq-green: #2B9348;
+  --color-smcq-yellow: #FFBA08;
+}
+
+/* Compatibilidade com as telas ainda não migradas para Tailwind: o reset do Tailwind
+   zera tamanho e peso dos títulos. Remover quando todas as telas estiverem migradas. */
+@layer base {
+  h1 { font-size: 2em; }
+  h2 { font-size: 1.5em; }
+  h3 { font-size: 1.17em; }
+  h1, h2, h3, h4 { font-weight: 700; }
+}
+
 :root {
   --primary-orange: #E85D04;
   --primary-red: #D00000;
@@ -11,13 +34,7 @@
   --border-gray: #CED4DA;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Arial, sans-serif;
-}
-
+/* O reset de margens, paddings e box-sizing agora vem do Tailwind */
 body {
   background: var(--light-gray);
 }
@@ -70,74 +87,6 @@ body {
   font-size: 12px;
   font-weight: bold;
   white-space: nowrap;
-}
-
-/* Layout das telas autenticadas */
-.layout {
-  display: flex;
-  min-height: 100vh;
-}
-
-.layout-conteudo {
-  flex: 1;
-  min-width: 0;
-  background: var(--light-gray);
-}
-
-.sidebar {
-  width: 240px;
-  background: var(--primary-dark);
-  color: white;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.sidebar-marca {
-  color: var(--primary-orange);
-}
-
-.sidebar-nav {
-  margin-top: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.sidebar-link {
-  padding: 8px 12px;
-  border-radius: 8px;
-  color: white;
-  text-decoration: none;
-}
-
-.sidebar-link:hover,
-.sidebar-link.ativo {
-  background: rgba(255, 255, 255, 0.12);
-}
-
-.sidebar-link.ativo {
-  border-left: 3px solid var(--primary-orange);
-  font-weight: bold;
-}
-
-.sidebar-link.desativado {
-  opacity: 0.45;
-  cursor: default;
-}
-
-.sidebar-link.desativado:hover {
-  background: none;
-}
-
-.btn-sair {
-  background: var(--primary-red);
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 8px;
-  cursor: pointer;
 }
 
 .header {

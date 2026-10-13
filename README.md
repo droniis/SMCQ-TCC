@@ -21,6 +21,9 @@ Este repositório contém apenas o frontend. A API fica em um projeto separado (
 | Rotas | React Router 7 |
 | Requisições HTTP | Axios |
 | Mapa | Leaflet + React Leaflet (tiles do OpenStreetMap) |
+| Estilos | Tailwind CSS 4, fonte Inter |
+| Ícones | Lucide |
+| Gráficos | Recharts |
 | Lint | Oxlint |
 
 ## Pré-requisitos
