@@ -105,39 +105,6 @@ body {
   font-size: 12px;
 }
 
-/* Formulários e filtros */
-.formulario {
-  max-width: 600px;
-}
-
-.rotulo {
-  display: block;
-  flex: 1;
-  margin-top: 8px;
-  color: var(--gray-medium);
-  font-size: 14px;
-}
-
-.campo {
-  display: block;
-  width: 100%;
-  padding: 12px;
-  margin: 8px 0;
-  border-radius: 8px;
-  border: 1px solid var(--border-gray);
-  background: white;
-}
-
-.linha-campos {
-  display: flex;
-  gap: 16px;
-}
-
-.opcao {
-  display: block;
-  margin: 8px 0;
-}
-
 /* Mapa */
 .mapa {
   position: relative;

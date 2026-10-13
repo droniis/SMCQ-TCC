@@ -21,7 +21,7 @@ export default function NovoAlerta() {
   };
 
   return (
-    <div style={{ padding: '24px' }}>
+    <div className="p-6">
       <AlertForm onSubmit={handleSubmit} loading={loading} erro={erro} />
     </div>
   );

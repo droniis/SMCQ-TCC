@@ -1,4 +1,6 @@
-import { MapContainer, TileLayer, CircleMarker, Popup, useMapEvents } from 'react-leaflet';
+import { useEffect } from 'react';
+import L from 'leaflet';
+import { MapContainer, TileLayer, CircleMarker, Marker, Popup, useMap, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { RISCOS } from '../services/constantes';
 import RiskBadge from './RiskBadge';
@@ -12,6 +14,25 @@ function CapturaClique({ onSelecionarPonto }) {
   useMapEvents({
     click: (e) => onSelecionarPonto({ latitude: e.latlng.lat, longitude: e.latlng.lng })
   });
+  return null;
+}
+
+// Pino do local escolhido. É um ícone em SVG porque as imagens do marcador padrão do Leaflet não carregam com o Vite.
+const ICONE_PINO = L.divIcon({
+  className: '',
+  html: '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" viewBox="0 0 30 40">'
+    + '<path d="M15 1C7.3 1 1 7.2 1 14.9 1 25.4 15 39 15 39s14-13.600 14-24.100C29 7.200 22.700 1 15 1z" fill="#0077B6" stroke="#FFFFFF" stroke-width="2"/>'
+    + '<circle cx="15" cy="15" r="5" fill="#FFFFFF"/></svg>',
+  iconSize: [30, 40],
+  iconAnchor: [15, 39]
+});
+
+// Leva o mapa até `foco` ({ latitude, longitude, zoom? }) sempre que ele mudar
+function Foco({ foco }) {
+  const mapa = useMap();
+  useEffect(() => {
+    if (foco) mapa.flyTo([foco.latitude, foco.longitude], foco.zoom ?? 16);
+  }, [foco, mapa]);
   return null;
 }
 
@@ -30,8 +51,9 @@ function Legenda() {
 }
 
 // Mapa com um marcador por alerta, colorido pelo risco.
-// Com onSelecionarPonto, um clique no mapa escolhe uma localização (pontoSelecionado).
-export default function MapView({ alertas = [], altura = '70vh', onSelecionarPonto, pontoSelecionado }) {
+// Com onSelecionarPonto, um clique no mapa escolhe uma localização (pontoSelecionado), mostrada como um pino
+// que também pode ser arrastado. `foco` centraliza o mapa em um ponto (ex.: depois de uma busca por CEP).
+export default function MapView({ alertas = [], altura = '70vh', onSelecionarPonto, pontoSelecionado, foco }) {
   const pontos = alertas.map(a => [a.latitude, a.longitude]);
   // O enquadramento inicial é definido uma única vez, na montagem do mapa
   const enquadramento = pontos.length > 0
@@ -63,11 +85,20 @@ export default function MapView({ alertas = [], altura = '70vh', onSelecionarPon
           </CircleMarker>
         ))}
         {onSelecionarPonto && <CapturaClique onSelecionarPonto={onSelecionarPonto} />}
+        <Foco foco={foco} />
         {pontoSelecionado && (
-          <CircleMarker
-            center={[pontoSelecionado.latitude, pontoSelecionado.longitude]}
-            radius={8}
-            pathOptions={{ color: '#0077B6', fillColor: '#0077B6', fillOpacity: 0.9 }}
+          <Marker
+            position={[pontoSelecionado.latitude, pontoSelecionado.longitude]}
+            icon={ICONE_PINO}
+            draggable={Boolean(onSelecionarPonto)}
+            title="Local da ocorrência (arraste para ajustar)"
+            alt="Local da ocorrência"
+            eventHandlers={{
+              dragend: (e) => {
+                const { lat, lng } = e.target.getLatLng();
+                onSelecionarPonto?.({ latitude: lat, longitude: lng });
+              }
+            }}
           />
         )}
       </MapContainer>
