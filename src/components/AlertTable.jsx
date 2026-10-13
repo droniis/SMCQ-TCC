@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import toast from 'react-hot-toast';
-import { ArrowDown, ArrowUp, ArrowUpDown, Download, Search } from 'lucide-react';
+import { ArrowDown, ArrowUp, ArrowUpDown, Clock, Download, Search, Send, Trash2 } from 'lucide-react';
 import { RISCOS, STATUS } from '../services/constantes';
 import { exportarAlertasCSV, exportarAlertasJSON } from '../services/exportacao';
 import RiskBadge from './RiskBadge';
@@ -28,6 +28,13 @@ const CLASSE_BOTAO = 'inline-flex cursor-pointer items-center gap-2 rounded-lg b
   + 'transition-colors duration-150 hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-smcq-orange focus-visible:outline-none '
   + 'disabled:cursor-not-allowed disabled:text-slate-400 disabled:hover:bg-white';
 
+const CLASSE_CABECALHO = 'px-3 py-2.5 text-xs font-semibold uppercase tracking-wide whitespace-nowrap text-slate-600';
+const CLASSE_ACAO = 'inline-flex cursor-pointer items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium whitespace-nowrap text-white '
+  + 'transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-smcq-orange focus-visible:ring-offset-2 focus-visible:outline-none';
+
+// Só pode haver uma solicitação de exclusão pendente por alerta
+const exclusaoPendente = (alerta) => (alerta.solicitacoesExclusao || []).some(s => s.status === 'PENDENTE');
+
 function comparar(a, b) {
   if (typeof a === 'string' || typeof b === 'string') return String(a).localeCompare(String(b), 'pt-BR', { numeric: true });
   return a - b;
@@ -43,13 +50,15 @@ function corresponde(alerta, termo) {
 }
 
 // Tabela de alertas com busca, ordenação, paginação e exportação, tudo no navegador.
-// Sem onAlterarStatus, a coluna de ações não aparece.
-export default function AlertTable({ alertas, onAlterarStatus }) {
+// Sem onAlterarStatus, a coluna de status editável não aparece. A coluna "Ações" aparece com
+// onExcluir (botão vermelho, exclusão direta) ou onSolicitarExclusao (botão laranja, pedido de exclusão).
+export default function AlertTable({ alertas, onAlterarStatus, onExcluir, onSolicitarExclusao }) {
   const [busca, setBusca] = useState('');
   const [ordenacao, setOrdenacao] = useState({ chave: 'criadoEm', direcao: 'desc' });
   const [porPagina, setPorPagina] = useState(TAMANHOS_PAGINA[0]);
   const [pagina, setPagina] = useState(1);
 
+  const temAcoes = Boolean(onExcluir || onSolicitarExclusao);
   const termo = busca.trim().toLowerCase();
   const coluna = COLUNAS.find(c => c.chave === ordenacao.chave);
   const sentido = ordenacao.direcao === 'asc' ? 1 : -1;
@@ -102,7 +111,7 @@ export default function AlertTable({ alertas, onAlterarStatus }) {
         <p className="py-8 text-center text-sm text-slate-600">Nenhum alerta encontrado.</p>
       ) : (
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[720px] text-left text-sm">
+          <table className={`w-full text-left text-sm ${temAcoes ? 'min-w-[900px]' : 'min-w-[720px]'}`}>
             <thead>
               <tr className="border-b border-slate-200">
                 {COLUNAS.map(({ chave, rotulo }) => {
@@ -122,7 +131,8 @@ export default function AlertTable({ alertas, onAlterarStatus }) {
                     </th>
                   );
                 })}
-                {onAlterarStatus && <th scope="col" className="px-3 py-2.5 text-xs font-semibold uppercase tracking-wide whitespace-nowrap text-slate-600">Alterar status</th>}
+                {onAlterarStatus && <th scope="col" className={CLASSE_CABECALHO}>Alterar status</th>}
+                {temAcoes && <th scope="col" className={CLASSE_CABECALHO}>Ações</th>}
               </tr>
             </thead>
             <tbody>
@@ -149,6 +159,39 @@ export default function AlertTable({ alertas, onAlterarStatus }) {
                           <option key={valor} value={valor}>{rotulo}</option>
                         ))}
                       </select>
+                    </td>
+                  )}
+                  {temAcoes && (
+                    <td className="px-3 py-2.5">
+                      {onExcluir && (
+                        <button
+                          type="button"
+                          onClick={() => onExcluir(alerta)}
+                          title="Excluir alerta permanentemente"
+                          aria-label={`Excluir alerta ${alerta.titulo}`}
+                          className={`${CLASSE_ACAO} bg-smcq-red hover:bg-red-800`}
+                        >
+                          <Trash2 size={16} aria-hidden="true" />
+                          Excluir
+                        </button>
+                      )}
+                      {onSolicitarExclusao && (exclusaoPendente(alerta) ? (
+                        <span className="inline-flex items-center gap-1.5 text-sm font-medium whitespace-nowrap text-slate-600" title="Aguardando avaliação do administrador ou gestor">
+                          <Clock size={16} aria-hidden="true" />
+                          Exclusão solicitada
+                        </span>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => onSolicitarExclusao(alerta)}
+                          title="Solicitar exclusão ao administrador ou gestor"
+                          aria-label={`Solicitar exclusão do alerta ${alerta.titulo}`}
+                          className={`${CLASSE_ACAO} bg-smcq-orange-dark hover:bg-[#A13F02]`}
+                        >
+                          <Send size={16} aria-hidden="true" />
+                          Solicitar Exclusão
+                        </button>
+                      ))}
                     </td>
                   )}
                 </tr>

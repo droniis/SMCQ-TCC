@@ -50,4 +50,12 @@ export const createAlerta = (alerta) =>
 export const updateStatus = (id, status) => 
   api.patch(`/alertas/${id}/status`, { status });
 
+// Exclusão direta (Administrador e Gestor)
+export const deleteAlerta = (id) =>
+  api.delete(`/alertas/${id}`);
+
+// Pedido de exclusão (Operador), avaliado depois por quem pode excluir
+export const solicitarExclusao = (id, motivo) =>
+  api.post(`/alertas/${id}/solicitacoes-exclusao`, { motivo });
+
 export default api;

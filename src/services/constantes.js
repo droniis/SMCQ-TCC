@@ -17,8 +17,12 @@ export const STATUS = {
 
 export const PERFIS = {
   ADMINISTRADOR: 'Administrador',
-  OPERADOR: 'Operador'
+  OPERADOR: 'Operador',
+  GESTOR: 'Gestor'
 };
+
+// Administrador e Gestor excluem alertas direto; o Operador solicita a exclusão
+export const PERFIS_EXCLUSAO_DIRETA = ['ADMINISTRADOR', 'GESTOR'];
 
 export const ESTADOS = [
   'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA',
