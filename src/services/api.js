@@ -15,13 +15,14 @@ api.interceptors.request.use(config => {
   return config;
 });
 
-// Token ausente, inválido ou expirado: encerra a sessão e volta para o login
+// 401 = token ausente, inválido ou expirado: encerra a sessão e volta para o login.
+// 403 é permissão negada: a sessão continua e a tela mostra a mensagem do backend.
 api.interceptors.response.use(
   response => response,
   error => {
     const status = error.response?.status;
     const ehLogin = error.config?.url === '/login';
-    if ((status === 401 || status === 403) && !ehLogin) {
+    if (status === 401 && !ehLogin) {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       window.location.assign('/login');
@@ -29,6 +30,13 @@ api.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+// Mensagem amigável para um erro de requisição: usa a do backend quando existir
+export function mensagemDeErro(err, padrao) {
+  if (err.response?.data?.erro) return err.response.data.erro;
+  if (!err.response) return 'Não foi possível conectar ao servidor.';
+  return padrao;
+}
 
 export const login = (email, senha) =>
   api.post('/login', { email, senha });

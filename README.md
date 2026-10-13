@@ -76,7 +76,8 @@ O projeto ainda não tem testes automatizados.
 ```
 src/
 ├── main.jsx            Ponto de entrada
-├── App.jsx             Rotas, proteção de rotas e layout
+├── App.jsx             Rotas e proteção de rotas
+├── components/         Layout, Sidebar, Header, cartões, etiquetas, tabela, formulário, filtros e mapa
 ├── pages/
 │   ├── Login.jsx       Tela de login
 │   ├── Dashboard.jsx   Painel de controle
@@ -84,9 +85,11 @@ src/
 │   ├── NovoAlerta.jsx  Formulário de registro de ocorrência
 │   └── Mapa.jsx        Mapa de ocorrências
 ├── services/
-│   └── api.js          Cliente Axios e chamadas à API
+│   ├── api.js          Cliente Axios e chamadas à API
+│   └── constantes.js   Rótulos e cores de risco e status
 ├── hooks/
-│   └── useAuth.js      Hook de autenticação e validação da sessão
+│   ├── useAuth.js      Hook de autenticação e validação da sessão
+│   └── useAlertas.js   Hook de carga e alteração dos alertas
 └── styles/
     └── global.css      Variáveis de cor e classes compartilhadas
 ```
