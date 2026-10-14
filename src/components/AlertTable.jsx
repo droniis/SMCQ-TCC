@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { ArrowDown, ArrowUp, ArrowUpDown, Clock, Download, Search, Send, Trash2 } from 'lucide-react';
 import { RISCOS, STATUS } from '../services/constantes';
@@ -140,7 +141,13 @@ export default function AlertTable({ alertas, onAlterarStatus, onExcluir, onSoli
                 <tr key={alerta.id} className="border-b border-slate-100 text-slate-700 transition-colors duration-100 last:border-0 hover:bg-orange-50">
                   <td className="px-3 py-2.5 text-slate-600 tabular-nums">{alerta.id}</td>
                   <td className="px-3 py-2.5">
-                    <strong className="font-semibold text-smcq-navy">{alerta.titulo}</strong>
+                    <Link
+                      to={`/alertas/${alerta.id}`}
+                      title="Ver detalhes e fatores do risco"
+                      className="cursor-pointer font-semibold text-smcq-navy underline-offset-2 hover:text-smcq-orange-dark hover:underline focus-visible:ring-2 focus-visible:ring-smcq-orange focus-visible:outline-none"
+                    >
+                      {alerta.titulo}
+                    </Link>
                     {alerta.descricao && <div className="text-[13px] text-slate-600">{alerta.descricao}</div>}
                   </td>
                   <td className="px-3 py-2.5">{regiao(alerta) || '—'}</td>

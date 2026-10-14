@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard.jsx';
 import Alertas from './pages/Alertas.jsx';
 import NovoAlerta from './pages/NovoAlerta.jsx';
 import Mapa from './pages/Mapa.jsx';
+import DetalheAlerta from './pages/DetalheAlerta.jsx';
 
 // ============================================================
 // PROTEÇÃO DE ROTAS
@@ -34,6 +35,7 @@ function App() {
         >
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/alertas" element={<Alertas />} />
+          <Route path="/alertas/:id" element={<DetalheAlerta />} />
           <Route path="/novo-alerta" element={<NovoAlerta />} />
           <Route path="/mapa" element={<Mapa />} />
           <Route path="*" element={<Navigate to="/dashboard" replace />} />

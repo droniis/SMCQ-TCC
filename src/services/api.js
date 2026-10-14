@@ -50,6 +50,19 @@ export const createAlerta = (alerta) =>
 export const updateStatus = (id, status) => 
   api.patch(`/alertas/${id}/status`, { status });
 
+// Geodados de um ponto (bioma, UC, TI, fauna, focos), sem criar alerta.
+// Chamado ao escolher o local: o backend guarda o resultado em cache e o POST seguinte o reaproveita.
+export const getGeodadosPreview = (lat, lng) =>
+  api.get('/alertas/geodados-preview', { params: { lat, lng } });
+
+// Detalhamento do IRS do alerta: índice, nível, versão e contribuição de cada critério
+export const getRiscoAlerta = (id) =>
+  api.get(`/alertas/${id}/risco`);
+
+// Geodados gravados no alerta (ou consultados agora, se o alerta não os tiver)
+export const getGeodadosAlerta = (id) =>
+  api.get(`/alertas/${id}/geodados`);
+
 // Exclusão direta (Administrador e Gestor)
 export const deleteAlerta = (id) =>
   api.delete(`/alertas/${id}`);

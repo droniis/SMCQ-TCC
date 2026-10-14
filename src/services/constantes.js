@@ -61,3 +61,67 @@ export const FILTROS_VAZIOS = {
   risco: '',
   status: ''
 };
+
+// ------------------------------------------------------------
+// IRS v2: opções e rótulos dos critérios ambientais
+// Os valores (chaves) são os aceitos pelo backend (riscoService.js).
+// ------------------------------------------------------------
+
+// Bioma: os seis biomas mais as categorias que o IRS também pontua
+export const OPCOES_BIOMA = [
+  ...Object.entries(BIOMAS).map(([valor, { rotulo }]) => ({ valor, rotulo })),
+  { valor: 'URBANO', rotulo: 'Área urbana' },
+  { valor: 'OUTRO', rotulo: 'Outro' }
+];
+
+export const OPCOES_TIPO_AREA = [
+  { valor: 'TERRA_INDIGENA', rotulo: 'Terra Indígena' },
+  { valor: 'UC_FEDERAL', rotulo: 'Unidade de Conservação federal' },
+  { valor: 'UC_ESTADUAL', rotulo: 'Unidade de Conservação estadual' },
+  { valor: 'APP', rotulo: 'Área de Preservação Permanente (APP)' },
+  { valor: 'RESERVA_LEGAL', rotulo: 'Reserva Legal' },
+  { valor: 'RURAL', rotulo: 'Área rural' },
+  { valor: 'URBANA', rotulo: 'Área urbana' }
+];
+
+export const NIVEIS_FAUNA = {
+  CRITICA: 'criticamente em perigo',
+  AMEACADA: 'em perigo',
+  VULNERAVEL: 'vulnerável',
+  SEM_ESPECIES: 'sem espécies ameaçadas',
+  URBANA: 'área urbana'
+};
+
+// Os 9 critérios do IRS v2, na ordem da documentação (o v1 usa só os 5 primeiros)
+export const CRITERIOS_IRS = {
+  area: 'Área afetada',
+  urbano: 'Proximidade urbana',
+  vento: 'Vento',
+  pessoas: 'Pessoas em risco',
+  tempo: 'Propagação (dA/dt)',
+  bioma: 'Bioma',
+  tipoArea: 'Tipo de área',
+  fauna: 'Fauna ameaçada',
+  relevancia: 'Relevância ecológica'
+};
+
+// Nome curto de cada fonte de geodados, como o backend a registra
+export const FONTES_GEODADOS = {
+  'IBGE WFS': 'IBGE',
+  'ICMBio WFS': 'ICMBio',
+  'FUNAI WFS': 'FUNAI',
+  'GBIF API': 'GBIF',
+  'INPE CSV': 'INPE',
+  'fallback-centroides': 'estimado (centróides de bioma)',
+  'fallback-lista-ucs': 'estimado (lista local de UCs)',
+  'fallback-lista-tis': 'estimado (lista local de TIs)',
+  'fallback-sem-dados': 'indisponível',
+  'fallback-erro-interno': 'indisponível',
+  // Origem de cada critério no detalhamento do IRS
+  geodados: 'bases públicas',
+  informado: 'informado pelo operador',
+  padrao: 'valor padrão'
+};
+
+// A fonte caiu no fallback (base externa indisponível): o dado é estimado
+export const ehFallback = (fonte) => typeof fonte === 'string' && fonte.startsWith('fallback');

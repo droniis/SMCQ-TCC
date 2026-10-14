@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import L from 'leaflet';
 import { MapContainer, TileLayer, CircleMarker, Marker, Popup, useMap, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -81,6 +82,9 @@ export default function MapView({ alertas = [], altura = '70vh', onSelecionarPon
                 <RiskBadge risco={alerta.risco} />
                 <StatusBadge status={alerta.status} />
               </div>
+              <Link to={`/alertas/${alerta.id}`} className="mt-2 inline-block cursor-pointer font-semibold text-smcq-blue hover:underline">
+                Ver detalhes
+              </Link>
             </Popup>
           </CircleMarker>
         ))}

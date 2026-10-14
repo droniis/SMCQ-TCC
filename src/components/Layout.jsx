@@ -12,6 +12,9 @@ const TITULOS = {
   '/mapa': 'Mapa de Ocorrências'
 };
 
+// Título das rotas com parâmetro, que não entram no mapa acima
+const tituloDaRota = (pathname) => TITULOS[pathname] || (/^\/alertas\/[^/]+$/.test(pathname) ? 'Detalhes do Alerta' : 'SMCQ');
+
 const CHAVE_RECOLHIDA = 'sidebarRecolhida';
 
 // Usa a preferência salva; sem preferência, começa recolhida em telas de tablet
@@ -59,7 +62,7 @@ export default function Layout() {
         onLogout={handleLogout}
       />
       <div className="flex min-w-0 flex-1 flex-col">
-        <Header titulo={TITULOS[pathname] || 'SMCQ'} usuario={user} onAbrirMenu={() => setMenuAberto(true)} />
+        <Header titulo={tituloDaRota(pathname)} usuario={user} onAbrirMenu={() => setMenuAberto(true)} />
         <main className="flex-1">
           {/* Os filtros são compartilhados entre as telas e zeram ao sair da área autenticada */}
           <FiltrosProvider>

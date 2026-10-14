@@ -1,9 +1,15 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import { LoaderCircle, MapPin, Search } from 'lucide-react';
-import { ESTADOS } from '../services/constantes';
+import { ESTADOS, OPCOES_BIOMA, OPCOES_TIPO_AREA } from '../services/constantes';
 import { buscarCep, buscarEnderecoPorPonto, localizarEndereco, apenasDigitos, formatarCep } from '../services/geocodificacao';
+import { getGeodadosPreview } from '../services/api';
+import { rotuloBioma, rotuloTipoArea, tipoAreaDetectado } from '../services/irs';
 import MapView from './MapView';
+import GeodadosPreview from './GeodadosPreview';
+
+// Espera depois da última mudança do ponto antes de consultar os geodados (o pino pode estar sendo ajustado)
+const ESPERA_PREVIEW_MS = 350;
 
 const FORM_INICIAL = {
   titulo: '',
@@ -32,6 +38,8 @@ const CLASSE_BOTAO_SECUNDARIO = 'inline-flex shrink-0 cursor-pointer items-cente
 
 // Formulário de ocorrência. A localização vem da busca por CEP ou do pino no mapa (clique ou arraste);
 // as coordenadas nunca são digitadas. Entrega a onSubmit os dados já no formato da API.
+// Ao escolher o local, consulta os geodados do ponto (bioma, UC, TI, fauna, focos) e pré-preenche
+// bioma e tipo de área; o operador pode corrigi-los, e só o que ele alterar é enviado ao backend.
 export default function AlertForm({ onSubmit, loading, erro }) {
   const [form, setForm] = useState(FORM_INICIAL);
   const [foco, setFoco] = useState(null);
@@ -39,6 +47,49 @@ export default function AlertForm({ onSubmit, loading, erro }) {
   const [erroLocal, setErroLocal] = useState('');
   // Só a busca reversa mais recente pode preencher o endereço
   const pedidoReverso = useRef(0);
+  // Última resposta do preview e o ponto a que ela se refere: { ponto, estado: 'ok' | 'erro', geodados }
+  const [resposta, setResposta] = useState(null);
+  // Correções do operador; null = segue o valor detectado
+  const [alterados, setAlterados] = useState({ bioma: null, tipoArea: null });
+
+  const temPonto = form.latitude !== '' && form.longitude !== '';
+  const pontoAtual = temPonto ? `${form.latitude},${form.longitude}` : null;
+
+  // Consulta os geodados sempre que o ponto muda; uma resposta de um ponto antigo é descartada
+  useEffect(() => {
+    if (!pontoAtual) return undefined;
+    let atual = true;
+    const [lat, lng] = pontoAtual.split(',');
+    const temporizador = setTimeout(async () => {
+      try {
+        const { data } = await getGeodadosPreview(lat, lng);
+        if (atual) setResposta({ ponto: pontoAtual, estado: 'ok', geodados: data });
+      } catch {
+        // O formulário continua utilizável: o backend consulta (ou estima) os geodados no registro
+        if (atual) setResposta({ ponto: pontoAtual, estado: 'erro', geodados: null });
+      }
+    }, ESPERA_PREVIEW_MS);
+    return () => {
+      atual = false;
+      clearTimeout(temporizador);
+    };
+  }, [pontoAtual]);
+
+  // Estado exibido: sem ponto → 'vazio'; resposta ainda não chegou para este ponto → 'carregando'
+  const preview = !pontoAtual
+    ? { estado: 'vazio', geodados: null }
+    : resposta?.ponto === pontoAtual ? resposta : { estado: 'carregando', geodados: null };
+
+  const detectado = {
+    bioma: preview.estado === 'ok' ? preview.geodados.bioma : null,
+    tipoArea: preview.estado === 'ok' ? tipoAreaDetectado(preview.geodados, form.zonaUrbana) : null
+  };
+
+  // Escolher o próprio valor detectado (ou "automático") desfaz a correção
+  const handleAlterarDetectado = (e) => {
+    const { name, value } = e.target;
+    setAlterados(atual => ({ ...atual, [name]: value === '' || value === detectado[name] ? null : value }));
+  };
 
   const atualizar = (campos) => setForm(atual => ({ ...atual, ...campos }));
 
@@ -131,11 +182,13 @@ export default function AlertForm({ onSubmit, loading, erro }) {
       logradouro: form.logradouro.trim(),
       numero: form.numero.trim(),
       bairro: form.bairro.trim(),
-      municipio: form.municipio.trim()
+      municipio: form.municipio.trim(),
+      // Bioma e tipo de área só vão quando o operador os corrigiu; senão o backend usa o detectado
+      ...(alterados.bioma && { bioma: alterados.bioma }),
+      ...(alterados.tipoArea && { tipoArea: alterados.tipoArea })
     });
   };
 
-  const temPonto = form.latitude !== '' && form.longitude !== '';
   const cepCompleto = apenasDigitos(form.cep).length === 8;
 
   return (
@@ -225,6 +278,35 @@ export default function AlertForm({ onSubmit, loading, erro }) {
         </fieldset>
 
         <fieldset className="space-y-4 border-t border-slate-200 pt-4">
+          <legend className="float-left mb-3 w-full text-base font-semibold text-smcq-navy">Dados ambientais</legend>
+          <div className="clear-both">
+            <GeodadosPreview estado={preview.estado} geodados={preview.geodados} />
+          </div>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <CampoDetectado
+              nome="bioma"
+              rotulo="Bioma"
+              opcoes={OPCOES_BIOMA}
+              detectado={detectado.bioma}
+              alterado={alterados.bioma}
+              rotuloDe={rotuloBioma}
+              carregando={preview.estado === 'carregando'}
+              onChange={handleAlterarDetectado}
+            />
+            <CampoDetectado
+              nome="tipoArea"
+              rotulo="Tipo de área"
+              opcoes={OPCOES_TIPO_AREA}
+              detectado={detectado.tipoArea}
+              alterado={alterados.tipoArea}
+              rotuloDe={rotuloTipoArea}
+              carregando={preview.estado === 'carregando'}
+              onChange={handleAlterarDetectado}
+            />
+          </div>
+        </fieldset>
+
+        <fieldset className="space-y-4 border-t border-slate-200 pt-4">
           <legend className="float-left mb-3 w-full text-base font-semibold text-smcq-navy">Condições</legend>
           <div className="clear-both grid grid-cols-1 gap-4 sm:grid-cols-2">
             <label className={CLASSE_ROTULO}>
@@ -283,5 +365,38 @@ export default function AlertForm({ onSubmit, loading, erro }) {
         />
       </div>
     </form>
+  );
+}
+
+// Select pré-preenchido com o valor detectado nos geodados, que o operador pode corrigir.
+// Mostra se o valor é o detectado ou uma correção, e permite voltar ao detectado.
+function CampoDetectado({ nome, rotulo, opcoes, detectado, alterado, rotuloDe, carregando, onChange }) {
+  const valor = alterado ?? detectado ?? '';
+  return (
+    <div className="flex flex-col gap-1">
+      <label className={CLASSE_ROTULO}>
+        {rotulo}
+        <select className={CLASSE_CAMPO} name={nome} value={valor} onChange={onChange}>
+          <option value="">{carregando ? 'Detectando...' : 'Detectar automaticamente'}</option>
+          {opcoes.map(o => <option key={o.valor} value={o.valor}>{o.rotulo}</option>)}
+        </select>
+      </label>
+      <p className="text-xs text-slate-500" aria-live="polite">
+        {alterado
+          ? (
+            <>
+              Corrigido manualmente{detectado && <> (detectado: {rotuloDe(detectado)})</>}.{' '}
+              <button
+                type="button"
+                className="cursor-pointer font-semibold text-smcq-blue underline-offset-2 hover:underline focus-visible:ring-2 focus-visible:ring-smcq-orange focus-visible:outline-none"
+                onClick={() => onChange({ target: { name: nome, value: '' } })}
+              >
+                Usar o detectado
+              </button>
+            </>
+          )
+          : detectado ? 'Detectado automaticamente pelo ponto no mapa.' : 'Será detectado pelo servidor ao registrar.'}
+      </p>
+    </div>
   );
 }
