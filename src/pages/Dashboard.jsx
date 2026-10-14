@@ -6,6 +6,7 @@ import { useFiltros, filtrarAlertas } from '../hooks/useFiltros';
 import { BIOMAS, BIOMA_POR_ESTADO, RISCOS, STATUS } from '../services/constantes';
 import { exportarCSV } from '../services/exportacao';
 import { contarPor, serieDiaria, variacaoRecente, formatarNumero, formatarPercentual, formatarData } from '../services/estatisticas';
+import { biomaDoAlerta, rotuloBioma } from '../services/irs';
 import FilterBar from '../components/FilterBar';
 import MetricCard from '../components/MetricCard';
 import ActionCard from '../components/ActionCard';
@@ -13,6 +14,29 @@ import RankingBlock from '../components/RankingBlock';
 import { EvolucaoChart, RiscoChart, EstadosChart } from '../components/DashboardCharts';
 
 const DIAS_EVOLUCAO = 30;
+
+// Cores das categorias de bioma que não estão em BIOMAS
+const CORES_BIOMA_EXTRA = { URBANO: '#6C757D', OUTRO: '#ADB5BD' };
+const SUFIXO_ESTIMADO = ' (estimado pela UF)';
+
+// Contagem por bioma: o real (alertas IRS v2) e o estimado pela UF (alertas antigos) ficam em
+// categorias separadas; o estimado leva o sufixo e a mesma cor, translúcida.
+function contarPorBioma(alertas) {
+  const biomas = alertas.map(a => biomaDoAlerta(a, BIOMA_POR_ESTADO));
+  const dados = contarPor(biomas, b => (b ? `${b.chave}|${b.estimado ? 'e' : 'r'}` : null)).map(({ nome, valor }) => {
+    const [chave, tipo] = nome.split('|');
+    const cor = BIOMAS[chave]?.cor || CORES_BIOMA_EXTRA[chave] || '#6C757D';
+    return tipo === 'e'
+      ? { nome: `${rotuloBioma(chave)}${SUFIXO_ESTIMADO}`, valor, cor: `${cor}80` }
+      : { nome: rotuloBioma(chave), valor, cor };
+  });
+  return { dados, estimados: biomas.filter(b => b?.estimado).length };
+}
+
+function descreverBioma(periodo, estimados) {
+  if (estimados === 0) return `${periodo} · bioma do local do alerta`;
+  return `${periodo} · bioma do local do alerta; ${formatarNumero(estimados)} ${estimados === 1 ? 'alerta antigo' : 'alertas antigos'} sem bioma, estimado pela UF`;
+}
 
 // Texto do período de referência exibido em cada bloco
 function descreverPeriodo({ dataInicio, dataFim }) {
@@ -46,8 +70,7 @@ export default function Dashboard() {
   const periodo = descreverPeriodo(filtros);
   const porEstado = contarPor(visiveis, a => a.estado);
   const porMunicipio = contarPor(visiveis, a => (a.municipio ? `${a.municipio}${a.estado ? ` / ${a.estado}` : ''}` : null));
-  const porBioma = contarPor(visiveis, a => BIOMA_POR_ESTADO[a.estado])
-    .map(({ nome, valor }) => ({ nome: BIOMAS[nome].rotulo, valor, cor: BIOMAS[nome].cor }));
+  const { dados: porBioma, estimados: biomasEstimados } = contarPorBioma(visiveis);
   const serie = serieDiaria(visiveis, DIAS_EVOLUCAO);
 
   // Relatório consolidado: os mesmos números da tela, em seções de "indicador; valor"
@@ -66,7 +89,7 @@ export default function Dashboard() {
       ...secao('Status', Object.entries(STATUS).map(([chave, { rotulo }]) => ({ nome: rotulo, valor: visiveis.filter(a => a.status === chave).length }))),
       ...secao('Estado', porEstado),
       ...secao('Município', porMunicipio),
-      ...secao('Bioma (predominante do estado)', porBioma),
+      ...secao(`Bioma (do local do alerta; "${SUFIXO_ESTIMADO.trim()}" = alerta antigo, bioma predominante da UF)`, porBioma),
       ...secao(`Dia (últimos ${DIAS_EVOLUCAO} dias)`, serie.map(({ data, valor }) => ({ nome: data, valor })))
     ]);
     toast.success('Relatório exportado em CSV');
@@ -106,7 +129,7 @@ export default function Dashboard() {
         <aside className="space-y-6" aria-label="Rankings">
           <RankingBlock titulo="Top 5 Estados" periodo={periodo} dados={porEstado} total={total} visaoInicial="tabela" />
           <RankingBlock titulo="Top 5 Municípios" periodo={periodo} dados={porMunicipio} total={total} visaoInicial="barras" />
-          <RankingBlock titulo="Distribuição por Bioma" periodo={`${periodo} · bioma predominante do estado`} dados={porBioma} total={total} limite={6} visaoInicial="pizza" />
+          <RankingBlock titulo="Distribuição por Bioma" periodo={descreverBioma(periodo, biomasEstimados)} dados={porBioma} total={total} limite={porBioma.length} visaoInicial="pizza" />
         </aside>
       </div>
 

@@ -19,3 +19,12 @@ export function tipoAreaDetectado(geodados, zonaUrbana) {
 }
 
 export const formatarDataHora = (iso) => (iso ? new Date(iso).toLocaleString('pt-BR') : '—');
+
+// Bioma de um alerta para os painéis. Alertas do IRS v2 trazem o bioma do ponto (detectado nas
+// bases públicas ou informado pelo operador); alertas antigos, sem esse campo, ficam com o bioma
+// predominante da UF, marcado como estimado. → { chave, estimado } ou null
+export function biomaDoAlerta(alerta, biomaPorEstado) {
+  if (alerta.bioma && OPCOES_BIOMA.some(o => o.valor === alerta.bioma)) return { chave: alerta.bioma, estimado: false };
+  const porUf = biomaPorEstado[alerta.estado];
+  return porUf ? { chave: porUf, estimado: true } : null;
+}
