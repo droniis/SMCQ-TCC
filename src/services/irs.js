@@ -6,9 +6,11 @@ export const rotuloBioma = (valor) => OPCOES_BIOMA.find(o => o.valor === valor)?
 export const rotuloTipoArea = (valor) => OPCOES_TIPO_AREA.find(o => o.valor === valor)?.rotulo || valor || '—';
 
 // Tipo de área que o backend vai considerar detectado para estes geodados.
-// Mesma regra de resolverTipoArea (riscoService.js): TI > UC (municipal conta como estadual) > urbana/rural.
+// Mesma regra de resolverTipoArea (riscoService.js): TI > UC (municipal conta como estadual) > urbana/rural,
+// com a zona urbana derivada do tipo de ocorrência (incêndio urbano → URBANA; queimada em vegetação → RURAL).
 // Serve apenas para pré-preencher o formulário.
-export function tipoAreaDetectado(geodados, zonaUrbana) {
+export function tipoAreaDetectado(geodados, tipoOcorrencia) {
+  const zonaUrbana = tipoOcorrencia === 'INCENDIO_URBANO';
   if (!geodados) return null;
   if (geodados.terraIndigena) return 'TERRA_INDIGENA';
   if (geodados.unidadeConservacao) {

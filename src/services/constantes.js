@@ -53,11 +53,22 @@ export const BIOMA_POR_ESTADO = {
   RS: 'PAMPA'
 };
 
+// Tipo de ocorrência (valores aceitos pelo backend). Define o layout do formulário e os valores
+// padrão de tipo de área e pessoas em risco; não entra na fórmula do IRS.
+export const TIPOS_OCORRENCIA = {
+  QUEIMADA_VEGETACAO: { rotulo: 'Queimada em vegetação', rotuloCurto: 'Vegetação', cor: '#2B9348', corTexto: '#1F6E35' },
+  INCENDIO_URBANO: { rotulo: 'Incêndio em área urbana', rotuloCurto: 'Urbano', cor: '#1B3A5C', corTexto: '#1B3A5C' }
+};
+
+// Alertas gravados antes do campo existir são queimadas em vegetação (mesma regra da migração do banco)
+export const tipoOcorrenciaDe = (alerta) => (alerta.tipoOcorrencia in TIPOS_OCORRENCIA ? alerta.tipoOcorrencia : 'QUEIMADA_VEGETACAO');
+
 export const FILTROS_VAZIOS = {
   dataInicio: '',
   dataFim: '',
   estado: '',
   municipio: '',
+  tipoOcorrencia: '',
   risco: '',
   status: ''
 };

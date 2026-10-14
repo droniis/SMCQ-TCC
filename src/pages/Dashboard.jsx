@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 import { Flame, TriangleAlert, Siren, CircleCheck, Plus, List, Download, Map as MapaIcone } from 'lucide-react';
 import { useAlertas } from '../hooks/useAlertas';
 import { useFiltros, filtrarAlertas } from '../hooks/useFiltros';
-import { BIOMAS, BIOMA_POR_ESTADO, RISCOS, STATUS } from '../services/constantes';
+import { BIOMAS, BIOMA_POR_ESTADO, RISCOS, STATUS, TIPOS_OCORRENCIA, tipoOcorrenciaDe } from '../services/constantes';
 import { exportarCSV } from '../services/exportacao';
 import { contarPor, serieDiaria, variacaoRecente, formatarNumero, formatarPercentual, formatarData } from '../services/estatisticas';
 import { biomaDoAlerta, rotuloBioma } from '../services/irs';
@@ -31,6 +31,14 @@ function contarPorBioma(alertas) {
       : { nome: rotuloBioma(chave), valor, cor };
   });
   return { dados, estimados: biomas.filter(b => b?.estimado).length };
+}
+
+// Contagem por tipo de ocorrência, os dois tipos sempre presentes (inclusive com zero), do maior para o menor
+function contarPorTipo(alertas) {
+  if (alertas.length === 0) return [];
+  return Object.entries(TIPOS_OCORRENCIA)
+    .map(([chave, { rotulo, cor }]) => ({ nome: rotulo, valor: alertas.filter(a => tipoOcorrenciaDe(a) === chave).length, cor }))
+    .sort((a, b) => b.valor - a.valor);
 }
 
 function descreverBioma(periodo, estimados) {
@@ -71,6 +79,7 @@ export default function Dashboard() {
   const porEstado = contarPor(visiveis, a => a.estado);
   const porMunicipio = contarPor(visiveis, a => (a.municipio ? `${a.municipio}${a.estado ? ` / ${a.estado}` : ''}` : null));
   const { dados: porBioma, estimados: biomasEstimados } = contarPorBioma(visiveis);
+  const porTipo = contarPorTipo(visiveis);
   const serie = serieDiaria(visiveis, DIAS_EVOLUCAO);
 
   // Relatório consolidado: os mesmos números da tela, em seções de "indicador; valor"
@@ -86,6 +95,7 @@ export default function Dashboard() {
       ['Em Atendimento', emAtendimento],
       ['Resolvidos', resolvidos],
       ...secao('Nível de risco', Object.entries(RISCOS).map(([chave, { rotulo }]) => ({ nome: rotulo, valor: visiveis.filter(a => a.risco === chave).length }))),
+      ...secao('Tipo de ocorrência', porTipo),
       ...secao('Status', Object.entries(STATUS).map(([chave, { rotulo }]) => ({ nome: rotulo, valor: visiveis.filter(a => a.status === chave).length }))),
       ...secao('Estado', porEstado),
       ...secao('Município', porMunicipio),
@@ -127,6 +137,7 @@ export default function Dashboard() {
           </div>
         </div>
         <aside className="space-y-6" aria-label="Rankings">
+          <RankingBlock titulo="Ocorrências por tipo" periodo={periodo} dados={porTipo} total={total} limite={porTipo.length} visaoInicial="pizza" />
           <RankingBlock titulo="Top 5 Estados" periodo={periodo} dados={porEstado} total={total} visaoInicial="tabela" />
           <RankingBlock titulo="Top 5 Municípios" periodo={periodo} dados={porMunicipio} total={total} visaoInicial="barras" />
           <RankingBlock titulo="Distribuição por Bioma" periodo={descreverBioma(periodo, biomasEstimados)} dados={porBioma} total={total} limite={porBioma.length} visaoInicial="pizza" />

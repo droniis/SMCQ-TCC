@@ -31,7 +31,7 @@ export default function GeodadosPreview({ estado, geodados }) {
   if (estado === 'vazio') {
     return (
       <p className="rounded-lg border border-dashed border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-600">
-        Escolha o local no mapa (ou busque um CEP) para ver os dados ambientais do ponto.
+        Defina o local da ocorrência para ver os dados ambientais do ponto.
       </p>
     );
   }

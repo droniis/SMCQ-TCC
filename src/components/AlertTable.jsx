@@ -2,10 +2,11 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { ArrowDown, ArrowUp, ArrowUpDown, Clock, Download, Search, Send, Trash2 } from 'lucide-react';
-import { RISCOS, STATUS } from '../services/constantes';
+import { RISCOS, STATUS, TIPOS_OCORRENCIA, tipoOcorrenciaDe } from '../services/constantes';
 import { exportarAlertasCSV, exportarAlertasJSON } from '../services/exportacao';
 import RiskBadge from './RiskBadge';
 import StatusBadge from './StatusBadge';
+import TipoOcorrenciaBadge from './TipoOcorrenciaBadge';
 
 const ORDEM_RISCO = Object.keys(RISCOS);
 const ORDEM_STATUS = Object.keys(STATUS);
@@ -17,6 +18,7 @@ const regiao = (alerta) => [alerta.municipio, alerta.estado].filter(Boolean).joi
 const COLUNAS = [
   { chave: 'id', rotulo: '#', valor: a => a.id },
   { chave: 'titulo', rotulo: 'Título', valor: a => a.titulo || '' },
+  { chave: 'tipo', rotulo: 'Tipo', valor: a => TIPOS_OCORRENCIA[tipoOcorrenciaDe(a)].rotuloCurto },
   { chave: 'regiao', rotulo: 'Região', valor: regiao },
   { chave: 'risco', rotulo: 'Risco', valor: a => ORDEM_RISCO.indexOf(a.risco) },
   { chave: 'status', rotulo: 'Status', valor: a => ORDEM_STATUS.indexOf(a.status) },
@@ -45,6 +47,7 @@ function comparar(a, b) {
 function corresponde(alerta, termo) {
   const texto = [
     alerta.id, alerta.titulo, alerta.descricao, alerta.municipio, alerta.estado,
+    TIPOS_OCORRENCIA[tipoOcorrenciaDe(alerta)].rotulo,
     RISCOS[alerta.risco]?.rotulo, STATUS[alerta.status]?.rotulo
   ].filter(Boolean).join(' ').toLowerCase();
   return texto.includes(termo);
@@ -92,7 +95,7 @@ export default function AlertTable({ alertas, onAlterarStatus, onExcluir, onSoli
             type="search"
             value={busca}
             onChange={(e) => { setBusca(e.target.value); setPagina(1); }}
-            placeholder="Buscar por título, região, risco..."
+            placeholder="Buscar por título, tipo, região, risco..."
             className={`${CLASSE_CAMPO} w-full pl-9`}
           />
         </label>
@@ -112,7 +115,7 @@ export default function AlertTable({ alertas, onAlterarStatus, onExcluir, onSoli
         <p className="py-8 text-center text-sm text-slate-600">Nenhum alerta encontrado.</p>
       ) : (
         <div className="overflow-x-auto">
-          <table className={`w-full text-left text-sm ${temAcoes ? 'min-w-[900px]' : 'min-w-[720px]'}`}>
+          <table className={`w-full text-left text-sm ${temAcoes ? 'min-w-[1000px]' : 'min-w-[820px]'}`}>
             <thead>
               <tr className="border-b border-slate-200">
                 {COLUNAS.map(({ chave, rotulo }) => {
@@ -150,6 +153,7 @@ export default function AlertTable({ alertas, onAlterarStatus, onExcluir, onSoli
                     </Link>
                     {alerta.descricao && <div className="text-[13px] text-slate-600">{alerta.descricao}</div>}
                   </td>
+                  <td className="px-3 py-2.5"><TipoOcorrenciaBadge tipo={tipoOcorrenciaDe(alerta)} curto /></td>
                   <td className="px-3 py-2.5">{regiao(alerta) || '—'}</td>
                   <td className="px-3 py-2.5"><RiskBadge risco={alerta.risco} /></td>
                   <td className="px-3 py-2.5"><StatusBadge status={alerta.status} /></td>
@@ -227,7 +231,7 @@ export default function AlertTable({ alertas, onAlterarStatus, onExcluir, onSoli
               : `Exibindo ${inicio + 1} até ${inicio + visiveis.length} de ${linhas.length} registros`}
           </p>
         </div>
-        <nav className="flex items-center gap-1" aria-label="Paginação da tabela">
+        <nav className="flex flex-wrap items-center gap-1" aria-label="Paginação da tabela">
           <button type="button" className={CLASSE_BOTAO} disabled={paginaAtual === 1} onClick={() => setPagina(1)}>Primeira</button>
           <button type="button" className={CLASSE_BOTAO} disabled={paginaAtual === 1} onClick={() => setPagina(paginaAtual - 1)}>Anterior</button>
           <span className="px-2 tabular-nums">Página {paginaAtual} de {totalPaginas}</span>

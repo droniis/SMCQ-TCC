@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, Database, Gauge, Info, LoaderCircle } from 'lucide-react';
 import { getAlertas, getGeodadosAlerta, getRiscoAlerta, mensagemDeErro } from '../services/api';
-import { CRITERIOS_IRS, FONTES_GEODADOS, NIVEIS_FAUNA, RISCOS, ehFallback } from '../services/constantes';
+import { CRITERIOS_IRS, FONTES_GEODADOS, NIVEIS_FAUNA, RISCOS, ehFallback, tipoOcorrenciaDe } from '../services/constantes';
 import { formatarDataHora, rotuloBioma, rotuloTipoArea } from '../services/irs';
+import { formatarCep } from '../services/geocodificacao';
 import RiskBadge from '../components/RiskBadge';
 import StatusBadge from '../components/StatusBadge';
+import TipoOcorrenciaBadge from '../components/TipoOcorrenciaBadge';
 
 const CLASSE_CARTAO = 'rounded-xl border border-slate-200 bg-white p-5 shadow-sm';
 const CLASSE_TITULO = 'mb-4 flex items-center gap-2 text-base font-semibold text-smcq-navy';
@@ -169,6 +171,9 @@ export default function DetalheAlerta() {
   const { alerta, risco, geo } = dados;
   const cor = RISCOS[risco.nivel]?.cor || '#6C757D';
   const regiao = [alerta.municipio, alerta.estado].filter(Boolean).join(' / ');
+  // Rua ou ponto de referência, número, bairro e CEP; queimadas em vegetação costumam não ter
+  const rua = [alerta.logradouro, alerta.numero].filter(Boolean).join(', ');
+  const endereco = [rua, alerta.bairro, alerta.cep && `CEP ${formatarCep(alerta.cep)}`].filter(Boolean).join(' · ');
 
   return (
     <div className="p-6">
@@ -177,10 +182,14 @@ export default function DetalheAlerta() {
       <div className={`${CLASSE_CARTAO} mb-6`}>
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div className="min-w-0">
-            <p className="text-sm text-slate-500 tabular-nums">Alerta #{alerta.id}</p>
+            <p className="flex flex-wrap items-center gap-2 text-sm text-slate-500 tabular-nums">
+              Alerta #{alerta.id}
+              <TipoOcorrenciaBadge tipo={tipoOcorrenciaDe(alerta)} />
+            </p>
             <h2 className="text-xl font-semibold text-smcq-navy">{alerta.titulo}</h2>
             {alerta.descricao && <p className="mt-1 text-sm text-slate-600">{alerta.descricao}</p>}
-            <p className="mt-2 text-sm text-slate-600">
+            <p className="mt-2 text-sm text-slate-600">{endereco || <span className="italic text-slate-500">Endereço não informado</span>}</p>
+            <p className="mt-1 text-sm text-slate-600">
               {regiao || 'Sem município'} · lat {decimal(Number(alerta.latitude), 5)} · lng {decimal(Number(alerta.longitude), 5)} · registrado em {formatarDataHora(alerta.criadoEm)}
             </p>
           </div>

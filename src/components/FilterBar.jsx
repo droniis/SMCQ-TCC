@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { Filter, X } from 'lucide-react';
-import { RISCOS, STATUS, ESTADOS, FILTROS_VAZIOS } from '../services/constantes';
+import { RISCOS, STATUS, ESTADOS, FILTROS_VAZIOS, TIPOS_OCORRENCIA } from '../services/constantes';
 import { useFiltros, filtrarAlertas } from '../hooks/useFiltros';
 
 const CLASSE_ROTULO = 'flex flex-col gap-1 text-xs font-medium text-slate-600';
@@ -49,7 +49,7 @@ export default function FilterBar({ alertas = [] }) {
       aria-label="Filtros de alertas"
       className="mb-6 rounded-xl border border-slate-200 bg-white p-4 shadow-sm"
     >
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-7">
         <label className={CLASSE_ROTULO}>
           Data início
           <input className={CLASSE_CAMPO} name="dataInicio" type="date" value={rascunho.dataInicio} max={rascunho.dataFim || undefined} onChange={handleChange} />
@@ -70,6 +70,13 @@ export default function FilterBar({ alertas = [] }) {
           <select className={CLASSE_CAMPO} name="municipio" value={rascunho.municipio} onChange={handleChange} disabled={!rascunho.estado}>
             <option value="">{rascunho.estado ? 'Todos' : 'Escolha um estado'}</option>
             {municipios.map(m => <option key={m} value={m}>{m}</option>)}
+          </select>
+        </label>
+        <label className={CLASSE_ROTULO}>
+          Tipo de ocorrência
+          <select className={CLASSE_CAMPO} name="tipoOcorrencia" value={rascunho.tipoOcorrencia} onChange={handleChange}>
+            <option value="">Todos</option>
+            {Object.entries(TIPOS_OCORRENCIA).map(([valor, { rotulo }]) => <option key={valor} value={valor}>{rotulo}</option>)}
           </select>
         </label>
         <label className={CLASSE_ROTULO}>

@@ -142,7 +142,21 @@ async function reversoNominatim(latitude, longitude) {
   };
 }
 
-// Coordenadas → { logradouro, numero, bairro, municipio, estado, cep }; campos ausentes vêm vazios
-export function buscarEnderecoPorPonto(latitude, longitude) {
-  return comReserva(() => reversoPhoton(latitude, longitude), () => reversoNominatim(latitude, longitude));
+// Coordenadas → { logradouro, numero, bairro, municipio, estado, cep }; campos ausentes vêm vazios.
+// Longe de ruas e povoados (queimadas em vegetação) o Photon pode responder sem nenhum resultado;
+// aí o Nominatim, que ainda informa município e UF, é consultado (uma vez, na mesma ação do usuário).
+export async function buscarEnderecoPorPonto(latitude, longitude) {
+  let photon = null;
+  try {
+    photon = await reversoPhoton(latitude, longitude);
+  } catch {
+    // segue para o serviço de reserva
+  }
+  if (photon?.municipio) return photon;
+  try {
+    return await reversoNominatim(latitude, longitude);
+  } catch (err) {
+    if (photon) return photon;
+    throw err;
+  }
 }

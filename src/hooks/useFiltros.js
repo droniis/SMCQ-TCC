@@ -1,4 +1,5 @@
 import { createContext, useContext } from 'react';
+import { tipoOcorrenciaDe } from '../services/constantes';
 
 // Filtros globais: o valor é fornecido por components/FiltrosProvider
 export const FiltrosContext = createContext(null);
@@ -25,6 +26,7 @@ export function filtrarAlertas(alertas, filtros) {
     if (filtros.risco && alerta.risco !== filtros.risco) return false;
     if (filtros.estado && alerta.estado !== filtros.estado) return false;
     if (filtros.municipio && alerta.municipio !== filtros.municipio) return false;
+    if (filtros.tipoOcorrencia && tipoOcorrenciaDe(alerta) !== filtros.tipoOcorrencia) return false;
     if (inicio || fim) {
       const criadoEm = new Date(alerta.criadoEm);
       if (inicio && criadoEm < inicio) return false;

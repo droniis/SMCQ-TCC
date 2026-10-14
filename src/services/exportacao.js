@@ -1,10 +1,11 @@
-import { RISCOS, STATUS } from './constantes';
+import { RISCOS, STATUS, TIPOS_OCORRENCIA, tipoOcorrenciaDe } from './constantes';
 
 // Colunas do CSV de alertas: [cabeçalho, função que extrai o valor]
 const COLUNAS_ALERTA = [
   ['ID', a => a.id],
   ['Título', a => a.titulo],
   ['Descrição', a => a.descricao],
+  ['Tipo de ocorrência', a => TIPOS_OCORRENCIA[tipoOcorrenciaDe(a)].rotulo],
   ['Estado', a => a.estado],
   ['Município', a => a.municipio],
   ['Risco', a => RISCOS[a.risco]?.rotulo || a.risco],
