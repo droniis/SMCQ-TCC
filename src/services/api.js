@@ -48,7 +48,15 @@ export const getAlertas = () =>
 export const getAlerta = (id) =>
   api.get(`/alertas/${id}`);
 
-export const createAlerta = (alerta) => 
+// Edição da ocorrência (só os campos alterados). Localização e tipo de ocorrência não são editáveis.
+export const editarAlerta = (id, campos) =>
+  api.patch(`/alertas/${id}`, campos);
+
+// Simula a edição sem gravar: { nivelAtual, nivelNovo, irsAtual, irsNovo, recalculado, mudaNivel }
+export const simularEdicao = (id, campos) =>
+  api.post(`/alertas/${id}/risco/simulacao`, campos);
+
+export const createAlerta = (alerta) =>
   api.post('/alertas', alerta);
 
 export const updateStatus = (id, status) => 

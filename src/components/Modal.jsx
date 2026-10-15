@@ -3,7 +3,9 @@ import { X } from 'lucide-react';
 
 // Janela modal. Fecha com Esc, com o X ou com um clique fora; `bloqueado` impede o fechamento
 // enquanto uma ação está em andamento. O z-index fica acima dos controles do Leaflet.
-export default function Modal({ titulo, onFechar, bloqueado = false, children }) {
+// `largura` troca a largura máxima (classe Tailwind) para formulários maiores; o conteúdo
+// rola dentro da janela quando não cabe na tela.
+export default function Modal({ titulo, onFechar, bloqueado = false, largura = 'max-w-md', children }) {
   const idTitulo = useId();
 
   useEffect(() => {
@@ -25,7 +27,7 @@ export default function Modal({ titulo, onFechar, bloqueado = false, children })
         role="dialog"
         aria-modal="true"
         aria-labelledby={idTitulo}
-        className="w-full max-w-md animate-fade-in rounded-xl bg-white p-6 shadow-xl motion-reduce:animate-none"
+        className={`max-h-[calc(100vh-2rem)] w-full ${largura} animate-fade-in overflow-y-auto rounded-xl bg-white p-6 shadow-xl motion-reduce:animate-none`}
       >
         <div className="mb-4 flex items-start justify-between gap-3">
           <h2 id={idTitulo} className="text-lg font-semibold text-smcq-navy">{titulo}</h2>

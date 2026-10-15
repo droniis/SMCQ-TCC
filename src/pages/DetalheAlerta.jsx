@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { ArrowLeft, Database, Gauge, History, Info, LoaderCircle, MessageSquare, Send, Trash2 } from 'lucide-react';
+import { ArrowLeft, Database, Gauge, History, Info, LoaderCircle, MessageSquare, Pencil, Send, Trash2 } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
 import { adicionarObservacao, getAlerta, getGeodadosAlerta, getRiscoAlerta, mensagemDeErro } from '../services/api';
 import {
@@ -14,6 +14,7 @@ import RiskBadge from '../components/RiskBadge';
 import StatusBadge from '../components/StatusBadge';
 import TipoOcorrenciaBadge from '../components/TipoOcorrenciaBadge';
 import SituacaoSolicitacaoBadge from '../components/SituacaoSolicitacaoBadge';
+import EditarAlertaModal from '../components/EditarAlertaModal';
 
 const CLASSE_CARTAO = 'rounded-xl border border-slate-200 bg-white p-5 shadow-sm';
 const CLASSE_TITULO = 'mb-4 flex items-center gap-2 text-base font-semibold text-smcq-navy';
@@ -289,6 +290,7 @@ export default function DetalheAlerta() {
   const { user } = useAuth();
   const avalia = PERFIS_EXCLUSAO_DIRETA.includes(user?.perfil);
   const [dados, setDados] = useState({ carregando: true, erro: '', alerta: null, risco: null, geo: null });
+  const [editando, setEditando] = useState(false);
 
   useEffect(() => {
     let atual = true;
@@ -331,6 +333,17 @@ export default function DetalheAlerta() {
   const { alerta, risco, geo } = dados;
   // As respostas das ações (observação, status...) trazem o alerta já com os nomes dos autores
   const atualizarAlerta = (novo) => setDados(d => ({ ...d, alerta: novo }));
+  // Depois da edição, o detalhamento do risco pode ter sido recalculado: busca de novo
+  const aoSalvarEdicao = async (novo) => {
+    setEditando(false);
+    atualizarAlerta(novo);
+    try {
+      const { data } = await getRiscoAlerta(novo.id);
+      setDados(d => ({ ...d, risco: data }));
+    } catch (err) {
+      toast.error(mensagemDeErro(err, 'Erro ao atualizar o detalhamento do risco'));
+    }
+  };
   const solicitacoes = (alerta.solicitacoesExclusao || []).filter(s => avalia || s.solicitadoPor === user?.id);
   const cor = RISCOS[risco.nivel]?.cor || '#6C757D';
   const regiao = [alerta.municipio, alerta.estado].filter(Boolean).join(' / ');
@@ -357,9 +370,20 @@ export default function DetalheAlerta() {
               {alerta.criadoPorNome && <> por {alerta.criadoPorNome}</>}
             </p>
           </div>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <RiskBadge risco={alerta.risco} />
             <StatusBadge status={alerta.status} />
+            {/* Alerta resolvido não pode ser editado (o backend responde 422) */}
+            {alerta.status !== 'RESOLVIDO' && (
+              <button
+                type="button"
+                onClick={() => setEditando(true)}
+                className="ml-1 inline-flex cursor-pointer items-center gap-1.5 rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-semibold text-smcq-navy transition-colors duration-150 hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-smcq-orange focus-visible:outline-none"
+              >
+                <Pencil size={14} aria-hidden="true" />
+                Editar
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -441,6 +465,8 @@ export default function DetalheAlerta() {
           <Historico historico={alerta.historico} />
         </section>
       </div>
+
+      {editando && <EditarAlertaModal alerta={alerta} onFechar={() => setEditando(false)} onSalvo={aoSalvarEdicao} />}
     </div>
   );
 }
