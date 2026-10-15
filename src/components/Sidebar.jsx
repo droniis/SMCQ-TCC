@@ -28,13 +28,13 @@ const GRUPOS = [
         rota: '/solicitacoes-exclusao',
         icone: Trash2,
         chave: 'solicitacoes'
-      }
+      },
+      { rotulo: 'Usuários', rota: '/usuarios', icone: Users, perfis: ['GESTOR', 'ADMINISTRADOR'] }
     ]
   },
   {
     titulo: 'Em breve',
     itens: [
-      { rotulo: 'Equipe & Brigadistas', icone: Users },
       { rotulo: 'Relatórios Ambientais', icone: ChartColumn },
       { rotulo: 'Configurações', icone: Settings }
     ]

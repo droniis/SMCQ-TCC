@@ -12,7 +12,8 @@ const TITULOS = {
   '/alertas': 'Lista de Alertas',
   '/novo-alerta': 'Registrar Ocorrência',
   '/mapa': 'Mapa de Ocorrências',
-  '/solicitacoes-exclusao': 'Solicitações de Exclusão'
+  '/solicitacoes-exclusao': 'Solicitações de Exclusão',
+  '/usuarios': 'Usuários'
 };
 
 // Títulos que mudam conforme o perfil (o operador só acompanha os próprios pedidos)

@@ -50,6 +50,38 @@ export const PERFIS = {
 // Administrador e Gestor excluem alertas direto; o Operador solicita a exclusão
 export const PERFIS_EXCLUSAO_DIRETA = ['ADMINISTRADOR', 'GESTOR'];
 
+// ------------------------------------------------------------
+// Gestão de usuários: matriz de permissões, a mesma de services/usuarioService.js
+// no backend (que é quem decide; aqui só se escondem os botões).
+//   Cadastrar: só Gestor. Editar, redefinir senha, desativar e reativar: Gestor
+//   qualquer um; Administrador só Operador. Mudar perfil: só Gestor. Ninguém muda o
+//   próprio perfil, redefine a própria senha nem se desativa por esta tela.
+// ------------------------------------------------------------
+export const PERFIS_GESTAO_USUARIOS = ['GESTOR', 'ADMINISTRADOR'];
+export const SENHA_MINIMA = 8;
+
+const ehGestor = (ator) => ator?.perfil === 'GESTOR';
+const editaAlvo = (ator, alvo) => ehGestor(ator) || (ator?.perfil === 'ADMINISTRADOR' && alvo.perfil === 'OPERADOR');
+const proprio = (ator, alvo) => ator?.id === alvo.id;
+
+export const podeCadastrarUsuario = (ator) => ehGestor(ator);
+export const podeEditarUsuario = (ator, alvo) => editaAlvo(ator, alvo);
+export const podeMudarPerfilUsuario = (ator, alvo) => ehGestor(ator) && !proprio(ator, alvo);
+export const podeRedefinirSenhaUsuario = (ator, alvo) => editaAlvo(ator, alvo) && !proprio(ator, alvo);
+export const podeAlterarAtivoUsuario = (ator, alvo) => editaAlvo(ator, alvo) && !proprio(ator, alvo);
+
+// Ações registradas na auditoria de usuários
+export const ACOES_AUDITORIA = {
+  CRIADO: 'Cadastrado',
+  EDITADO: 'Dados alterados',
+  DESATIVADO: 'Desativado',
+  REATIVADO: 'Reativado',
+  SENHA_REDEFINIDA: 'Senha provisória redefinida',
+  SENHA_ALTERADA: 'Senha alterada pelo próprio usuário'
+};
+
+export const CAMPOS_USUARIO = { nome: 'Nome', email: 'E-mail', perfil: 'Perfil', ativo: 'Situação' };
+
 // Situação de uma solicitação de exclusão (valores aceitos no filtro ?status= do backend)
 export const SITUACOES_SOLICITACAO = {
   PENDENTE: { rotulo: 'Pendente', cor: '#FFBA08', corTexto: '#1B3A5C' },

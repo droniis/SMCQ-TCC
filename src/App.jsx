@@ -9,6 +9,7 @@ import NovoAlerta from './pages/NovoAlerta.jsx';
 import Mapa from './pages/Mapa.jsx';
 import DetalheAlerta from './pages/DetalheAlerta.jsx';
 import SolicitacoesExclusao from './pages/SolicitacoesExclusao.jsx';
+import Usuarios from './pages/Usuarios.jsx';
 
 // ============================================================
 // PROTEÇÃO DE ROTAS
@@ -40,6 +41,7 @@ function App() {
           <Route path="/novo-alerta" element={<NovoAlerta />} />
           <Route path="/mapa" element={<Mapa />} />
           <Route path="/solicitacoes-exclusao" element={<SolicitacoesExclusao />} />
+          <Route path="/usuarios" element={<Usuarios />} />
           <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Route>
       </Routes>

@@ -95,4 +95,27 @@ export const getSolicitacoesExclusao = (situacao) =>
 export const avaliarSolicitacao = (alertaId, solicitacaoId, decisao, resposta) =>
   api.patch(`/alertas/${alertaId}/solicitacoes-exclusao/${solicitacaoId}`, { decisao, resposta });
 
+// ------------------------------------------------------------
+// Gestão de usuários (Gestor e Administrador; as permissões são conferidas no backend)
+// ------------------------------------------------------------
+
+// filtros: { perfil?, ativo? } ('' = sem filtro)
+export const getUsuarios = ({ perfil = '', ativo = '' } = {}) =>
+  api.get('/usuarios', { params: { ...(perfil ? { perfil } : {}), ...(ativo !== '' ? { ativo } : {}) } });
+
+// { nome, email, perfil, senha } — a senha é provisória (troca no primeiro acesso)
+export const criarUsuario = (dados) =>
+  api.post('/usuarios', dados);
+
+// Só os campos alterados: { nome?, email?, perfil?, senha? }
+export const editarUsuario = (id, campos) =>
+  api.patch(`/usuarios/${id}`, campos);
+
+// ativo = false desativa (exclusão lógica); true reativa
+export const alterarAtivoUsuario = (id, ativo) =>
+  api.patch(`/usuarios/${id}/ativo`, { ativo });
+
+export const getAuditoriaUsuario = (id) =>
+  api.get(`/usuarios/${id}/auditoria`);
+
 export default api;
