@@ -1,4 +1,4 @@
-import { OPCOES_BIOMA, OPCOES_TIPO_AREA } from './constantes';
+import { AREAS_AFETADAS, INTENSIDADES_VENTO, OPCOES_BIOMA, OPCOES_TIPO_AREA, RISCOS, STATUS } from './constantes';
 
 // Funções auxiliares para exibir os dados do IRS v2. O cálculo do índice é feito só no backend.
 
@@ -29,4 +29,20 @@ export function biomaDoAlerta(alerta, biomaPorEstado) {
   if (alerta.bioma && OPCOES_BIOMA.some(o => o.valor === alerta.bioma)) return { chave: alerta.bioma, estimado: false };
   const porUf = biomaPorEstado[alerta.estado];
   return porUf ? { chave: porUf, estimado: true } : null;
+}
+
+// Valor de um registro do histórico, como o usuário o reconhece (null = não informado)
+export function formatarValorHistorico(campo, valor) {
+  if (valor === null || valor === undefined || valor === '') return '—';
+  switch (campo) {
+    case 'status': return STATUS[valor]?.rotulo || valor;
+    case 'risco': return RISCOS[valor]?.rotulo || valor;
+    case 'areaAfetada': return AREAS_AFETADAS[valor] || valor;
+    case 'vento': return INTENSIDADES_VENTO[valor] || valor;
+    case 'bioma': return rotuloBioma(valor);
+    case 'tipoArea': return rotuloTipoArea(valor);
+    case 'pessoasRisco':
+    case 'excluido': return valor ? 'Sim' : 'Não';
+    default: return String(valor);
+  }
 }

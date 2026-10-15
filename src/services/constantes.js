@@ -15,6 +15,32 @@ export const STATUS = {
   RESOLVIDO: { rotulo: 'Resolvido', cor: '#2B9348', corTexto: '#FFFFFF' }
 };
 
+// Transições de status permitidas (UC05 FA01), as mesmas de services/statusService.js no backend.
+// O backend recusa as demais com 422; aqui servem para oferecer só as válidas.
+export const TRANSICOES_STATUS = {
+  NOVO: ['EM_ANALISE'],
+  EM_ANALISE: ['EM_ATENDIMENTO', 'NOVO'],
+  EM_ATENDIMENTO: ['RESOLVIDO', 'EM_ANALISE'],
+  RESOLVIDO: []
+};
+
+export const AREAS_AFETADAS = { PEQUENA: 'Pequena', MEDIA: 'Média', GRANDE: 'Grande' };
+export const INTENSIDADES_VENTO = { BAIXO: 'Baixo', MODERADO: 'Moderado', ALTO: 'Alto' };
+
+// Rótulo de cada campo que aparece no histórico do alerta
+export const CAMPOS_HISTORICO = {
+  status: 'Status',
+  excluido: 'Exclusão',
+  titulo: 'Título',
+  descricao: 'Descrição',
+  areaAfetada: 'Área afetada',
+  vento: 'Vento',
+  pessoasRisco: 'Pessoas em risco',
+  bioma: 'Bioma',
+  tipoArea: 'Tipo de área',
+  risco: 'Nível de risco'
+};
+
 export const PERFIS = {
   ADMINISTRADOR: 'Administrador',
   OPERADOR: 'Operador',

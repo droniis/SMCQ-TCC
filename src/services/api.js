@@ -44,11 +44,18 @@ export const login = (email, senha) =>
 export const getAlertas = () => 
   api.get('/alertas');
 
+// Um alerta, com os nomes dos autores do histórico, das observações e das solicitações
+export const getAlerta = (id) =>
+  api.get(`/alertas/${id}`);
+
 export const createAlerta = (alerta) => 
   api.post('/alertas', alerta);
 
 export const updateStatus = (id, status) => 
   api.patch(`/alertas/${id}/status`, { status });
+
+export const adicionarObservacao = (id, observacao) =>
+  api.post(`/alertas/${id}/observacoes`, { observacao });
 
 // Geodados de um ponto (bioma, UC, TI, fauna, focos), sem criar alerta.
 // Chamado ao escolher o local: o backend guarda o resultado em cache e o POST seguinte o reaproveita.

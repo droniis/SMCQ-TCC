@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { ArrowDown, ArrowUp, ArrowUpDown, Clock, Download, Search, Send, Trash2 } from 'lucide-react';
-import { RISCOS, STATUS, TIPOS_OCORRENCIA, tipoOcorrenciaDe } from '../services/constantes';
+import { RISCOS, STATUS, TIPOS_OCORRENCIA, TRANSICOES_STATUS, tipoOcorrenciaDe } from '../services/constantes';
 import { exportarAlertasCSV, exportarAlertasJSON } from '../services/exportacao';
 import RiskBadge from './RiskBadge';
 import StatusBadge from './StatusBadge';
@@ -160,16 +160,21 @@ export default function AlertTable({ alertas, onAlterarStatus, onExcluir, onSoli
                   <td className="px-3 py-2.5 whitespace-nowrap tabular-nums">{new Date(alerta.criadoEm).toLocaleString('pt-BR')}</td>
                   {onAlterarStatus && (
                     <td className="px-3 py-2.5">
-                      <select
-                        className={`${CLASSE_CAMPO} cursor-pointer py-1.5`}
-                        aria-label={`Alterar status do alerta ${alerta.id}`}
-                        value={alerta.status}
-                        onChange={(e) => onAlterarStatus(alerta.id, e.target.value)}
-                      >
-                        {Object.entries(STATUS).map(([valor, { rotulo }]) => (
-                          <option key={valor} value={valor}>{rotulo}</option>
-                        ))}
-                      </select>
+                      {/* Só as transições permitidas a partir do status atual; Resolvido é final */}
+                      {(TRANSICOES_STATUS[alerta.status] || []).length === 0 ? (
+                        <span className="text-sm text-slate-500" title="Status final: não pode ser alterado">Encerrado</span>
+                      ) : (
+                        <select
+                          className={`${CLASSE_CAMPO} cursor-pointer py-1.5`}
+                          aria-label={`Alterar status do alerta ${alerta.id}`}
+                          value={alerta.status}
+                          onChange={(e) => onAlterarStatus(alerta.id, e.target.value)}
+                        >
+                          {[alerta.status, ...TRANSICOES_STATUS[alerta.status]].map(valor => (
+                            <option key={valor} value={valor} disabled={valor === alerta.status}>{STATUS[valor]?.rotulo || valor}</option>
+                          ))}
+                        </select>
+                      )}
                     </td>
                   )}
                   {temAcoes && (
