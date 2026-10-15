@@ -7,6 +7,8 @@ import { PERFIS } from '../services/constantes';
 
 // Itens sem rota ainda não têm tela e aparecem desativados.
 // "chave" liga o item a um contador (ex.: solicitações pendentes).
+// "perfis" limita quem vê o item; "rotuloPorPerfil" troca o nome conforme o perfil.
+// Grupos que ficam sem itens visíveis não aparecem.
 const GRUPOS = [
   {
     titulo: 'Operação',
@@ -18,9 +20,20 @@ const GRUPOS = [
     ]
   },
   {
+    titulo: 'Gestão',
+    itens: [
+      {
+        rotulo: 'Solicitações de Exclusão',
+        rotuloPorPerfil: { OPERADOR: 'Minhas Solicitações' },
+        rota: '/solicitacoes-exclusao',
+        icone: Trash2,
+        chave: 'solicitacoes'
+      }
+    ]
+  },
+  {
     titulo: 'Em breve',
     itens: [
-      { rotulo: 'Solicitações de Exclusão', icone: Trash2, chave: 'solicitacoes' },
       { rotulo: 'Equipe & Brigadistas', icone: Users },
       { rotulo: 'Relatórios Ambientais', icone: ChartColumn },
       { rotulo: 'Configurações', icone: Settings }
@@ -73,13 +86,17 @@ export default function Sidebar({ usuario, recolhida, onAlternar, abertaMobile, 
 
         {/* Navegação */}
         <nav className="flex-1 space-y-6 overflow-y-auto px-3 py-4" aria-label="Menu principal">
-          {GRUPOS.map(grupo => (
+          {GRUPOS.map(grupo => ({
+            ...grupo,
+            itens: grupo.itens.filter(item => !item.perfis || item.perfis.includes(usuario?.perfil))
+          })).filter(grupo => grupo.itens.length > 0).map(grupo => (
             <div key={grupo.titulo}>
               <p className={`mb-2 px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-500 ${soDesktopOculto}`}>
                 {grupo.titulo}
               </p>
               <div className="space-y-1">
-                {grupo.itens.map(item => {
+                {grupo.itens.map(itemBase => {
+                  const item = { ...itemBase, rotulo: itemBase.rotuloPorPerfil?.[usuario?.perfil] || itemBase.rotulo };
                   const Icone = item.icone;
                   const contador = contadores[item.chave] || 0;
                   const conteudo = (
@@ -117,7 +134,7 @@ export default function Sidebar({ usuario, recolhida, onAlternar, abertaMobile, 
                       key={item.rotulo}
                       to={item.rota}
                       onClick={onFecharMobile}
-                      title={recolhida ? item.rotulo : undefined}
+                      title={item.rotulo}
                       className={({ isActive }) =>
                         `${ITEM} ${centralizado} ${isActive ? 'bg-white/10 text-white' : 'text-slate-300 hover:bg-white/5 hover:text-white'}`
                       }

@@ -1,16 +1,19 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { ArrowLeft, Database, Gauge, History, Info, LoaderCircle, MessageSquare, Send } from 'lucide-react';
+import { ArrowLeft, Database, Gauge, History, Info, LoaderCircle, MessageSquare, Send, Trash2 } from 'lucide-react';
+import { useAuth } from '../hooks/useAuth';
 import { adicionarObservacao, getAlerta, getGeodadosAlerta, getRiscoAlerta, mensagemDeErro } from '../services/api';
 import {
-  AREAS_AFETADAS, CAMPOS_HISTORICO, CRITERIOS_IRS, FONTES_GEODADOS, INTENSIDADES_VENTO, NIVEIS_FAUNA, RISCOS, ehFallback, tipoOcorrenciaDe
+  AREAS_AFETADAS, CAMPOS_HISTORICO, CRITERIOS_IRS, FONTES_GEODADOS, INTENSIDADES_VENTO, NIVEIS_FAUNA, PERFIS_EXCLUSAO_DIRETA, RISCOS,
+  ehFallback, tipoOcorrenciaDe
 } from '../services/constantes';
 import { formatarDataHora, formatarValorHistorico, rotuloBioma, rotuloTipoArea } from '../services/irs';
 import { formatarCep } from '../services/geocodificacao';
 import RiskBadge from '../components/RiskBadge';
 import StatusBadge from '../components/StatusBadge';
 import TipoOcorrenciaBadge from '../components/TipoOcorrenciaBadge';
+import SituacaoSolicitacaoBadge from '../components/SituacaoSolicitacaoBadge';
 
 const CLASSE_CARTAO = 'rounded-xl border border-slate-200 bg-white p-5 shadow-sm';
 const CLASSE_TITULO = 'mb-4 flex items-center gap-2 text-base font-semibold text-smcq-navy';
@@ -239,9 +242,52 @@ function Historico({ historico = [] }) {
   );
 }
 
+// Pedidos de exclusão deste alerta: quem avalia vê todos; o operador, só os próprios
+function SolicitacoesDoAlerta({ solicitacoes, avalia }) {
+  const temPendente = solicitacoes.some(s => s.status === 'PENDENTE');
+  return (
+    <>
+      <ul className="divide-y divide-slate-100">
+        {[...solicitacoes].reverse().map(s => (
+          <li key={s.id} className="flex flex-wrap items-start justify-between gap-3 py-3 first:pt-0 last:pb-0">
+            <div className="min-w-0 flex-1">
+              <p className="text-xs text-slate-500">
+                {avalia && <><span className="font-semibold text-smcq-navy">{s.solicitadoPorNome || `Usuário #${s.solicitadoPor}`}</span> · </>}
+                solicitada em {formatarDataHora(s.criadoEm)}
+              </p>
+              <p className="mt-1 text-sm break-words whitespace-pre-wrap text-slate-700">
+                <span className="font-medium text-smcq-navy">Motivo:</span> {s.motivo}
+              </p>
+              {s.status !== 'PENDENTE' && (
+                <p className="mt-1 text-sm break-words whitespace-pre-wrap text-slate-700">
+                  <span className="font-medium text-smcq-navy">Resposta:</span> {s.resposta || <span className="text-slate-500">sem resposta</span>}
+                  <span className="block text-xs text-slate-500">
+                    {s.resolvidoPorNome || `Usuário #${s.resolvidoPor}`} · {formatarDataHora(s.resolvidoEm)}
+                  </span>
+                </p>
+              )}
+            </div>
+            <SituacaoSolicitacaoBadge situacao={s.status} />
+          </li>
+        ))}
+      </ul>
+      {avalia && temPendente && (
+        <Link
+          to="/solicitacoes-exclusao"
+          className="mt-3 inline-block cursor-pointer text-sm font-semibold text-smcq-blue hover:underline focus-visible:ring-2 focus-visible:ring-smcq-orange focus-visible:outline-none"
+        >
+          Avaliar em Solicitações de Exclusão
+        </Link>
+      )}
+    </>
+  );
+}
+
 // Detalhes do alerta (HU10): índice de risco, nível, contribuição de cada critério, versão e fontes
 export default function DetalheAlerta() {
   const { id } = useParams();
+  const { user } = useAuth();
+  const avalia = PERFIS_EXCLUSAO_DIRETA.includes(user?.perfil);
   const [dados, setDados] = useState({ carregando: true, erro: '', alerta: null, risco: null, geo: null });
 
   useEffect(() => {
@@ -285,6 +331,7 @@ export default function DetalheAlerta() {
   const { alerta, risco, geo } = dados;
   // As respostas das ações (observação, status...) trazem o alerta já com os nomes dos autores
   const atualizarAlerta = (novo) => setDados(d => ({ ...d, alerta: novo }));
+  const solicitacoes = (alerta.solicitacoesExclusao || []).filter(s => avalia || s.solicitadoPor === user?.id);
   const cor = RISCOS[risco.nivel]?.cor || '#6C757D';
   const regiao = [alerta.municipio, alerta.estado].filter(Boolean).join(' / ');
   // Rua ou ponto de referência, número, bairro e CEP; queimadas em vegetação costumam não ter
@@ -366,6 +413,16 @@ export default function DetalheAlerta() {
           <Contribuicoes detalhes={risco.detalhes} irs={risco.irs} cor={cor} />
         </section>
       </div>
+
+      {solicitacoes.length > 0 && (
+        <section className={`${CLASSE_CARTAO} mt-6`} aria-labelledby="titulo-solicitacoes">
+          <h3 id="titulo-solicitacoes" className={CLASSE_TITULO}>
+            <Trash2 size={18} className="text-smcq-red" aria-hidden="true" />
+            {avalia ? 'Solicitações de exclusão' : 'Minhas solicitações de exclusão'}
+          </h3>
+          <SolicitacoesDoAlerta solicitacoes={solicitacoes} avalia={avalia} />
+        </section>
+      )}
 
       <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
         <section className={CLASSE_CARTAO} aria-labelledby="titulo-observacoes">

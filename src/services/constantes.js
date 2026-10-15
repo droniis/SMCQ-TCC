@@ -50,6 +50,13 @@ export const PERFIS = {
 // Administrador e Gestor excluem alertas direto; o Operador solicita a exclusão
 export const PERFIS_EXCLUSAO_DIRETA = ['ADMINISTRADOR', 'GESTOR'];
 
+// Situação de uma solicitação de exclusão (valores aceitos no filtro ?status= do backend)
+export const SITUACOES_SOLICITACAO = {
+  PENDENTE: { rotulo: 'Pendente', cor: '#FFBA08', corTexto: '#1B3A5C' },
+  APROVADA: { rotulo: 'Aprovada', cor: '#2B9348', corTexto: '#FFFFFF' },
+  REJEITADA: { rotulo: 'Rejeitada', cor: '#D00000', corTexto: '#FFFFFF' }
+};
+
 export const ESTADOS = [
   'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA',
   'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'

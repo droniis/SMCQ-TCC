@@ -78,4 +78,13 @@ export const deleteAlerta = (id) =>
 export const solicitarExclusao = (id, motivo) =>
   api.post(`/alertas/${id}/solicitacoes-exclusao`, { motivo });
 
+// Solicitações de exclusão: todas para administrador e gestor; só as próprias para o operador.
+// situacao: PENDENTE | APROVADA | REJEITADA (vazio = todas)
+export const getSolicitacoesExclusao = (situacao) =>
+  api.get('/solicitacoes-exclusao', { params: situacao ? { status: situacao } : {} });
+
+// Aprovar (exclui o alerta) ou rejeitar (resposta obrigatória) uma solicitação
+export const avaliarSolicitacao = (alertaId, solicitacaoId, decisao, resposta) =>
+  api.patch(`/alertas/${alertaId}/solicitacoes-exclusao/${solicitacaoId}`, { decisao, resposta });
+
 export default api;

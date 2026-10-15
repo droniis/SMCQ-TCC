@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { LoaderCircle, Plus, Send, Trash2 } from 'lucide-react';
 import { useAlertas } from '../hooks/useAlertas';
@@ -27,6 +27,7 @@ export default function Alertas() {
   const [enviando, setEnviando] = useState(false);
   const [erroModal, setErroModal] = useState('');
   const navigate = useNavigate();
+  const { atualizarContadores } = useOutletContext() || {};
 
   // Administrador e Gestor excluem direto; o Operador solicita a exclusão
   const podeExcluirDireto = PERFIS_EXCLUSAO_DIRETA.includes(user?.perfil);
@@ -56,6 +57,8 @@ export default function Alertas() {
       await excluirAlerta(modal.alerta.id);
       toast.success('Alerta excluído');
       fecharModal();
+      // A exclusão direta atende as solicitações pendentes do alerta
+      atualizarContadores?.();
     } catch (err) {
       setErroModal(mensagemDeErro(err, 'Erro ao excluir o alerta'));
     } finally {
