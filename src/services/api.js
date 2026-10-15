@@ -15,8 +15,10 @@ api.interceptors.request.use(config => {
   return config;
 });
 
-// 401 = token ausente, inválido ou expirado: encerra a sessão e volta para o login.
-// 403 é permissão negada: a sessão continua e a tela mostra a mensagem do backend.
+// 401 = token ausente, inválido ou expirado (ou usuário desativado): encerra a sessão e volta para o login.
+// 403 é permissão negada: a sessão continua e a tela mostra a mensagem do backend. Exceção:
+// 403 com o código TROCA_SENHA_OBRIGATORIA (senha provisória, inclusive redefinida pelo gestor
+// durante a sessão) marca o usuário e leva à tela de troca de senha.
 api.interceptors.response.use(
   response => response,
   error => {
@@ -26,6 +28,14 @@ api.interceptors.response.use(
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       window.location.assign('/login');
+    } else if (status === 403 && error.response?.data?.codigo === 'TROCA_SENHA_OBRIGATORIA') {
+      try {
+        const usuario = JSON.parse(localStorage.getItem('user') || '{}');
+        localStorage.setItem('user', JSON.stringify({ ...usuario, senhaProvisoria: true }));
+      } catch {
+        // usuário salvo ilegível: a tela de troca de senha funciona mesmo assim
+      }
+      if (window.location.pathname !== '/trocar-senha') window.location.assign('/trocar-senha');
     }
     return Promise.reject(error);
   }
@@ -117,5 +127,19 @@ export const alterarAtivoUsuario = (id, ativo) =>
 
 export const getAuditoriaUsuario = (id) =>
   api.get(`/usuarios/${id}/auditoria`);
+
+// ------------------------------------------------------------
+// Meu perfil (UC04): o próprio usuário
+// ------------------------------------------------------------
+export const getPerfil = () =>
+  api.get('/perfil');
+
+// { nome?, email? } — o perfil não muda por aqui
+export const atualizarPerfil = (campos) =>
+  api.patch('/perfil', campos);
+
+// Senha atual errada → 422 com a mensagem (a sessão continua)
+export const alterarSenha = (senhaAtual, novaSenha) =>
+  api.patch('/perfil/senha', { senhaAtual, novaSenha });
 
 export default api;

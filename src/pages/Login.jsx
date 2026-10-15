@@ -29,7 +29,12 @@ export default function Login() {
     setLoading(true);
     setErro('');
     try {
-      await login(email, senha);
+      const usuario = await login(email, senha);
+      // Senha provisória (primeiro acesso ou redefinida pelo gestor): troca obrigatória antes de entrar
+      if (usuario.senhaProvisoria) {
+        navigate('/trocar-senha');
+        return;
+      }
       toast.success('Login realizado com sucesso');
       navigate('/dashboard');
     } catch (err) {

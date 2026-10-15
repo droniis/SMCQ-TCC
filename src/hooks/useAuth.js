@@ -16,7 +16,16 @@ export function sessaoValida() {
 
 function lerUsuario() {
   const userData = localStorage.getItem('user');
-  return sessaoValida() && userData ? JSON.parse(userData) : null;
+  try {
+    return sessaoValida() && userData ? JSON.parse(userData) : null;
+  } catch {
+    return null;
+  }
+}
+
+// O usuário ainda está com a senha provisória (troca obrigatória antes de usar o sistema)
+export function senhaProvisoriaPendente() {
+  return Boolean(lerUsuario()?.senhaProvisoria);
 }
 
 export function useAuth() {
@@ -37,5 +46,13 @@ export function useAuth() {
     setUser(null);
   };
 
-  return { user, login, logout };
+  // Depois de editar o perfil ou trocar a senha: guarda os dados novos do usuário logado
+  const atualizarUsuario = (dados) => {
+    const novo = { ...(lerUsuario() || {}), ...dados };
+    localStorage.setItem('user', JSON.stringify(novo));
+    setUser(novo);
+    return novo;
+  };
+
+  return { user, login, logout, atualizarUsuario };
 }

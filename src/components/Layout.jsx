@@ -13,7 +13,8 @@ const TITULOS = {
   '/novo-alerta': 'Registrar Ocorrência',
   '/mapa': 'Mapa de Ocorrências',
   '/solicitacoes-exclusao': 'Solicitações de Exclusão',
-  '/usuarios': 'Usuários'
+  '/usuarios': 'Usuários',
+  '/perfil': 'Meu perfil'
 };
 
 // Títulos que mudam conforme o perfil (o operador só acompanha os próprios pedidos)
@@ -42,7 +43,7 @@ function lerRecolhida() {
 
 // Layout das telas autenticadas: barra lateral + cabeçalho + conteúdo da rota atual
 export default function Layout() {
-  const { user, logout } = useAuth();
+  const { user, logout, atualizarUsuario } = useAuth();
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const [recolhida, setRecolhida] = useState(lerRecolhida);
@@ -92,11 +93,12 @@ export default function Layout() {
         contadores={{ solicitacoes: avaliaSolicitacoes ? pendentes : 0 }}
       />
       <div className="flex min-w-0 flex-1 flex-col">
-        <Header titulo={tituloDaRota(pathname, user?.perfil)} usuario={user} onAbrirMenu={() => setMenuAberto(true)} />
+        <Header titulo={tituloDaRota(pathname, user?.perfil)} usuario={user} onAbrirMenu={() => setMenuAberto(true)} onLogout={handleLogout} />
         <main className="flex-1">
           {/* Os filtros são compartilhados entre as telas e zeram ao sair da área autenticada */}
           <FiltrosProvider>
-            <Outlet context={{ atualizarContadores }} />
+            {/* atualizarUsuario: "Meu perfil" atualiza o nome mostrado no cabeçalho e no menu lateral */}
+            <Outlet context={{ atualizarContadores, atualizarUsuario }} />
           </FiltrosProvider>
         </main>
       </div>
