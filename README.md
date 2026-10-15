@@ -1,16 +1,26 @@
 # 🌿 SMCQ — Sistema de Monitoramento de Queimadas
 
-Interface web do SMCQ, um sistema para registrar, acompanhar e visualizar ocorrências de queimadas. Operadores registram focos de calor, o sistema classifica o risco de cada um e a equipe acompanha o atendimento por uma lista e por um mapa.
+Interface web do SMCQ, um sistema para registrar, acompanhar e visualizar ocorrências de queimadas. Operadores registram as ocorrências, o sistema classifica o risco de cada uma pelo Índice de Risco Sintético (IRS v2) e a equipe acompanha o atendimento pelo painel, pela lista e pelo mapa.
 
-Este repositório contém apenas o frontend. A API fica em um projeto separado ([`smcq-prototype`](#backend)).
+Este repositório contém apenas o frontend. A API fica em um projeto separado ([`smcq-prototype`](#backend)), cujo README documenta as rotas, a matriz de permissões e o algoritmo de risco.
 
 ## Funcionalidades
 
-- **Login** com e-mail e senha, com sessão por token JWT
-- **Painel de controle** com os totais de focos ativos, críticos, em atendimento e resolvidos
-- **Registro de ocorrência** com título, descrição, área afetada, vento, zona urbana, pessoas em risco e coordenadas
-- **Lista de alertas** com nível de risco e alteração de status
+- **Login** com e-mail e senha, sessão por token JWT e **troca obrigatória da senha provisória** no primeiro acesso
+- **Painel de controle** com indicadores, gráficos (evolução no período, nível de risco, estado e tipo de ocorrência) e exportação do relatório em CSV
+- **Registro de ocorrência** por tipo (queimada em vegetação ou incêndio em área urbana), com mapa, localização do dispositivo ou coordenadas digitadas, e os dados ambientais do ponto antes de salvar
+- **Lista de alertas** com os filtros globais (período, estado, município, tipo de ocorrência, risco e status) e exportação em CSV e JSON
+- **Detalhes do alerta**:
+  - cálculo de risco com os nove critérios do IRS v2;
+  - status, só com as transições permitidas;
+  - edição da ocorrência, com aviso antes de salvar quando o nível de risco vai mudar;
+  - observações;
+  - histórico com autor e data;
+  - exclusão ou solicitação de exclusão.
 - **Mapa de ocorrências** com um marcador por alerta, colorido pelo nível de risco
+- **Solicitações de exclusão**: o gestor e o administrador aprovam ou rejeitam, com o número de pendentes no menu; o operador acompanha as próprias em "Minhas Solicitações"
+- **Usuários** (gestor e administrador): lista com filtros, cadastro, edição, desativação, reativação e auditoria, com as ações exibidas conforme a matriz de permissões
+- **Meu perfil**: cada usuário edita o próprio nome e e-mail e altera a própria senha
 
 ## Tecnologias
 
@@ -24,6 +34,7 @@ Este repositório contém apenas o frontend. A API fica em um projeto separado (
 | Estilos | Tailwind CSS 4, fonte Inter |
 | Ícones | Lucide |
 | Gráficos | Recharts |
+| Notificações na tela | React Hot Toast |
 | Lint | Oxlint |
 
 ## Pré-requisitos
@@ -36,14 +47,14 @@ Este repositório contém apenas o frontend. A API fica em um projeto separado (
 
 ### Backend
 
-O frontend depende da API do projeto `smcq-prototype`. Em outro terminal, na pasta desse projeto:
+O frontend depende da API do projeto `smcq-prototype`. Siga o README desse projeto para configurar o PostgreSQL (`.env`, `npm run db:init` e `npm run db:seed`) e, em outro terminal, na pasta dele:
 
 ```bash
 npm install
 npm start
 ```
 
-A API sobe em `http://localhost:3000`. Os dados ficam em memória e são perdidos quando o servidor é reiniciado.
+A API sobe em `http://localhost:3000`. Para uma demonstração sem banco de dados, use `PERSISTENCIA=memoria`; nesse modo, os dados se perdem quando o servidor é reiniciado.
 
 ### Frontend
 
@@ -56,13 +67,15 @@ O Vite mostra no terminal o endereço da aplicação (por padrão, `http://local
 
 ### Usuários de teste
 
-Criados pelo backend de protótipo:
+Criados pelo seed do backend:
 
 | Perfil | E-mail | Senha |
 | --- | --- | --- |
 | Administrador | `admin@smcq.com` | `admin123` |
 | Operador | `operador@smcq.com` | `operador123` |
 | Gestor | `gestor@smcq.com` | `gestor123` |
+
+Usuários cadastrados pelo gestor na tela "Usuários" recebem uma senha provisória e são levados à tela "Defina a sua senha" no primeiro acesso.
 
 ## Scripts
 
@@ -73,29 +86,40 @@ Criados pelo backend de protótipo:
 | `npm run preview` | Serve localmente a versão gerada pelo build |
 | `npm run lint` | Analisa o código com o Oxlint |
 
-O projeto ainda não tem testes automatizados.
+O frontend não tem testes automatizados; as regras de negócio e de permissão são testadas no backend.
 
 ## Estrutura do projeto
 
 ```
 src/
-├── main.jsx            Ponto de entrada
-├── App.jsx             Rotas e proteção de rotas
-├── components/         Layout, Sidebar, Header, cartões, etiquetas, tabela, formulário, filtros e mapa
+├── main.jsx                 Ponto de entrada
+├── App.jsx                  Rotas e proteção de rotas
+├── components/              Layout, Sidebar, Header, cartões, etiquetas, tabela, formulários, modais, gráficos e mapa
 ├── pages/
-│   ├── Login.jsx       Tela de login
-│   ├── Dashboard.jsx   Painel de controle
-│   ├── Alertas.jsx     Lista de alertas
-│   ├── NovoAlerta.jsx  Formulário de registro de ocorrência
-│   └── Mapa.jsx        Mapa de ocorrências
+│   ├── Login.jsx            Tela de login
+│   ├── TrocarSenha.jsx      Troca obrigatória da senha provisória
+│   ├── Dashboard.jsx        Painel de controle
+│   ├── Alertas.jsx          Lista de alertas
+│   ├── DetalheAlerta.jsx    Detalhes, edição, status, observações, histórico e exclusão
+│   ├── NovoAlerta.jsx       Registro de ocorrência
+│   ├── Mapa.jsx             Mapa de ocorrências
+│   ├── SolicitacoesExclusao.jsx  Solicitações de exclusão / Minhas Solicitações
+│   ├── Usuarios.jsx         Gestão de usuários
+│   └── MeuPerfil.jsx        Dados e senha do próprio usuário
 ├── services/
-│   ├── api.js          Cliente Axios e chamadas à API
-│   └── constantes.js   Rótulos e cores de risco e status
+│   ├── api.js               Cliente Axios e chamadas à API (único ponto de acesso ao backend)
+│   ├── constantes.js        Rótulos, cores, transições de status e matriz de permissões da interface
+│   ├── irs.js               Apresentação dos critérios do IRS e dos valores do histórico
+│   ├── estatisticas.js      Agregações do painel
+│   ├── exportacao.js        Exportação em CSV e JSON
+│   ├── localizacao.js       Validação de coordenadas
+│   └── geocodificacao.js    Endereço ↔ coordenadas (ViaCEP, Photon e Nominatim)
 ├── hooks/
-│   ├── useAuth.js      Hook de autenticação e validação da sessão
-│   └── useAlertas.js   Hook de carga e alteração dos alertas
+│   ├── useAuth.js           Sessão, usuário logado e senha provisória
+│   ├── useAlertas.js        Carga e alteração dos alertas
+│   └── useFiltros.js        Filtros globais
 └── styles/
-    └── global.css      Variáveis de cor e classes compartilhadas
+    └── global.css           Tema do Tailwind e classes ainda não migradas
 ```
 
 ## Rotas
@@ -103,57 +127,46 @@ src/
 | Caminho | Tela | Acesso |
 | --- | --- | --- |
 | `/login` | Login | Público |
+| `/trocar-senha` | Defina a sua senha | Autenticado com senha provisória |
 | `/dashboard` | Painel de controle | Autenticado |
 | `/alertas` | Lista de alertas | Autenticado |
+| `/alertas/:id` | Detalhes do alerta | Autenticado |
 | `/novo-alerta` | Registro de ocorrência | Autenticado |
 | `/mapa` | Mapa de ocorrências | Autenticado |
+| `/solicitacoes-exclusao` | Solicitações de exclusão (Minhas Solicitações para o operador) | Autenticado |
+| `/usuarios` | Usuários | Gestor e Administrador |
+| `/perfil` | Meu perfil | Autenticado |
 
-Sem token válido, ou quando a API recusa o token (sessão expirada), as rotas autenticadas redirecionam para `/login`. Qualquer outro caminho redireciona para `/dashboard`.
+Sem token válido, ou quando a API recusa o token (sessão expirada ou usuário desativado), as rotas autenticadas redirecionam para `/login`. Com senha provisória, todas levam a `/trocar-senha` até a troca. Qualquer outro caminho redireciona para `/dashboard`.
 
 ## Backend
 
-Endereço base: `http://localhost:3000/api`. Com exceção do login, todas as rotas exigem o cabeçalho `Authorization: Bearer <token>`. O token expira em 2 horas.
+Endereço base: `http://localhost:3000/api`, fixo em `src/services/api.js`. Com exceção do login, todas as rotas exigem o cabeçalho `Authorization: Bearer <token>`; o token expira em 2 horas. As rotas, os campos e a matriz de permissões estão no README do `smcq-prototype`.
 
-| Método | Rota | Descrição |
-| --- | --- | --- |
-| `POST` | `/login` | Recebe `{ email, senha }` e devolve `{ token, usuario }` |
-| `GET` | `/alertas` | Lista os alertas |
-| `POST` | `/alertas` | Cria um alerta |
-| `PATCH` | `/alertas/:id/status` | Altera o status de um alerta |
-| `POST` | `/alertas/:id/observacoes` | Adiciona uma observação |
-| `DELETE` | `/alertas/:id` | Exclui o alerta (somente Administrador) |
-| `POST` | `/alertas/:id/solicitacoes-exclusao` | Solicita a exclusão, com `motivo` (Operador e Gestor) |
-| `GET` | `/solicitacoes-exclusao` | Lista as solicitações (todas para o Administrador; as próprias para os demais) |
-| `PATCH` | `/alertas/:id/solicitacoes-exclusao/:sid` | Aprova ou rejeita uma solicitação (somente Administrador) |
+As permissões são verificadas no backend; o frontend apenas esconde as ações que o perfil do usuário não pode executar. Como o frontend trata as respostas:
 
-A exclusão é lógica: o alerta é marcado como excluído e some das listagens, mas continua guardado para auditoria.
-
-Erros são devolvidos como `{ erro: "mensagem" }`. O código 401 indica sessão inválida ou expirada; 403 indica falta de permissão.
-
-### Classificação de risco
-
-O risco é calculado pelo backend no momento do registro, somando pontos:
-
-| Critério | Pontos |
+| Código | Tratamento |
 | --- | --- |
-| Área afetada | Pequena 1 · Média 2 · Grande 3 |
-| Vento | Baixo 1 · Moderado 2 · Alto 3 |
-| Zona urbana | 3 |
-| Pessoas em risco | 4 |
-
-| Pontuação | Nível |
-| --- | --- |
-| até 3 | `BAIXO` |
-| 4 a 6 | `MODERADO` |
-| 7 a 9 | `ALTO` |
-| 10 ou mais | `CRITICO` |
+| `401` | Sessão inválida, expirada ou usuário desativado: limpa a sessão e volta ao login |
+| `403` | Sem permissão: mostra a mensagem e mantém a sessão. Com o código `TROCA_SENHA_OBRIGATORIA`, leva à troca de senha |
+| `404`, `409`, `422` | Mostra a mensagem do backend (recurso inexistente, conflito ou regra de negócio violada) |
 
 ### Status de um alerta
 
-`NOVO` → `EM_ANALISE` → `EM_ATENDIMENTO` → `RESOLVIDO`
+| Status atual | Pode passar para |
+| --- | --- |
+| Novo | Em análise |
+| Em análise | Em atendimento ou Novo |
+| Em atendimento | Resolvido ou Em análise |
+| Resolvido | nenhum (estado final; o alerta também não pode mais ser editado) |
+
+### Classificação de risco
+
+O risco é calculado pelo backend com o IRS v2: soma ponderada de nove critérios (área afetada, proximidade urbana, vento, pessoas em risco, propagação, bioma, tipo de área, fauna ameaçada e relevância ecológica), com pesos AHP e dados ambientais de bases públicas. A tela de detalhes mostra a contribuição de cada critério. A descrição completa está em `docs/irs-v2.md`, no backend.
 
 ## Limitações conhecidas
 
 - O endereço da API está fixo no código (`src/services/api.js`), sem variável de ambiente.
-- Os itens "Focos de Calor", "Gestão de Ocorrências", "Equipe & Brigadistas", "Relatórios Ambientais" e "Configurações" da barra lateral ainda não levam a nenhuma tela.
-- O mapa depende de acesso à internet para carregar os tiles do OpenStreetMap.
+- Os itens "Relatórios Ambientais" e "Configurações" da barra lateral ainda não levam a nenhuma tela.
+- Anexos, recuperação de senha por e-mail e notificações automáticas ainda não foram implementados.
+- O mapa e a geocodificação dependem de acesso à internet (OpenStreetMap, ViaCEP, Photon e Nominatim).
