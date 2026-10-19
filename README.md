@@ -2,14 +2,14 @@
 
 Interface web do SMCQ, um sistema para registrar, acompanhar e visualizar ocorrências de queimadas. Operadores registram as ocorrências, o sistema classifica o risco de cada uma pelo Índice de Risco Sintético (IRS v2) e a equipe acompanha o atendimento pelo painel, pela lista e pelo mapa.
 
-Este repositório contém apenas o frontend. A API fica em um projeto separado ([`smcq-prototype`](#backend)), cujo README documenta as rotas, a matriz de permissões e o algoritmo de risco.
+Este repositório contém apenas o frontend. A API fica em um repositório separado, [SMCQ-Backend](https://github.com/droniis/SMCQ-Backend), cujo README documenta as rotas, a matriz de permissões e o algoritmo de risco.
 
 ## Funcionalidades
 
 - **Login** com e-mail e senha, sessão por token JWT e **troca obrigatória da senha provisória** no primeiro acesso
 - **Painel de controle** com indicadores, gráficos (evolução no período, nível de risco, estado e tipo de ocorrência) e exportação do relatório em CSV
 - **Registro de ocorrência** por tipo (queimada em vegetação ou incêndio em área urbana), com mapa, localização do dispositivo ou coordenadas digitadas, e os dados ambientais do ponto antes de salvar
-- **Lista de alertas** com os filtros globais (período, estado, município, tipo de ocorrência, risco e status) e exportação em CSV e JSON
+- **Lista de alertas** ("Gestão de Ocorrências" no menu) com os filtros globais (período, estado, município, tipo de ocorrência, risco e status) e exportação em CSV e JSON
 - **Detalhes do alerta**:
   - cálculo de risco com os nove critérios do IRS v2;
   - status, só com as transições permitidas;
@@ -17,7 +17,7 @@ Este repositório contém apenas o frontend. A API fica em um projeto separado (
   - observações;
   - histórico com autor e data;
   - exclusão ou solicitação de exclusão.
-- **Mapa de ocorrências** com um marcador por alerta, colorido pelo nível de risco
+- **Mapa de ocorrências** ("Focos de Calor" no menu) com um marcador por alerta, colorido pelo nível de risco
 - **Solicitações de exclusão**: o gestor e o administrador aprovam ou rejeitam, com o número de pendentes no menu; o operador acompanha as próprias em "Minhas Solicitações"
 - **Usuários** (gestor e administrador): lista com filtros, cadastro, edição, desativação, reativação e auditoria, com as ações exibidas conforme a matriz de permissões
 - **Meu perfil**: cada usuário edita o próprio nome e e-mail e altera a própria senha
@@ -39,15 +39,15 @@ Este repositório contém apenas o frontend. A API fica em um projeto separado (
 
 ## Pré-requisitos
 
-- Node.js 20.19 ou superior (exigido pelo Vite 8)
+- Node.js 20.19 ou superior (exigido pelo Vite 8; vale também para o backend)
 - npm
-- O backend do SMCQ rodando em `http://localhost:3000`
+- O backend do SMCQ ([SMCQ-Backend](https://github.com/droniis/SMCQ-Backend)) rodando em `http://localhost:3000`
 
 ## Como executar
 
 ### Backend
 
-O frontend depende da API do projeto `smcq-prototype`. Siga o README desse projeto para configurar o PostgreSQL (`.env`, `npm run db:init` e `npm run db:seed`) e, em outro terminal, na pasta dele:
+O frontend depende da API do [SMCQ-Backend](https://github.com/droniis/SMCQ-Backend). Siga o README dele para clonar, instalar o PostgreSQL e configurar o banco (`.env`, `npm run db:init` e `npm run db:seed`) e, em outro terminal, na pasta `SMCQ-Backend`:
 
 ```bash
 npm install
@@ -59,6 +59,8 @@ A API sobe em `http://localhost:3000`. Para uma demonstração sem banco de dado
 ### Frontend
 
 ```bash
+git clone https://github.com/droniis/SMCQ-TCC.git
+cd SMCQ-TCC
 npm install
 npm run dev
 ```
@@ -122,6 +124,8 @@ src/
     └── global.css           Tema do Tailwind e classes ainda não migradas
 ```
 
+Fora de `src/`, a pasta `docs/` guarda a análise de sistemas de referência que embasou o design ([`docs/analise-referencias.md`](docs/analise-referencias.md)) e as capturas e dados coletados nessa análise ([`docs/evidencias/`](docs/evidencias/)).
+
 ## Rotas
 
 | Caminho | Tela | Acesso |
@@ -129,10 +133,10 @@ src/
 | `/login` | Login | Público |
 | `/trocar-senha` | Defina a sua senha | Autenticado com senha provisória |
 | `/dashboard` | Painel de controle | Autenticado |
-| `/alertas` | Lista de alertas | Autenticado |
+| `/alertas` | Lista de alertas ("Gestão de Ocorrências" no menu) | Autenticado |
 | `/alertas/:id` | Detalhes do alerta | Autenticado |
 | `/novo-alerta` | Registro de ocorrência | Autenticado |
-| `/mapa` | Mapa de ocorrências | Autenticado |
+| `/mapa` | Mapa de ocorrências ("Focos de Calor" no menu) | Autenticado |
 | `/solicitacoes-exclusao` | Solicitações de exclusão (Minhas Solicitações para o operador) | Autenticado |
 | `/usuarios` | Usuários | Gestor e Administrador |
 | `/perfil` | Meu perfil | Autenticado |
@@ -141,7 +145,7 @@ Sem token válido, ou quando a API recusa o token (sessão expirada ou usuário 
 
 ## Backend
 
-Endereço base: `http://localhost:3000/api`, fixo em `src/services/api.js`. Com exceção do login, todas as rotas exigem o cabeçalho `Authorization: Bearer <token>`; o token expira em 2 horas. As rotas, os campos e a matriz de permissões estão no README do `smcq-prototype`.
+Endereço base: `http://localhost:3000/api`, fixo em `src/services/api.js`. Com exceção do login, todas as rotas exigem o cabeçalho `Authorization: Bearer <token>`; o token expira em 2 horas. As rotas, os campos e a matriz de permissões estão no [README do SMCQ-Backend](https://github.com/droniis/SMCQ-Backend#api).
 
 As permissões são verificadas no backend; o frontend apenas esconde as ações que o perfil do usuário não pode executar. Como o frontend trata as respostas:
 
@@ -162,7 +166,7 @@ As permissões são verificadas no backend; o frontend apenas esconde as ações
 
 ### Classificação de risco
 
-O risco é calculado pelo backend com o IRS v2: soma ponderada de nove critérios (área afetada, proximidade urbana, vento, pessoas em risco, propagação, bioma, tipo de área, fauna ameaçada e relevância ecológica), com pesos AHP e dados ambientais de bases públicas. A tela de detalhes mostra a contribuição de cada critério. A descrição completa está em `docs/irs-v2.md`, no backend.
+O risco é calculado pelo backend com o IRS v2: soma ponderada de nove critérios (área afetada, proximidade urbana, vento, pessoas em risco, propagação, bioma, tipo de área, fauna ameaçada e relevância ecológica), com pesos AHP e dados ambientais de bases públicas. A tela de detalhes mostra a contribuição de cada critério. A descrição completa está em [`docs/irs-v2.md`](https://github.com/droniis/SMCQ-Backend/blob/main/docs/irs-v2.md), no backend.
 
 ## Limitações conhecidas
 

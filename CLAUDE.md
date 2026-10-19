@@ -19,7 +19,7 @@ There is no test runner configured.
 
 ## Backend dependency
 
-The app requires a separate backend at `http://localhost:3000/api`, hardcoded in `src/services/api.js` (no env var or Vite proxy). It lives in the sibling folder `../smcq-prototype` (`npm start`; Express with PostgreSQL, or in memory with `PERSISTENCIA=memoria`, which resets on restart — use memory mode for browser testing) and `server.js` there is the source of truth for the API (its README documents every route and the permission matrix):
+The app requires a separate backend at `http://localhost:3000/api`, hardcoded in `src/services/api.js` (no env var or Vite proxy). It lives in the separate repository [SMCQ-Backend](https://github.com/droniis/SMCQ-Backend) (formerly `smcq-prototype`), cloned as the sibling folder `../SMCQ-Backend` (`npm start`; Express with PostgreSQL, or in memory with `PERSISTENCIA=memoria`, which resets on restart — use memory mode for browser testing) and `server.js` there is the source of truth for the API (its README documents every route and the permission matrix):
 
 - `POST /login` `{ email, senha }` → `{ token, usuario }` (`usuario.senhaProvisoria` → go to `/trocar-senha`); all errors come back as `{ erro }`
 - `GET /alertas`, `POST /alertas`, `GET /alertas/:id` (with author names), `PATCH /alertas/:id` (edit; `POST /alertas/:id/risco/simulacao` previews the risk without saving), `PATCH /alertas/:id/status` `{ status }` (only the transitions in `TRANSICOES_STATUS`, else 422), `POST /alertas/:id/observacoes` `{ observacao }`
