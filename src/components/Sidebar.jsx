@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import {
-  LayoutDashboard, Map as MapIcon, ClipboardList, CirclePlus, Users, ChartColumn,
-  Settings, Trash2, LogOut, PanelLeftClose, PanelLeftOpen, Flame, X
+  LayoutDashboard, Map as MapIcon, ClipboardList, CirclePlus, Users,
+  Trash2, LogOut, PanelLeftClose, PanelLeftOpen, Flame, X
 } from 'lucide-react';
 import { PERFIS } from '../services/constantes';
 
@@ -14,7 +14,7 @@ const GRUPOS = [
     titulo: 'Operação',
     itens: [
       { rotulo: 'Painel de Controle', rota: '/dashboard', icone: LayoutDashboard },
-      { rotulo: 'Focos de Calor', rota: '/mapa', icone: MapIcon },
+      { rotulo: 'Mapa de Ocorrências', rota: '/mapa', icone: MapIcon },
       { rotulo: 'Gestão de Ocorrências', rota: '/alertas', icone: ClipboardList },
       { rotulo: 'Registrar Ocorrência', rota: '/novo-alerta', icone: CirclePlus }
     ]
@@ -30,13 +30,6 @@ const GRUPOS = [
         chave: 'solicitacoes'
       },
       { rotulo: 'Usuários', rota: '/usuarios', icone: Users, perfis: ['GESTOR', 'ADMINISTRADOR'] }
-    ]
-  },
-  {
-    titulo: 'Em breve',
-    itens: [
-      { rotulo: 'Relatórios Ambientais', icone: ChartColumn },
-      { rotulo: 'Configurações', icone: Settings }
     ]
   }
 ];

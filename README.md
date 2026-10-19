@@ -7,9 +7,9 @@ Este repositório contém apenas o frontend. A API fica em um repositório separ
 ## Funcionalidades
 
 - **Login** com e-mail e senha, sessão por token JWT e **troca obrigatória da senha provisória** no primeiro acesso
-- **Painel de controle** com indicadores, gráficos (evolução no período, nível de risco, estado e tipo de ocorrência) e exportação do relatório em CSV
+- **Painel de controle** com indicadores, gráficos (evolução no período, nível de risco, estado e tipo de ocorrência) e exportação do relatório em CSV (só Gestor e Administrador)
 - **Registro de ocorrência** por tipo (queimada em vegetação ou incêndio em área urbana), com mapa, localização do dispositivo ou coordenadas digitadas, e os dados ambientais do ponto antes de salvar
-- **Lista de alertas** ("Gestão de Ocorrências" no menu) com os filtros globais (período, estado, município, tipo de ocorrência, risco e status) e exportação em CSV e JSON
+- **Lista de alertas** ("Gestão de Ocorrências" no menu) com os filtros globais (período, estado, município, tipo de ocorrência, risco e status) e exportação em CSV e JSON (só Gestor e Administrador)
 - **Detalhes do alerta**:
   - cálculo de risco com os nove critérios do IRS v2;
   - status, só com as transições permitidas;
@@ -17,7 +17,7 @@ Este repositório contém apenas o frontend. A API fica em um repositório separ
   - observações;
   - histórico com autor e data;
   - exclusão ou solicitação de exclusão.
-- **Mapa de ocorrências** ("Focos de Calor" no menu) com um marcador por alerta, colorido pelo nível de risco
+- **Mapa de ocorrências** com um marcador por alerta, colorido pelo nível de risco
 - **Solicitações de exclusão**: o gestor e o administrador aprovam ou rejeitam, com o número de pendentes no menu; o operador acompanha as próprias em "Minhas Solicitações"
 - **Usuários** (gestor e administrador): lista com filtros, cadastro, edição, desativação, reativação e auditoria, com as ações exibidas conforme a matriz de permissões
 - **Meu perfil**: cada usuário edita o próprio nome e e-mail e altera a própria senha
@@ -136,7 +136,7 @@ Fora de `src/`, a pasta `docs/` guarda a análise de sistemas de referência que
 | `/alertas` | Lista de alertas ("Gestão de Ocorrências" no menu) | Autenticado |
 | `/alertas/:id` | Detalhes do alerta | Autenticado |
 | `/novo-alerta` | Registro de ocorrência | Autenticado |
-| `/mapa` | Mapa de ocorrências ("Focos de Calor" no menu) | Autenticado |
+| `/mapa` | Mapa de ocorrências | Autenticado |
 | `/solicitacoes-exclusao` | Solicitações de exclusão (Minhas Solicitações para o operador) | Autenticado |
 | `/usuarios` | Usuários | Gestor e Administrador |
 | `/perfil` | Meu perfil | Autenticado |
@@ -171,6 +171,5 @@ O risco é calculado pelo backend com o IRS v2: soma ponderada de nove critério
 ## Limitações conhecidas
 
 - O endereço da API está fixo no código (`src/services/api.js`), sem variável de ambiente.
-- Os itens "Relatórios Ambientais" e "Configurações" da barra lateral ainda não levam a nenhuma tela.
-- Anexos, recuperação de senha por e-mail e notificações automáticas ainda não foram implementados.
+- Relatórios ambientais, tela de configurações, anexos, recuperação de senha por e-mail e notificações automáticas ainda não foram implementados.
 - O mapa e a geocodificação dependem de acesso à internet (OpenStreetMap, ViaCEP, Photon e Nominatim).

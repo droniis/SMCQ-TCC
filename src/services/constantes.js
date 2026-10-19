@@ -50,6 +50,11 @@ export const PERFIS = {
 // Administrador e Gestor excluem alertas direto; o Operador solicita a exclusão
 export const PERFIS_EXCLUSAO_DIRETA = ['ADMINISTRADOR', 'GESTOR'];
 
+// Exportação de relatórios (CSV e JSON) só para Gestor e Administrador (RF17, RF18, UC09).
+// O painel continua visível para todos; só o botão de exportar some para o Operador.
+const PERFIS_EXPORTACAO = ['GESTOR', 'ADMINISTRADOR'];
+export const podeExportarRelatorio = (ator) => PERFIS_EXPORTACAO.includes(ator?.perfil);
+
 // ------------------------------------------------------------
 // Gestão de usuários: matriz de permissões, a mesma de services/usuarioService.js
 // no backend (que é quem decide; aqui só se escondem os botões).

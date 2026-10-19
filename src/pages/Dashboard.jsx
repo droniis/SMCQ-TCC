@@ -2,8 +2,9 @@ import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { Flame, TriangleAlert, Siren, CircleCheck, Plus, List, Download, Map as MapaIcone } from 'lucide-react';
 import { useAlertas } from '../hooks/useAlertas';
+import { useAuth } from '../hooks/useAuth';
 import { useFiltros, filtrarAlertas } from '../hooks/useFiltros';
-import { BIOMAS, BIOMA_POR_ESTADO, RISCOS, STATUS, TIPOS_OCORRENCIA, tipoOcorrenciaDe } from '../services/constantes';
+import { BIOMAS, BIOMA_POR_ESTADO, RISCOS, STATUS, TIPOS_OCORRENCIA, podeExportarRelatorio, tipoOcorrenciaDe } from '../services/constantes';
 import { exportarCSV } from '../services/exportacao';
 import { contarPor, serieDiaria, variacaoRecente, formatarNumero, formatarPercentual, formatarData } from '../services/estatisticas';
 import { biomaDoAlerta, rotuloBioma } from '../services/irs';
@@ -64,6 +65,7 @@ function descreverVariacao({ atual, anterior, percentual }) {
 
 export default function Dashboard() {
   const { alertas, loading, erro } = useAlertas();
+  const { user } = useAuth();
   const { filtros } = useFiltros();
   const navigate = useNavigate();
 
@@ -110,16 +112,18 @@ export default function Dashboard() {
       {erro && <p role="alert" className="mb-4 text-smcq-red">{erro}</p>}
       <FilterBar alertas={alertas} />
 
-      <div className="mb-4 flex justify-end">
-        <button
-          type="button"
-          onClick={exportarRelatorio}
-          className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-smcq-navy transition-colors duration-150 hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-smcq-orange focus-visible:outline-none"
-        >
-          <Download size={16} aria-hidden="true" />
-          Exportar CSV
-        </button>
-      </div>
+      {podeExportarRelatorio(user) && (
+        <div className="mb-4 flex justify-end">
+          <button
+            type="button"
+            onClick={exportarRelatorio}
+            className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-smcq-navy transition-colors duration-150 hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-smcq-orange focus-visible:outline-none"
+          >
+            <Download size={16} aria-hidden="true" />
+            Exportar CSV
+          </button>
+        </div>
+      )}
 
       <div className="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <MetricCard titulo="Total de Alertas" valor={formatarNumero(total)} icone={Flame} cor="navy" detalhe={descreverVariacao(variacaoRecente(visiveis))} />

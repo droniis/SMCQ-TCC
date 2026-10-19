@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { ArrowDown, ArrowUp, ArrowUpDown, Clock, Download, Search, Send, Trash2 } from 'lucide-react';
-import { RISCOS, STATUS, TIPOS_OCORRENCIA, TRANSICOES_STATUS, tipoOcorrenciaDe } from '../services/constantes';
+import { useAuth } from '../hooks/useAuth';
+import { RISCOS, STATUS, TIPOS_OCORRENCIA, TRANSICOES_STATUS, podeExportarRelatorio, tipoOcorrenciaDe } from '../services/constantes';
 import { exportarAlertasCSV, exportarAlertasJSON } from '../services/exportacao';
 import RiskBadge from './RiskBadge';
 import StatusBadge from './StatusBadge';
@@ -56,7 +57,9 @@ function corresponde(alerta, termo) {
 // Tabela de alertas com busca, ordenação, paginação e exportação, tudo no navegador.
 // Sem onAlterarStatus, a coluna de status editável não aparece. A coluna "Ações" aparece com
 // onExcluir (botão vermelho, exclusão direta) ou onSolicitarExclusao (botão laranja, pedido de exclusão).
+// Os botões de exportação só aparecem para Gestor e Administrador.
 export default function AlertTable({ alertas, onAlterarStatus, onExcluir, onSolicitarExclusao }) {
+  const { user } = useAuth();
   const [busca, setBusca] = useState('');
   const [ordenacao, setOrdenacao] = useState({ chave: 'criadoEm', direcao: 'desc' });
   const [porPagina, setPorPagina] = useState(TAMANHOS_PAGINA[0]);
@@ -99,16 +102,18 @@ export default function AlertTable({ alertas, onAlterarStatus, onExcluir, onSoli
             className={`${CLASSE_CAMPO} w-full pl-9`}
           />
         </label>
-        <div className="flex gap-2">
-          <button type="button" className={CLASSE_BOTAO} disabled={linhas.length === 0} onClick={() => exportar(exportarAlertasCSV, 'CSV')}>
-            <Download size={16} aria-hidden="true" />
-            Exportar CSV
-          </button>
-          <button type="button" className={CLASSE_BOTAO} disabled={linhas.length === 0} onClick={() => exportar(exportarAlertasJSON, 'JSON')}>
-            <Download size={16} aria-hidden="true" />
-            Exportar JSON
-          </button>
-        </div>
+        {podeExportarRelatorio(user) && (
+          <div className="flex gap-2">
+            <button type="button" className={CLASSE_BOTAO} disabled={linhas.length === 0} onClick={() => exportar(exportarAlertasCSV, 'CSV')}>
+              <Download size={16} aria-hidden="true" />
+              Exportar CSV
+            </button>
+            <button type="button" className={CLASSE_BOTAO} disabled={linhas.length === 0} onClick={() => exportar(exportarAlertasJSON, 'JSON')}>
+              <Download size={16} aria-hidden="true" />
+              Exportar JSON
+            </button>
+          </div>
+        )}
       </div>
 
       {linhas.length === 0 ? (
