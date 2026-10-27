@@ -166,7 +166,7 @@ As permissões são verificadas no backend; o frontend apenas esconde as ações
 
 ### Classificação de risco
 
-O risco é calculado pelo backend com o IRS v2: soma ponderada de nove critérios (área afetada, proximidade urbana, vento, pessoas em risco, propagação, bioma, tipo de área, fauna ameaçada e relevância ecológica), com pesos AHP e dados ambientais de bases públicas. A tela de detalhes mostra a contribuição de cada critério. A descrição completa está em [`docs/irs-v2.md`](https://github.com/droniis/SMCQ-Backend/blob/main/docs/irs-v2.md), no backend.
+O risco é calculado pelo backend com o IRS v2: soma ponderada de nove critérios (área afetada, proximidade urbana, vento, pessoas em risco, propagação, bioma, tipo de área, fauna ameaçada e relevância ecológica), com pesos definidos pela equipe (ainda não validados por especialistas) e dados ambientais de bases públicas. A tela de detalhes mostra a contribuição de cada critério. A descrição completa está em [`docs/irs-v2.md`](https://github.com/droniis/SMCQ-Backend/blob/main/docs/irs-v2.md), no backend.
 
 ## Limitações conhecidas
 
